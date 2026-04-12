@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse4all — EU Market Expansion Analysis 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --sand: #FFFDF6;
+  --bg-blue: #EAF4FC;
+  --light-blue: #9ECFF5;
+  --denim-blue: #3B6FB3;
+  --deep-blue: #265BA4;
+  --deep-blue-heading: #2E61A6;
+  --leaf-green: #27AE6F;
+  --soft-rose: #F4D9D0;
+  --inkt: #0B133D;
+  --inkt-body: #1C2127;
+  --white: #FFFFFF;
+  --warm-white: #FDFBF1;
+  --grade-aplus: #1a8a4a;
+  --grade-a: #27AE6F;
+  --grade-bplus: #d4a017;
+  --grade-b: #e8963e;
+  --grade-c: #d35f2d;
+  --grade-d: #b33a2e;
+  --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px; --sp-6: 48px; --sp-8: 64px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;font-weight:400;color:var(--inkt-body);background:var(--sand);line-height:1.6;font-size:14px;}
+h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;color:var(--deep-blue-heading);font-weight:600;line-height:1.6;}
+.container{max-width:1440px;margin:0 auto;padding:0 var(--sp-3);}
+
+/* Header */
+header{background:var(--inkt);padding:var(--sp-2) 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+header .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-1);}
+.logo-area h1{font-size:20px;font-weight:700;color:var(--white);}
+.logo-area .subtitle{font-size:12px;color:var(--light-blue);font-weight:400;}
+.header-meta{text-align:right;font-size:11px;color:var(--light-blue);}
+
+/* Tab Navigation */
+.section-nav{position:sticky;top:52px;z-index:99;background:var(--white);border-bottom:2px solid var(--bg-blue);padding:0;}
+.section-nav .container{display:flex;gap:0;overflow-x:auto;}
+.nav-tab{padding:12px 20px;border:none;background:none;font-family:inherit;font-size:12px;font-weight:600;color:#6b7280;cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px;}
+.nav-tab:hover{color:var(--deep-blue);}
+.nav-tab.active{color:var(--deep-blue);border-bottom-color:var(--deep-blue);}
+section[id]{scroll-margin-top:110px;}
+
+/* Executive Summary */
+.exec-summary{background:var(--white);border-radius:15px;padding:var(--sp-4);margin:var(--sp-3) 0;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.exec-grid{display:grid;grid-template-columns:1fr 380px;gap:var(--sp-4);margin-top:var(--sp-2);}
+.exec-findings{list-style:none;}
+.exec-findings li{padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:13px;display:flex;align-items:flex-start;gap:10px;}
+.exec-findings li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--leaf-green);margin-top:7px;flex-shrink:0;}
+.exec-findings li strong{color:var(--deep-blue);}
+.entity-callout{background:var(--bg-blue);border-radius:15px;padding:var(--sp-3);border-left:4px solid var(--leaf-green);}
+.entity-callout h3{font-size:18px;margin-bottom:var(--sp-1);}
+.entity-stat{display:flex;align-items:flex-end;gap:var(--sp-3);margin:var(--sp-2) 0;}
+.entity-bar{flex:1;background:#e5e7eb;border-radius:8px;overflow:hidden;height:32px;position:relative;}
+.entity-bar-fill{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:700;color:var(--white);}
+.entity-bar-label{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11px;color:#6b7280;}
+.expansion-order{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--sp-2);}
+.expansion-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;}
+.expansion-chip.tier1{background:#dcfce7;color:#166534;}
+.expansion-chip.tier2{background:var(--bg-blue);color:var(--deep-blue);}
+
+/* Benchmarks */
+.benchmarks{background:var(--bg-blue);border-radius:15px;padding:var(--sp-3);margin:var(--sp-3) 0;}
+.benchmarks h2{font-size:16px;margin-bottom:var(--sp-2);}
+.benchmark-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:var(--sp-2);}
+.benchmark-card{background:var(--white);border-radius:15px;padding:var(--sp-2);border-left:4px solid var(--deep-blue);position:relative;}
+.benchmark-card.entity-yes{border-left-color:var(--leaf-green);}
+.benchmark-card.entity-no{border-left-color:var(--grade-c);opacity:.85;}
+.benchmark-card h3{font-size:14px;display:flex;align-items:center;gap:6px;}
+.benchmark-stat{display:grid;grid-template-columns:1fr 1fr;gap:3px var(--sp-2);margin-top:6px;font-size:12px;}
+.benchmark-stat dt{color:#6b7280;}
+.benchmark-stat dd{font-weight:600;text-align:right;}
+.entity-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:4px;}
+.entity-badge.yes{background:#dcfce7;color:#166534;}
+.entity-badge.no{background:#fef2f2;color:#991b1b;}
+.sparkline{display:block;margin-top:6px;}
+
+/* Controls */
+.controls{background:var(--white);border-radius:15px;padding:var(--sp-3);margin-bottom:var(--sp-2);box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.controls-row{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;}
+.control-group{display:flex;flex-direction:column;gap:4px;}
+.control-group label{font-size:11px;font-weight:600;color:var(--deep-blue);text-transform:uppercase;letter-spacing:.5px;}
+.search-input{padding:8px 12px;border:1px solid #d1d5db;border-radius:4px;font-family:inherit;font-size:13px;width:200px;}
+.search-input:focus{outline:none;border-color:var(--deep-blue);box-shadow:0 0 0 2px rgba(38,91,164,.15);}
+.filter-btn{padding:6px 12px;border:1px solid #d1d5db;border-radius:4px;background:var(--white);font-family:inherit;font-size:12px;cursor:pointer;transition:all .15s;}
+.filter-btn:hover{border-color:var(--deep-blue);color:var(--deep-blue);}
+.filter-btn.active{background:var(--deep-blue);color:var(--white);border-color:var(--deep-blue);}
+.weight-slider{display:flex;align-items:center;gap:8px;}
+.weight-slider input[type="range"]{width:100px;accent-color:var(--deep-blue);}
+.weight-slider .weight-val{font-size:12px;font-weight:600;min-width:30px;color:var(--deep-blue);}
+.advanced-toggle{font-size:12px;color:var(--denim-blue);cursor:pointer;border:none;background:none;font-family:inherit;font-weight:500;padding:4px 0;}
+.advanced-toggle:hover{text-decoration:underline;}
+.advanced-controls{display:none;margin-top:var(--sp-2);padding-top:var(--sp-2);border-top:1px solid #e5e7eb;}
+.advanced-controls.show{display:block;}
+
+/* Buttons */
+.btn{padding:10px 20px;border-radius:4px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s;}
+.btn-primary{background:var(--deep-blue);color:var(--white);}
+.btn-primary:hover{background:#1e4d8c;}
+.btn-secondary{background:var(--leaf-green);color:var(--white);}
+.btn-secondary:hover{background:#1f9960;}
+.btn-outline{background:transparent;border:1px solid var(--deep-blue);color:var(--deep-blue);}
+.btn-outline:hover{background:var(--bg-blue);}
+.actions-bar{display:flex;gap:var(--sp-2);margin:var(--sp-2) 0;flex-wrap:wrap;align-items:center;}
+
+/* Table */
+.table-wrapper{overflow-x:auto;border-radius:15px;background:var(--white);box-shadow:0 1px 3px rgba(0,0,0,.05);}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead th{background:var(--inkt);color:var(--white);padding:12px 10px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;user-select:none;white-space:nowrap;}
+thead th:hover{background:#1a1f2e;}
+thead th .sort-indicator{margin-left:4px;opacity:.5;}
+thead th.sorted .sort-indicator{opacity:1;}
+tbody tr{border-bottom:1px solid #f0f0f0;transition:background .1s;cursor:pointer;}
+tbody tr:hover{background:var(--bg-blue);}
+tbody tr.live-market{background:#fafcff;}
+tbody td{padding:10px;vertical-align:middle;}
+.country-cell{display:flex;align-items:center;gap:8px;font-weight:500;white-space:nowrap;}
+.country-cell .flag{font-size:18px;}
+.status-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px;}
+.status-badge.live{background:var(--bg-blue);color:var(--deep-blue);}
+.status-badge.new{background:#f0fdf4;color:#166534;}
+.grade-badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:24px;border-radius:4px;font-size:11px;font-weight:700;color:var(--white);}
+.grade-aplus{background:var(--grade-aplus);}
+.grade-a{background:var(--grade-a);}
+.grade-bplus{background:var(--grade-bplus);}
+.grade-b{background:var(--grade-b);}
+.grade-c{background:var(--grade-c);}
+.grade-d{background:var(--grade-d);}
+.score-bar{display:flex;align-items:center;gap:6px;}
+.score-bar-bg{flex:1;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden;min-width:60px;}
+.score-bar-fill{height:100%;border-radius:3px;transition:width .3s;}
+.score-val{font-size:12px;font-weight:600;min-width:28px;text-align:right;}
+.pillar-score{font-size:12px;font-weight:500;text-align:center;}
+
+/* Detail Row */
+.detail-row{display:none;}
+.detail-row.open{display:table-row;}
+.detail-row td{padding:0;}
+.detail-content{padding:var(--sp-3);background:var(--warm-white);}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--sp-2);}
+.detail-pillar{background:var(--white);border-radius:15px;padding:var(--sp-2);border-top:3px solid var(--deep-blue);}
+.detail-pillar h4{font-size:13px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;}
+.field-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid #f5f5f5;font-size:12px;}
+.field-row:last-child{border-bottom:none;}
+.field-name{color:#6b7280;flex:1;}
+.field-score{font-weight:600;width:24px;text-align:center;}
+.field-dots{display:flex;gap:2px;margin-left:8px;}
+.field-dot{width:8px;height:8px;border-radius:50%;background:#e5e7eb;}
+.field-dot.filled{background:var(--deep-blue);}
+.confidence-tag{font-size:9px;padding:1px 4px;border-radius:2px;margin-left:4px;}
+.confidence-high{background:#dcfce7;color:#166534;}
+.confidence-medium{background:#fef9c3;color:#854d0e;}
+.confidence-low{background:#fef2f2;color:#991b1b;}
+
+/* Competitor & Regulatory Panels */
+.detail-extras{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);margin-top:var(--sp-2);}
+.detail-panel{background:var(--white);border-radius:15px;padding:var(--sp-2);}
+.detail-panel h4{font-size:13px;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--bg-blue);}
+.competitor-item{background:var(--bg-blue);border-radius:8px;padding:8px 12px;font-size:12px;margin-bottom:6px;}
+.competitor-item strong{color:var(--deep-blue);}
+.competitor-item .price{font-weight:600;color:var(--inkt-body);}
+.presence-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;text-transform:uppercase;}
+.presence-low{background:#fef2f2;color:#991b1b;}
+.presence-moderate{background:#fef9c3;color:#854d0e;}
+.presence-high{background:#dcfce7;color:#166534;}
+.presence-veryhigh{background:#166534;color:var(--white);}
+.reg-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f0f0;font-size:12px;}
+.reg-row:last-child{border-bottom:none;}
+.reg-label{color:#6b7280;}
+.reg-value{font-weight:500;text-align:right;}
+.key-insight-box{background:var(--bg-blue);border-left:4px solid var(--deep-blue);border-radius:0 8px 8px 0;padding:12px 16px;margin-top:var(--sp-2);font-size:13px;line-height:1.5;}
+.key-insight-box strong{color:var(--deep-blue);}
+
+/* Comparison */
+.comparison-panel{display:none;background:var(--white);border-radius:15px;padding:var(--sp-3);margin:var(--sp-3) 0;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.comparison-panel.show{display:block;}
+.comparison-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-2);}
+.comparison-countries{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-3);}
+.comparison-country{text-align:center;}
+.comparison-country h3{font-size:16px;margin-bottom:var(--sp-1);}
+.radar-chart-container{max-width:280px;margin:0 auto;}
+
+/* Expansion Profiles */
+.profile-card{background:var(--white);border-radius:15px;padding:var(--sp-3);margin-bottom:var(--sp-2);box-shadow:0 1px 3px rgba(0,0,0,.06);border-left:5px solid var(--leaf-green);content-visibility:auto;contain-intrinsic-size:0 350px;}
+.profile-card.tier2{border-left-color:var(--denim-blue);}
+.profile-grid{display:grid;grid-template-columns:200px 1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-2);}
+.profile-stats h3{font-size:18px;margin-bottom:var(--sp-1);}
+.profile-stats .flag{font-size:28px;}
+.profile-meta{font-size:12px;color:#6b7280;margin-top:6px;}
+.profile-meta span{display:block;padding:2px 0;}
+.tier-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;margin-top:6px;}
+.tier-badge.t1{background:#dcfce7;color:#166534;}
+.tier-badge.t2{background:var(--bg-blue);color:var(--deep-blue);}
+.profile-why h4,.profile-competitors h4{font-size:13px;margin-bottom:6px;}
+.profile-why ul,.profile-risks ul{list-style:none;font-size:12px;}
+.profile-why li{padding:3px 0;display:flex;align-items:flex-start;gap:6px;}
+.profile-why li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--leaf-green);margin-top:6px;flex-shrink:0;}
+.profile-risks li{padding:3px 0;display:flex;align-items:flex-start;gap:6px;}
+.profile-risks li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--grade-c);margin-top:6px;flex-shrink:0;}
+.profile-radar{width:160px;margin:var(--sp-1) auto 0;}
+.profile-competitors .comp-line{font-size:12px;padding:3px 0;border-bottom:1px solid #f0f0f0;}
+.profile-competitors .comp-line:last-child{border-bottom:none;}
+.sat-info{background:var(--bg-blue);border-radius:8px;padding:8px 12px;font-size:12px;margin-top:8px;}
+.sat-info strong{color:var(--deep-blue);}
+
+/* Satellite Clusters */
+.satellite-section{background:var(--white);border-radius:15px;padding:var(--sp-3);margin:var(--sp-3) 0;}
+.satellite-section h2{font-size:16px;margin-bottom:var(--sp-2);}
+.cluster-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-2);}
+.cluster-card{background:var(--bg-blue);border-radius:15px;padding:var(--sp-2);text-align:center;}
+.cluster-anchor{font-weight:700;color:var(--deep-blue);font-size:15px;margin-bottom:4px;}
+.cluster-arrow{color:var(--leaf-green);font-size:18px;margin:4px 0;}
+.cluster-satellites{font-size:12px;color:#6b7280;}
+.cluster-multiplier{font-size:11px;font-weight:600;color:var(--leaf-green);margin-top:4px;}
+
+/* Methodology */
+.methodology{background:var(--white);border-radius:15px;padding:var(--sp-3);margin:var(--sp-3) 0;}
+.methodology h2{font-size:16px;margin-bottom:var(--sp-2);}
+.methodology-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-2);}
+.methodology-pillar{border-left:3px solid var(--deep-blue);padding-left:var(--sp-2);}
+.methodology-pillar h4{font-size:13px;}
+.methodology-pillar .weight{font-size:20px;font-weight:700;color:var(--deep-blue);}
+.methodology-pillar ul{list-style:none;font-size:12px;color:#6b7280;margin-top:4px;}
+.methodology-pillar li::before{content:"\2022";color:var(--light-blue);margin-right:6px;}
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-1);margin-top:var(--sp-2);font-size:12px;color:#6b7280;}
+.sources-grid dt{font-weight:600;color:var(--inkt-body);}
+
+/* Responsive */
+@media(max-width:768px){
+  .container{padding:0 var(--sp-2);}
+  header .container{flex-direction:column;text-align:center;}
+  .header-meta{text-align:center;}
+  .exec-grid{grid-template-columns:1fr;}
+  .benchmark-grid{grid-template-columns:1fr 1fr;}
+  .controls-row{flex-direction:column;align-items:stretch;}
+  .search-input{width:100%;}
+  .detail-grid{grid-template-columns:1fr;}
+  .detail-extras{grid-template-columns:1fr;}
+  .comparison-countries{grid-template-columns:1fr;}
+  .profile-grid{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .benchmark-grid{grid-template-columns:1fr;}
+}
+@media print{
+  header,.section-nav,.controls,.actions-bar,.advanced-toggle{display:none!important;}
+  .table-wrapper{box-shadow:none;}
+  body{font-size:11px;}
+  section[id]{scroll-margin-top:0;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo-area">
+      <div>
+        <h1>Pulse4all EU market expansion</h1>
+        <div class="subtitle">5-pillar market selection framework — 29 countries scored across 28 fields</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div>Last updated: April 2026</div>
+      <div>Eurostat, EuReCa, DESI, EU-OSHA, field research</div>
+    </div>
+  </div>
+</header>
+
+<nav class="section-nav">
+  <div class="container">
+    <button class="nav-tab active" data-target="overview">Overview</button>
+    <button class="nav-tab" data-target="rankings">Rankings</button>
+    <button class="nav-tab" data-target="expansion">Expansion profiles</button>
+    <button class="nav-tab" data-target="methodology">Methodology</button>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview">
+
+<div class="exec-summary">
+  <h2>Executive summary</h2>
+  <div class="exec-grid">
+    <div>
+      <ul class="exec-findings" id="execFindings"></ul>
+    </div>
+    <div>
+      <div class="entity-callout">
+        <h3>Entity = revenue</h3>
+        <p style="font-size:12px;color:#6b7280;margin-bottom:8px;">Markets with local entities produce virtually all subscription sales</p>
+        <div class="entity-stat">
+          <div style="flex:1;">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">With entity (UK, NL, DE)</div>
+            <div class="entity-bar"><div class="entity-bar-fill" style="width:96%;background:var(--leaf-green);">72 avg subs/mo</div></div>
+          </div>
+        </div>
+        <div class="entity-stat">
+          <div style="flex:1;">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">Without entity (FR, BE, SE)</div>
+            <div class="entity-bar"><div class="entity-bar-fill" style="width:4%;background:var(--grade-c);">2</div><span class="entity-bar-label">2 avg subs/mo</span></div>
+          </div>
+        </div>
+        <div style="margin-top:var(--sp-2);">
+          <div style="font-size:11px;font-weight:600;color:var(--deep-blue);margin-bottom:6px;">Recommended expansion order</div>
+          <div class="expansion-order" id="expansionOrder"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="benchmarks">
+  <h2>Live market performance (Oct 2025 – Feb 2026, post ~EUR 5 price increase)</h2>
+  <div class="benchmark-grid" id="benchmarkGrid"></div>
+</div>
+
+</section>
+
+<!-- ============ RANKINGS ============ -->
+<section id="rankings">
+
+<h2 style="margin:var(--sp-3) 0 var(--sp-2);">Market rankings</h2>
+
+<div class="controls">
+  <div class="controls-row">
+    <div class="control-group">
+      <label>Search</label>
+      <input type="text" class="search-input" id="searchInput" placeholder="Filter by country...">
+    </div>
+    <div class="control-group">
+      <label>Status</label>
+      <div style="display:flex;gap:4px;">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="live">Live</button>
+        <button class="filter-btn" data-filter="evaluating">New markets</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>Compare</label>
+      <button class="btn btn-outline" id="compareBtn" disabled>Compare selected (0)</button>
+    </div>
+    <div style="flex:1;"></div>
+    <button class="advanced-toggle" id="advancedToggle">Adjust weights</button>
+  </div>
+  <div class="advanced-controls" id="advancedControls">
+    <div class="controls-row">
+      <div class="control-group"><label>Revenue</label><div class="weight-slider"><input type="range" min="0" max="50" value="15" data-pillar="revenue" class="pillar-weight"><span class="weight-val">15%</span></div></div>
+      <div class="control-group"><label>B2B readiness</label><div class="weight-slider"><input type="range" min="0" max="50" value="21" data-pillar="b2b" class="pillar-weight"><span class="weight-val">21%</span></div></div>
+      <div class="control-group"><label>B2C readiness</label><div class="weight-slider"><input type="range" min="0" max="50" value="14" data-pillar="b2c" class="pillar-weight"><span class="weight-val">14%</span></div></div>
+      <div class="control-group"><label>Subscription fit</label><div class="weight-slider"><input type="range" min="0" max="50" value="15" data-pillar="subfit" class="pillar-weight"><span class="weight-val">15%</span></div></div>
+      <div class="control-group"><label>Effort to enter</label><div class="weight-slider"><input type="range" min="0" max="50" value="35" data-pillar="effort" class="pillar-weight"><span class="weight-val">35%</span></div></div>
+      <div class="control-group"><label>B2B/B2C blend</label><div class="weight-slider"><input type="range" min="20" max="80" value="60" id="b2bBlend"><span class="weight-val" id="blendVal">60/40</span></div></div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:#6b7280;">Weights auto-normalize to 100%. Drag to explore different prioritizations.</div>
+  </div>
+</div>
+
+<div class="actions-bar">
+  <button class="btn btn-secondary" onclick="exportCSV()">Export CSV</button>
+  <button class="btn btn-outline" onclick="resetWeights()">Reset weights</button>
+  <span style="flex:1;"></span>
+  <span style="font-size:12px;color:#6b7280;" id="resultCount"></span>
+</div>
+
+<div class="comparison-panel" id="comparisonPanel">
+  <div class="comparison-header"><h2>Country comparison</h2><button class="btn btn-outline" onclick="clearComparison()">Close</button></div>
+  <div class="comparison-countries" id="comparisonContent"></div>
+</div>
+
+<div class="table-wrapper">
+  <table id="mainTable">
+    <thead><tr>
+      <th style="width:30px;cursor:default;"><input type="checkbox" id="selectAll" title="Select for comparison"></th>
+      <th data-sort="rank" style="width:40px;">#</th>
+      <th data-sort="country">Country</th>
+      <th data-sort="status" style="width:60px;">Status</th>
+      <th data-sort="revenue" title="Revenue Potential">Revenue</th>
+      <th data-sort="b2b" title="B2B Readiness">B2B</th>
+      <th data-sort="b2c" title="B2C Readiness">B2C</th>
+      <th data-sort="subfit" title="Subscription Model Fit">Sub fit</th>
+      <th data-sort="effort" title="Effort to Enter (higher=easier)">Effort</th>
+      <th data-sort="satellite">Satellite</th>
+      <th data-sort="score">Score</th>
+      <th data-sort="grade">Grade</th>
+    </tr></thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+
+</section>
+
+<!-- ============ EXPANSION PROFILES ============ -->
+<section id="expansion">
+
+<h2 style="margin:var(--sp-3) 0 var(--sp-1);">Top 7 expansion profiles</h2>
+<p style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);">Detailed analysis of the highest-scoring new markets, ranked by composite score. Competitor data from field research, April 2026.</p>
+<div id="profileCards"></div>
+
+<div class="satellite-section">
+  <h2>Language satellite clusters</h2>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);">Launching in an anchor market unlocks adjacent markets at lower incremental cost</p>
+  <div class="cluster-grid" id="clusterGrid"></div>
+</div>
+
+</section>
+
+<!-- ============ METHODOLOGY ============ -->
+<section id="methodology">
+
+<div class="methodology">
+  <h2>Scoring methodology</h2>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);">Each country scored 1-5 across 28 fields grouped into 5 pillars. Scores weighted and combined. Live market sales data used for calibration. All scores calibrated so that live market rankings match actual sales performance.</p>
+  <div class="methodology-grid" id="methodologyGrid"></div>
+  <div style="margin-top:var(--sp-3);">
+    <h3 style="font-size:14px;margin-bottom:var(--sp-1);">Data sources and confidence</h3>
+    <dl class="sources-grid">
+      <div><dt>Population</dt><dd>Eurostat Jan 2025, ONS (UK), SSB (Norway)</dd></div>
+      <div><dt>OHCA / CPR rates</dt><dd>EuReCa TWO Registry, national cardiac arrest registries</dd></div>
+      <div><dt>Digital maturity</dt><dd>DESI 2022 (European Commission), Eurostat ICT Usage 2024</dd></div>
+      <div><dt>SME data</dt><dd>Eurostat SBS, IfM Bonn, EU SME Fact Sheets 2025</dd></div>
+      <div><dt>Competitor landscape</dt><dd>Field research April 2026 — local-language web searches for AED subscription/rental in each market</dd></div>
+      <div><dt>Regulatory / legal</dt><dd>National legislation, EU-OSHA, ILO LEGOSH, ENSURE Study, ERC Guidelines 2025</dd></div>
+      <div><dt>Subscription / payment</dt><dd>Nets Nordic Payment Report, ECB Payment Statistics, Shopify/Stripe documentation</dd></div>
+      <div><dt>Non-profits / NGOs</dt><dd>European Heart Network members, national heart foundation websites, field research</dd></div>
+    </dl>
+    <p style="font-size:11px;color:#6b7280;margin-top:var(--sp-2);">Fields marked TBD require internal team input (logistics coverage, legal assessment, debt collection). Confidence levels: <span class="confidence-tag confidence-high">high</span> primary source verified, <span class="confidence-tag confidence-medium">medium</span> secondary/derived, <span class="confidence-tag confidence-low">low</span> estimated.</p>
+  </div>
+</div>
+
+</section>
+
+</div>
+
+<script>
+// ========================================
+// DATA LAYER
+// ========================================
+
+const PILLARS={revenue:{name:"Revenue potential",defaultWeight:.15,color:"#3B6FB3",fields:[{id:"population",name:"Population",weight:.15},{id:"ohca",name:"OHCA incidence",weight:.15},{id:"sme_density",name:"SME density",weight:.25},{id:"aed_base",name:"AED installed base",weight:.20},{id:"competition",name:"Competition (inv.)",weight:.25}]},b2b:{name:"B2B readiness",defaultWeight:.21,color:"#265BA4",fields:[{id:"digital_b2b",name:"Digital B2B maturity",weight:.25},{id:"b2b_journey",name:"B2B buyer journey",weight:.25},{id:"workplace_safety",name:"Workplace safety culture",weight:.20},{id:"sme_procurement",name:"SME procurement access",weight:.15},{id:"trust_b2b",name:"Trust in foreign B2B",weight:.15}]},b2c:{name:"B2C readiness",defaultWeight:.14,color:"#9ECFF5",fields:[{id:"cpr_rate",name:"Bystander CPR rate",weight:.22},{id:"mandatory_training",name:"Mandatory CPR training",weight:.12},{id:"nonprofit",name:"Active AED non-profit",weight:.18},{id:"ecom_maturity",name:"Consumer e-commerce",weight:.15},{id:"health_online",name:"Health online purchase",weight:.10},{id:"affiliate_potential",name:"Affiliate/NGO potential",weight:.13},{id:"trust_b2c",name:"Trust in foreign brands",weight:.10}]},subfit:{name:"Subscription model fit",defaultWeight:.15,color:"#27AE6F",fields:[{id:"sub_culture",name:"Subscription/SaaS culture",weight:.25},{id:"recurring_payment",name:"Recurring payment adoption",weight:.20},{id:"autorenewal_law",name:"Auto-renewal law (inv.)",weight:.20},{id:"price_sensitivity",name:"Price sensitivity (inv.)",weight:.20},{id:"churn_risk",name:"Churn risk (inv.)",weight:.15}]},effort:{name:"Effort to enter",defaultWeight:.35,color:"#F4D9D0",fields:[{id:"logistics",name:"Logistics coverage",weight:.18},{id:"legal",name:"Legal complexity (inv.)",weight:.15},{id:"language",name:"Language accessibility",weight:.10},{id:"cc_burden",name:"Call centre burden (inv.)",weight:.15},{id:"regulatory",name:"Regulatory barriers (inv.)",weight:.08},{id:"vat",name:"VAT/fiscal (inv.)",weight:.07},{id:"payment_compat",name:"Payment compatibility",weight:.07},{id:"local_entity",name:"Local entity req. (inv.)",weight:.12},{id:"debt_collection",name:"Debt collection",weight:.08}]}};
+
+const SATELLITES=[{anchor:"France",anchorCode:"FR",unlocks:["Belgium (Wallonia)","French Switzerland","Luxembourg"],multiplier:1.15},{anchor:"Denmark",anchorCode:"DK",unlocks:["Norway"],multiplier:1.12},{anchor:"Norway",anchorCode:"NO",unlocks:["Denmark"],multiplier:1.12},{anchor:"Germany",anchorCode:"DE",unlocks:["Austria","German Switzerland"],multiplier:1.10,note:"Already live"},{anchor:"Spain",anchorCode:"ES",unlocks:["Portugal"],multiplier:1.05}];
+
+const LIVE_PERFORMANCE={UK:{avgSubs:122,peakSubs:173,avgSpend:34837,avgCPO:286,indirectPct:43,entity:true,entitySince:"Day 1",share2025:58.6,monthly:[103,139,130,173,64]},NL:{avgSubs:40,peakSubs:72,avgSpend:10969,avgCPO:273,indirectPct:38,entity:true,entitySince:"Day 1",share2025:15.5,monthly:[27,50,34,72,18]},DE:{avgSubs:54,peakSubs:77,avgSpend:15355,avgCPO:282,indirectPct:32,entity:true,entitySince:"Jan 2026",share2025:20.0,monthly:[48,53,77,67,27]},FR:{avgSubs:4,peakSubs:7,avgSpend:1690,avgCPO:445,indirectPct:39,entity:false,share2025:1.3,monthly:[1,1,6,7,4]},BE:{avgSubs:2,peakSubs:6,avgSpend:318,avgCPO:177,indirectPct:12,entity:false,share2025:2.3,monthly:[3,0,0,6,0]},SE:{avgSubs:0,peakSubs:0,avgSpend:99,avgCPO:null,indirectPct:32,entity:false,share2025:2.2,monthly:[0,0,0,0,0]}};
+
+const FLAGS={DE:"\u{1F1E9}\u{1F1EA}",FR:"\u{1F1EB}\u{1F1F7}",UK:"\u{1F1EC}\u{1F1E7}",IT:"\u{1F1EE}\u{1F1F9}",ES:"\u{1F1EA}\u{1F1F8}",NL:"\u{1F1F3}\u{1F1F1}",PL:"\u{1F1F5}\u{1F1F1}",RO:"\u{1F1F7}\u{1F1F4}",BE:"\u{1F1E7}\u{1F1EA}",CZ:"\u{1F1E8}\u{1F1FF}",GR:"\u{1F1EC}\u{1F1F7}",PT:"\u{1F1F5}\u{1F1F9}",SE:"\u{1F1F8}\u{1F1EA}",HU:"\u{1F1ED}\u{1F1FA}",AT:"\u{1F1E6}\u{1F1F9}",BG:"\u{1F1E7}\u{1F1EC}",DK:"\u{1F1E9}\u{1F1F0}",FI:"\u{1F1EB}\u{1F1EE}",IE:"\u{1F1EE}\u{1F1EA}",SK:"\u{1F1F8}\u{1F1F0}",HR:"\u{1F1ED}\u{1F1F7}",LT:"\u{1F1F1}\u{1F1F9}",SI:"\u{1F1F8}\u{1F1EE}",LV:"\u{1F1F1}\u{1F1FB}",EE:"\u{1F1EA}\u{1F1EA}",CY:"\u{1F1E8}\u{1F1FE}",LU:"\u{1F1F1}\u{1F1FA}",MT:"\u{1F1F2}\u{1F1F9}",NO:"\u{1F1F3}\u{1F1F4}",CH:"\u{1F1E8}\u{1F1ED}"};
+
+const EXEC_FINDINGS=[
+  "Markets <strong>with local entities</strong> (UK, NL, DE) produce <strong>98%+ of all subscriptions</strong> — the single strongest predictor of sales success",
+  "Recommended expansion: <strong>Denmark, Norway, Austria</strong> (Tier 1), then Finland, Ireland, Luxembourg, Switzerland (Tier 2)",
+  "Nordic SaaS market is <strong>$6.75bn growing at 12% CAGR</strong> — subscription thesis is validated for Scandinavia",
+  "<strong>Finland has near-zero subscription competition</strong> and is the only Nordic with EUR currency (no FX risk)",
+  "Competitors in Denmark (Falck) and Norway (Folkestarteren) are <strong>30-50% more expensive</strong> than Pulse4all — clear price advantage",
+  "Consumer confidence dropped to <strong>-15.2 in Q1 2026</strong> (2.5-year low) — may affect timing of launches requiring price commitment",
+  "France paradox: <strong>strongest AED mandate in EU</strong> but also strictest advertising restrictions and no local entity = structural underperformance",
+  "SEPA + Shopify Payments now cover <strong>all 29 countries</strong> — no payment infrastructure blockers remain"
+];
+
+const EXPANSION_ORDER=[
+  {code:"DK",name:"Denmark",tier:1},{code:"NO",name:"Norway",tier:1},{code:"AT",name:"Austria",tier:1},
+  {code:"FI",name:"Finland",tier:2},{code:"IE",name:"Ireland",tier:2},{code:"LU",name:"Luxembourg",tier:2},{code:"CH",name:"Switzerland",tier:2}
+];
+
+// Competitor data per country
+const COMPETITOR_DATA={
+  NO:{competitors:[{name:"Folkestarteren",pricing:"NOK 500-800/mo (~EUR 43-69)",model:"Subscription"},{name:"Medix Forstehjelp",pricing:"From NOK 382/mo",model:"Leasing (48mo)"},{name:"LHL Forstehjelp",pricing:"Purchase-focused",model:"Sales + LHL network"}],presence:"LOW",whitespace:"HIGH",insight:"Only Folkestarteren offers true all-inclusive subscription — at 30-50% higher price than P4A equivalent. Massive whitespace."},
+  DK:{competitors:[{name:"Falck",pricing:"DKK 365-548/mo (EUR 49-74)",model:"Annual subscription (3yr lock-in)"},{name:"LifeAid",pricing:"Purchase + service plans",model:"Purchase + service"},{name:"Genopliv.dk",pricing:"Purchase + leasing",model:"Purchase/leasing via Grenke"}],presence:"MODERATE",whitespace:"MODERATE-HIGH",insight:"Falck dominates with institutional trust but is significantly more expensive. P4A can compete on price and flexibility."},
+  FI:{competitors:[{name:"SafeAid",pricing:"Quote-based (~EUR 40-60/mo)",model:"Leasing"},{name:"Presto",pricing:"Quote-based (~EUR 40-60/mo)",model:"Leasing + training"},{name:"Sydanturva",pricing:"Purchase + leasing finance",model:"Third-party leasing"}],presence:"LOW",whitespace:"VERY HIGH",insight:"No transparent monthly subscription exists. Market dominated by purchase + opaque leasing quotes. Genuine whitespace for P4A."},
+  AT:{competitors:[{name:"WERO (DE-based)",pricing:"From EUR 30/mo",model:"Long-term rental"},{name:"Koloszar Medizintechnik",pricing:"Event rental",model:"Short-term"},{name:"AED-Austria",pricing:"Purchase only",model:"HeartSine distributor"}],presence:"LOW",whitespace:"HIGH",insight:"Fragmented market of small distributors. WERO (German) is only long-term rental. No Austrian-native subscription leader."},
+  IE:{competitors:[{name:"defibshop.ie",pricing:"EUR 30-60/mo (tiered)",model:"Long-term rental"},{name:"Heart Safety Solutions",pricing:"From EUR 45/mo",model:"Long-term + short-term"},{name:"Fleming Medical",pricing:"EUR 69.95/mo",model:"Leasing programme"}],presence:"HIGH",whitespace:"MODERATE",insight:"Well-developed market. defibshop.ie basic plan (EUR 30/mo) directly competes with P4A pricing. Differentiate on flexibility."},
+  CH:{competitors:[{name:"Rettungskette.ch",pricing:"Quote-based (~CHF 50-80/mo)",model:"Sorglos-Paket subscription"},{name:"resQshock",pricing:"Quote-based",model:"Subscription"},{name:"Procamed/AED.ch",pricing:"Quote-based",model:"Custom + event rental"}],presence:"MODERATE",whitespace:"MODERATE-HIGH",insight:"Opaque pricing across all providers. P4A could differentiate with transparent monthly pricing. Three-language complexity."},
+  LU:{competitors:[],presence:"NONE",whitespace:"HIGH",insight:"No local subscription providers. Served by Belgian/German providers. Tiny market but zero-friction entry using existing FR+DE assets."},
+  ES:{competitors:[{name:"Proyecto Salvavidas",pricing:"EUR 45-80/mo",model:"24-60mo subscription"},{name:"Proyecto Respira",pricing:"From EUR 49/mo",model:"4yr renewable"},{name:"DesfibrilaDOC",pricing:"From EUR 45/mo",model:"Various"}],presence:"VERY HIGH",whitespace:"LOW",insight:"Most competitive market in Europe (10+ active rental providers, 17,000+ installations by Salvavidas alone). Regional AED mandates vary."},
+  IT:{competitors:[{name:"EMD112",pricing:"From EUR 25/mo",model:"Operational rental 24-60mo"},{name:"Cardiosafe",pricing:"EUR 30-35/mo",model:"Operational rental"},{name:"GeA S.r.L.",pricing:"Quote-based",model:"Operational rental"}],presence:"MODERATE",whitespace:"MODERATE",insight:"Operational rental (noleggio operativo) established and tax-advantaged. EMD112 starts at EUR 25/mo — cheaper than P4A. AED law (2021) drives demand."},
+  PT:{competitors:[{name:"DAE Express",pricing:"EUR 67/mo + VAT",model:"Min 6mo auto-renewal"},{name:"Desfibrilhador DOC",pricing:"Quote-based",model:"Custom"}],presence:"MODERATE",whitespace:"MODERATE",insight:"DAE Express at EUR 67/mo is significantly more expensive than P4A. Room for price-competitive entry. INEM compliance required."},
+  PL:{competitors:[{name:"RESCUEShop.pl",pricing:"PLN 209/mo (~EUR 49)",model:"12-month subscription"},{name:"HS Medical",pricing:"Quote-based",model:"B2B service"},{name:"AEDMAX",pricing:"Quote-based",model:"Rental + training"}],presence:"LOW",whitespace:"MODERATE",insight:"Emerging market. RESCUEShop.pl is only identified subscription. Government AED subsidies compete with rental model."},
+  NL:{competitors:[{name:"AEDCenter",pricing:"EUR 27/mo",model:"Subscription"},{name:"AED-Partner",pricing:"Various",model:"Benelux-wide"}],presence:"HIGH",whitespace:"N/A (home market)",insight:"Home market. AEDCenter is primary price competitor at EUR 27/mo."},
+  UK:{competitors:[{name:"defibshop",pricing:"GBP 0.98-2.00/day",model:"Rental"},{name:"Defib Machines",pricing:"Various",model:"Rental"},{name:"HERO LifeCare",pricing:"Various",model:"Rental"}],presence:"HIGH",whitespace:"N/A (live market)",insight:"Developed market with BHF partnership. Community AED movement strong."},
+  DE:{competitors:[{name:"WERO",pricing:"From EUR 30/mo",model:"Rental"},{name:"MedX5",pricing:"Various",model:"Sales + rental"},{name:"Procamed",pricing:"Various",model:"Distributor"}],presence:"MODERATE-HIGH",whitespace:"N/A (live market)",insight:"Competitive market. WERO is largest. EUDAMED registration mandatory from May 2026."},
+  FR:{competitors:[{name:"CardioPro",pricing:"EUR 39-49/mo",model:"60mo subscription"},{name:"Lifeaz",pricing:"EUR 29.99/mo",model:"Connected AED rental"},{name:"Sauvie",pricing:"From EUR 1/day",model:"Connected rental + GeoDAE"}],presence:"VERY HIGH",whitespace:"N/A (live market)",insight:"8+ active competitors. ERP regulation drives demand. Lifeaz (Made in France, connected) is strong differentiator."},
+  BE:{competitors:[{name:"Cardioservice",pricing:"Various",model:"15,000+ installations"},{name:"AED-Partner",pricing:"Various",model:"50,000+ AEDs in Benelux"}],presence:"MODERATE-HIGH",whitespace:"N/A (live market)",insight:"Cardioservice dominates. Split language market adds complexity."},
+  SE:{competitors:[{name:"Medigo",pricing:"Quote-based",model:"Rental (12mo min)"},{name:"Brandfast",pricing:"Quote-based",model:"Rental"},{name:"Firstaid.se",pricing:"Quote-based",model:"Rental"}],presence:"MODERATE",whitespace:"N/A (live market)",insight:"Rental model well understood. 12-month binding common."}
+};
+
+// Regulatory data per country (key highlights)
+const REGULATORY_DATA={
+  NO:{aedMandate:"None (voluntary)",aedUseRate:"12.1%",autoRenewal:"Moderate — max 6-month commitment; must notify every 6 months",adRestrictions:"Standard",heartFoundation:"LHL (52,000 members)",hfActivity:"VERY HIGH",currency:"NOK"},
+  DK:{aedMandate:"None (voluntary, strong TrygFonden network)",aedUseRate:"N/A",autoRenewal:"Moderate — standard Nordic consumer protection",adRestrictions:"Standard",heartFoundation:"Hjerteforeningen + TrygFonden",hfActivity:"VERY HIGH",currency:"DKK (pegged to EUR)"},
+  FI:{aedMandate:"None (rescue duty culture)",aedUseRate:"7.9%",autoRenewal:"Moderate — standard EU CRD",adRestrictions:"Standard",heartFoundation:"Sydanliitto (60,000 members)",hfActivity:"HIGH",currency:"EUR"},
+  AT:{aedMandate:"None (recommended)",aedUseRate:"N/A",autoRenewal:"Moderate — similar to but less strict than Germany",adRestrictions:"Standard",heartFoundation:"PULS + Rotes Kreuz",hfActivity:"HIGH",currency:"EUR"},
+  IE:{aedMandate:"None (VAT removed Jan 2023)",aedUseRate:"N/A",autoRenewal:"Moderate — standard EU CRD",adRestrictions:"Standard",heartFoundation:"Irish Heart Foundation",hfActivity:"VERY HIGH",currency:"EUR"},
+  CH:{aedMandate:"None (Nothelferkurs for drivers)",aedUseRate:"N/A",autoRenewal:"Moderate — less strict than DE",adRestrictions:"Swissmedic oversight",heartFoundation:"Schweizerische Herzstiftung",hfActivity:"HIGH",currency:"CHF"},
+  LU:{aedMandate:"Monthly AED inspection req.",aedUseRate:"8.6%",autoRenewal:"Moderate — EU CRD",adRestrictions:"Standard",heartFoundation:"None dedicated (BE/FR orgs)",hfActivity:"LOW",currency:"EUR"},
+  ES:{aedMandate:"MANDATORY in 7 autonomous communities + training cert required",aedUseRate:"3.5%",autoRenewal:"Moderate — EU CRD",adRestrictions:"Some regions require health authority approval for medical device ads",heartFoundation:"FEC (4,000+ members)",hfActivity:"HIGH",currency:"EUR"},
+  IT:{aedMandate:"MANDATORY: all sports facilities + companies >250 employees",aedUseRate:"N/A",autoRenewal:"Moderate-Strict — 30-day renewal notice (Article 65-bis, Dec 2023)",adRestrictions:"Requires health authority approval for medical device social media",heartFoundation:"Fondazione Italiana per il Cuore",hfActivity:"MODERATE",currency:"EUR"},
+  PT:{aedMandate:"Developing (govt working group recommending mandates)",aedUseRate:"N/A",autoRenewal:"Moderate — EU CRD",adRestrictions:"Standard",heartFoundation:"FPC",hfActivity:"MODERATE-HIGH",currency:"EUR"},
+  PL:{aedMandate:"None (limited)",aedUseRate:"N/A",autoRenewal:"Moderate — EU CRD",adRestrictions:"Standard",heartFoundation:"WOSP (AED donations)",hfActivity:"MODERATE",currency:"PLN"},
+  NL:{aedMandate:"None (voluntary, 58.2% AED use before EMS — highest in Europe)",aedUseRate:"58.2%",autoRenewal:"Strict but navigable — same-channel cancellation",adRestrictions:"Standard",heartFoundation:"Hartstichting + HartslagNu",hfActivity:"VERY HIGH",currency:"EUR"},
+  UK:{aedMandate:"Schools mandatory since 2023 (20,000+ deployed)",aedUseRate:"N/A",autoRenewal:"Becoming strict — DMCCA 2027: 14-day cooling off at each renewal",adRestrictions:"Standard",heartFoundation:"British Heart Foundation",hfActivity:"VERY HIGH",currency:"GBP"},
+  DE:{aedMandate:"None (strongly recommended by DGUV/BGs)",aedUseRate:"~0% (ENSURE 2017, likely improved)",autoRenewal:"STRICTEST — Kundigungsbutton mandatory since Jul 2022",adRestrictions:"Heilmittelwerbegesetz for medical claims",heartFoundation:"Deutsche Herzstiftung",hfActivity:"HIGH",currency:"EUR"},
+  FR:{aedMandate:"MANDATORY for ERPs (Decree 2018-1186, 2020-2022 phase-in). 79.3% AED use before EMS",aedUseRate:"79.3%",autoRenewal:"Strict — Loi Chatel notification + same-channel cancellation",adRestrictions:"MOST RESTRICTIVE: Loi Influenceurs bans influencer promotion of medical devices (2yr prison + EUR 300K fine)",heartFoundation:"Fed. Francaise de Cardiologie + GeoDAE",hfActivity:"MODERATE-HIGH",currency:"EUR"},
+  BE:{aedMandate:"None (voluntary, 6.9% AED use before EMS)",aedUseRate:"6.9%",autoRenewal:"Moderate-Strict — new 2025/2026: must notify of tacit renewal 15 days before deadline",adRestrictions:"Standard",heartFoundation:"Ligue Cardiologique Belge",hfActivity:"MODERATE",currency:"EUR"},
+  SE:{aedMandate:"None (voluntary, SMS Livrarddare program)",aedUseRate:"25%",autoRenewal:"Moderate — Swedish consumer protection beyond base CRD",adRestrictions:"Lakemedelsverket for medical",heartFoundation:"Hjart-Lungfonden",hfActivity:"HIGH",currency:"SEK"}
+};
+
+// Expansion profiles (top 7)
+const PROFILES=[
+  {code:"DK",tier:1,why:["81% CPR-trained population — mandatory for driver's license","DESI 69.3 (#2 in EU) — highest digital B2B maturity","DKK pegged to EUR — minimal FX risk","Language satellite: Danish unlocks Norway (1.12x multiplier)"],risks:["Falck dominance — massive institutional brand trust in Denmark","Consumer confidence declining (-13.8 March 2026)","Small population (5.9M) limits total addressable market"],edge:"P4A at ~EUR 33/mo vs Falck at EUR 49-74/mo with 3-year lock-in. Clear price + flexibility advantage.",satellite:"Anchor: Denmark unlocks Norway at 12% lower incremental cost"},
+  {code:"NO",tier:1,why:["90% CPR training penetration — mandatory since 1961 in schools, 2003 for drivers","Fastest-growing AED market globally through 2030","Only 1 true subscription competitor (Folkestarteren) at higher price","Highest purchasing power in Europe — EUR 33/mo is trivial"],risks:["NOK currency — non-EUR adds pricing complexity","Max 6-month commitment law — limits contract lock-in, increases churn risk","EEA not EU — minor regulatory differences","No local entity yet — critical based on P4A experience"],edge:"Folkestarteren charges NOK 590/mo (~EUR 51). P4A equivalent ~NOK 380-410. 25-35% price advantage.",satellite:"Mutual satellite with Denmark — Danish/Norwegian mutually intelligible"},
+  {code:"AT",tier:1,why:["German language already operational — DE assets directly reusable","EUR currency — no FX complexity","No Austrian-native subscription leader (WERO is German)","Strong workplace safety culture + 16-hour first aid for driver's license"],risks:["Smaller market (9.1M)","AED awareness lower than NL/Nordics","Konsumentenschutzgesetz similar to Germany in some aspects","Needs logistics partner confirmation"],edge:"German satellite: existing DE content, call centre, legal framework mostly transfer. Lowest incremental cost of any new market.",satellite:"Satellite of Germany (live) — 1.10x multiplier. DE entity provides some cross-border credibility"},
+  {code:"FI",tier:2,why:["DESI #1 in EU — highest digital maturity in Europe","Near-zero subscription competition (genuine whitespace)","EUR currency — only Nordic without FX complexity","Fastest-growing Nordic SaaS market (15.65% CAGR)"],risks:["Finnish language unrelated to other languages — new language at Newco","Lower AED awareness than NO/DK (no mandatory school CPR until recently)","Small population (5.6M)","Volunteer first responder programs face regulatory headwinds"],edge:"No transparent monthly AED subscription exists in Finland. SafeAid and Presto offer opaque quote-based leasing. P4A would be first-mover.",satellite:"No satellite benefit (Finnish is isolated language)"},
+  {code:"IE",tier:2,why:["English language — fully operational, minimal localization","EUR currency — no FX complexity","Irish Heart Foundation very active — strong partnership potential","VAT removed from AEDs since Jan 2023"],risks:["Competitive market: defibshop.ie at EUR 30/mo matches P4A pricing","Small population (5.1M)","No mandatory AED placement law","13 cardiac arrest deaths/day but awareness still building"],edge:"English + EUR = lowest localization cost. UK entity provides cross-border credibility. Differentiate on flexibility (3-month min) vs defibshop longer lock-ins.",satellite:"No direct satellite, but leverages UK content and entity"},
+  {code:"LU",tier:2,why:["FR+DE languages both operational — zero language cost","EUR currency, highest GDP per capita in EU","Very low price sensitivity for safety products","Serviceable from NL/BE hubs — minimal logistics setup"],risks:["Tiny market (660K) — limits total ROI","Monthly AED inspection requirement — may affect service model","No dedicated heart foundation"],edge:"Zero-friction market entry using existing assets. Unlikely to justify standalone investment but near-zero incremental cost.",satellite:"Triple satellite: benefits from France (FR) + Germany (DE) + Belgium (NL/FR) language work"},
+  {code:"CH",tier:2,why:["Highest purchasing power + low price sensitivity","Strong subscription culture and SaaS adoption","Opaque competitor pricing — transparency is P4A's advantage","Schweizerische Herzstiftung + KIDSHEART schools initiative"],risks:["Non-EU: customs, separate VAT (MWST), CHF currency","3 language zones (DE/FR/IT) add complexity","Complex cantonal legal system (26 cantons)","Local entity likely needed — trust-heavy market"],edge:"All competitors are quote-based. P4A's transparent monthly pricing would be unique. DE+FR language assets cover ~90% of population.",satellite:"Benefits from both Germany (DE) and France (FR) language investment"}
+];
+
+// ========================================
+// COUNTRY SCORES (all 29 countries)
+// ========================================
+const COUNTRIES={
+NL:{name:"Netherlands",code:"NL",status:"live",keyInsight:"Home market with highest AED use rate in Europe (58.2%). Perfect effort scores but smaller population limits total volume vs UK.",fields:{population:{score:3,conf:"high",note:"17.9M (Eurostat Jan 2025)"},ohca:{score:4,conf:"medium",note:"~108/100k (EuReCa TWO)"},sme_density:{score:5,conf:"medium",note:"~70 SMEs/1000 est.; 1.39M micro enterprises"},aed_base:{score:5,conf:"high",note:"Very high density; 58.2% AED use before EMS (ENSURE) — highest in Europe"},competition:{score:2,conf:"high",note:"Competitive: AEDCenter EUR 27/mo, AED-Partner (50K+ AEDs in Benelux)"},digital_b2b:{score:5,conf:"high",note:"DESI 67.4 (#3); 94% e-commerce (Eurostat 2024)"},b2b_journey:{score:5,conf:"high",note:"Online-led with CC backup; confirmed by P4A performance"},workplace_safety:{score:4,conf:"high",note:"Strong Arbowet; AED recommended not mandatory"},sme_procurement:{score:5,conf:"high",note:"SMEs buy direct online routinely"},trust_b2b:{score:5,conf:"high",note:"Home market"},cpr_rate:{score:5,conf:"high",note:"~70% bystander CPR; among highest in Europe"},mandatory_training:{score:3,conf:"high",note:"Not mandatory in schools; voluntary but widely available"},nonprofit:{score:5,conf:"high",note:"Hartstichting + HartslagNu (240K+ volunteers)"},ecom_maturity:{score:5,conf:"high",note:"94% bought online (Eurostat 2024)"},health_online:{score:4,conf:"medium",note:"High comfort with online health purchases"},affiliate_potential:{score:5,conf:"high",note:"Hartstichting, EHBO, sports federations"},trust_b2c:{score:5,conf:"high",note:"Home market"},sub_culture:{score:5,conf:"high",note:"Strong subscription economy; high SaaS adoption"},recurring_payment:{score:5,conf:"high",note:"iDEAL dominant + SEPA DD standard"},autorenewal_law:{score:4,conf:"high",note:"Same-channel cancellation required; ACM enforces"},price_sensitivity:{score:4,conf:"high",note:"Good purchasing power; EUR 30-50/mo well within tolerance"},churn_risk:{score:4,conf:"medium",note:"Low default rates; good payment culture"},logistics:{score:5,conf:"high",note:"BNS fully operational; home market"},legal:{score:5,conf:"high",note:"Home market; all legal frameworks established"},language:{score:5,conf:"high",note:"Native language; fully operational"},cc_burden:{score:5,conf:"high",note:"Online-led; low CC dependency"},regulatory:{score:5,conf:"high",note:"No special AED advertising restrictions"},vat:{score:5,conf:"high",note:"Local entity; VAT fully set up"},payment_compat:{score:5,conf:"high",note:"iDEAL + all methods supported"},local_entity:{score:5,conf:"high",note:"Registered entity since founding"},debt_collection:{score:5,conf:"high",note:"Debt Group fully operational"}}},
+UK:{name:"United Kingdom",code:"UK",status:"live",keyInsight:"Largest revenue market (58.6% of 2025 sales). Strong BHF partnership + affiliate model working. GBP currency adds complexity but entity since day 1 drives performance.",fields:{population:{score:5,conf:"high",note:"67.8M (ONS 2025)"},ohca:{score:4,conf:"high",note:"~105/100k"},sme_density:{score:4,conf:"high",note:"~55 SMEs/1000"},aed_base:{score:4,conf:"high",note:"Mandatory in schools since 2023 (20K+ deployed)"},competition:{score:3,conf:"high",note:"Several: defibshop, Defib Machines, HERO LifeCare. Mature market"},digital_b2b:{score:5,conf:"high",note:"Very high digital B2B maturity; ~1,500 SaaS companies"},b2b_journey:{score:4,conf:"high",note:"Digital-led with CC backup; 43% indirect historically"},workplace_safety:{score:4,conf:"high",note:"HSE enforced; first aid mandatory; schools AED mandatory 2023"},sme_procurement:{score:5,conf:"high",note:"SMEs buy online routinely"},trust_b2b:{score:4,conf:"high",note:"Entity since day 1; BHF partnership builds credibility"},cpr_rate:{score:4,conf:"high",note:"~55-60% bystander CPR"},mandatory_training:{score:3,conf:"high",note:"Mandatory in schools (England 2020); not for drivers"},nonprofit:{score:5,conf:"high",note:"BHF — dominant, massive campaigns, The Circuit AED registry"},ecom_maturity:{score:5,conf:"high",note:"87% bought online"},health_online:{score:3,conf:"medium",note:"Only 19% buy health products mostly online"},affiliate_potential:{score:5,conf:"high",note:"BHF, Air Ambulance, Cancer Research — already active"},trust_b2c:{score:4,conf:"high",note:"Entity established; affiliate partnerships build trust"},sub_culture:{score:5,conf:"high",note:"UK leads European SaaS adoption; ~$7.5bn market"},recurring_payment:{score:5,conf:"high",note:"Direct Debit (Bacs) deeply embedded"},autorenewal_law:{score:4,conf:"high",note:"DMCCA 2027: 14-day cooling off at each renewal — prepare now"},price_sensitivity:{score:3,conf:"medium",note:"Cost of living pressure; GBP pricing required"},churn_risk:{score:4,conf:"medium",note:"Good payment culture; DMCCA 2027 may increase churn"},logistics:{score:5,conf:"high",note:"Teamwork UK fully operational"},legal:{score:4,conf:"high",note:"Post-Brexit separate framework; well understood"},language:{score:5,conf:"high",note:"English fully operational"},cc_burden:{score:4,conf:"high",note:"43% indirect historically"},regulatory:{score:4,conf:"high",note:"Standard advertising rules"},vat:{score:4,conf:"high",note:"UK VAT registered"},payment_compat:{score:5,conf:"high",note:"GBP supported; full coverage"},local_entity:{score:5,conf:"high",note:"UK entity since day 1"},debt_collection:{score:5,conf:"high",note:"Debt Group operational"}}},
+DE:{name:"Germany",code:"DE",status:"live",keyInsight:"Fastest-growing market. Entity established Jan 2026 is accelerating sales. Strict Kundigungsbutton law but strong Mittelstand compliance culture drives B2B demand.",fields:{population:{score:5,conf:"high",note:"83.6M (Eurostat Jan 2025)"},ohca:{score:4,conf:"medium",note:"~120/100k est."},sme_density:{score:2,conf:"high",note:"~30 SMEs/1000 (IfM Bonn 2021) — lowest major market"},aed_base:{score:3,conf:"medium",note:"Growing; DGUV recommends strongly"},competition:{score:3,conf:"high",note:"Several: WERO (EUR 30/mo), MedX5, Procamed. Growing market"},digital_b2b:{score:4,conf:"high",note:"DESI 52.9 (#14); strong but below Nordic leaders"},b2b_journey:{score:4,conf:"high",note:"Digital-led; 32% indirect at P4A"},workplace_safety:{score:5,conf:"high",note:"Very strong Arbeitsschutzgesetz + BG recommendations carry weight"},sme_procurement:{score:4,conf:"medium",note:"Increasingly online; some Mittelstand formality"},trust_b2b:{score:4,conf:"high",note:"Entity since Jan 2026 improving trust"},cpr_rate:{score:3,conf:"high",note:"~40% bystander CPR"},mandatory_training:{score:3,conf:"high",note:"7-hour first aid for driver's license (mandatory since 2016); varies by Bundesland for schools"},nonprofit:{score:4,conf:"high",note:"Deutsche Herzstiftung active; DIVI campaigns"},ecom_maturity:{score:5,conf:"high",note:"82% bought online"},health_online:{score:3,conf:"medium",note:"6.3% health online share; Germans prefer offline for health"},affiliate_potential:{score:4,conf:"medium",note:"Herzstiftung, Johanniter, Malteser — potential"},trust_b2c:{score:3,conf:"medium",note:"Strong local preference; entity helps"},sub_culture:{score:4,conf:"high",note:"Largest EU SaaS market (EUR 6.85bn); 840+ SaaS companies"},recurring_payment:{score:4,conf:"high",note:"SEPA DD standard; Lastschrift common"},autorenewal_law:{score:2,conf:"high",note:"STRICTEST: Kundigungsbutton mandatory since Jul 2022; max 1-month notice"},price_sensitivity:{score:3,conf:"medium",note:"Mittelstand willing for compliance; value justification needed"},churn_risk:{score:3,conf:"medium",note:"Kundigungsbutton increases churn; easy 1-click cancellation"},logistics:{score:4,conf:"high",note:"Procardio serves Germany"},legal:{score:2,conf:"high",note:"Complex: strict consumer protection, AGB law, Kundigungsbutton"},language:{score:5,conf:"high",note:"German fully operational at Newco"},cc_burden:{score:4,conf:"high",note:"32% indirect"},regulatory:{score:4,conf:"high",note:"Heilmittelwerbegesetz for medical claims"},vat:{score:4,conf:"high",note:"Local entity since Jan 2026; VAT registered"},payment_compat:{score:5,conf:"high",note:"SEPA, Giropay, Klarna available"},local_entity:{score:4,conf:"high",note:"Entity established Jan 2026"},debt_collection:{score:4,conf:"medium",note:"Debt Group likely operational"}}},
+FR:{name:"France",code:"FR",status:"live",keyInsight:"Paradox market: strongest AED mandate in EU creates demand, but strictest ad restrictions + no entity + price sensitivity + hybrid buying journey = structural underperformance. Needs local entity + agency partner to unlock.",fields:{population:{score:5,conf:"high",note:"68.2M (Eurostat 2025)"},ohca:{score:4,conf:"high",note:"~100/100k (ReAC registry)"},sme_density:{score:4,conf:"high",note:"~55 SMEs/1000; 5.3M enterprises"},aed_base:{score:5,conf:"high",note:"Most extensive EU mandate: ERPs since 2020-2022; GeoDAE registry; 79.3% AED use before EMS"},competition:{score:2,conf:"high",note:"8+ competitors: CardioPro EUR 29/mo, Lifeaz EUR 35.99/mo, Sauvie, CARDIOP"},digital_b2b:{score:3,conf:"high",note:"DESI 53.3; 48% B2B prefer human touchpoint"},b2b_journey:{score:2,conf:"high",note:"CC-led; hybrid buying journey; only 4 subs/mo proves this"},workplace_safety:{score:4,conf:"high",note:"ERP mandatory AED + Code du Travail first aid"},sme_procurement:{score:3,conf:"medium",note:"Formal, relationship-based"},trust_b2b:{score:1,conf:"high",note:"No entity = critical trust deficit. Proven by performance"},cpr_rate:{score:2,conf:"high",note:"~25-30% bystander CPR (ReAC)"},mandatory_training:{score:4,conf:"high",note:"Mandatory in schools AND driver's license (one of 6 EU countries with school CPR)"},nonprofit:{score:3,conf:"medium",note:"Fed. Francaise de Cardiologie exists; less dominant than BHF"},ecom_maturity:{score:4,conf:"high",note:"EUR 175bn e-com market (largest in EU)"},health_online:{score:2,conf:"medium",note:"32% weekly online shopping; health products offline-dominant"},affiliate_potential:{score:3,conf:"medium",note:"FFC, Croix-Rouge — needs local exploration"},trust_b2c:{score:2,conf:"high",note:"74% cite rising prices; prefer local brands"},sub_culture:{score:3,conf:"high",note:"Growing; EUR 39-49/mo standard for AED rental in FR market"},recurring_payment:{score:4,conf:"high",note:"SEPA + Cartes Bancaires via Stripe"},autorenewal_law:{score:3,conf:"high",note:"Loi Chatel notification requirements; same-channel cancellation"},price_sensitivity:{score:2,conf:"high",note:"74% cite rising prices as main concern (2024)"},churn_risk:{score:3,conf:"medium",note:"Price pressure may drive cancellations"},logistics:{score:4,conf:"high",note:"Procardio serves France; logistics works fine (per Bas)"},legal:{score:1,conf:"high",note:"Very complex: dual-layer, French-language requirements for all docs"},language:{score:4,conf:"high",note:"French available at Newco"},cc_burden:{score:2,conf:"high",note:"CC is primary conversion channel (proven)"},regulatory:{score:2,conf:"high",note:"Loi Influenceurs: influencer ban for medical devices; 2yr prison + EUR 300K fine"},vat:{score:3,conf:"medium",note:"French VAT registration; additional compliance"},payment_compat:{score:4,conf:"high",note:"SEPA + Carte Bancaire via Stripe"},local_entity:{score:1,conf:"high",note:"No entity — the single biggest barrier"},debt_collection:{score:3,conf:"low",note:"Debt Group coverage unconfirmed"}}},
+BE:{name:"Belgium",code:"BE",status:"live",keyInsight:"Split language market with strong competition (Cardioservice 15K+ installations). No entity limits growth. New 2025/2026 tacit renewal notification law adds compliance burden.",fields:{population:{score:2,conf:"high",note:"11.7M"},ohca:{score:3,conf:"medium",note:"~90/100k est."},sme_density:{score:4,conf:"high",note:"~60 SMEs/1000"},aed_base:{score:3,conf:"medium",note:"Moderate; 6.9% AED use before EMS (ENSURE)"},competition:{score:2,conf:"high",note:"Cardioservice (15K+ installations), AED-Partner (50K+ AEDs Benelux)"},digital_b2b:{score:4,conf:"high",note:"Good DESI; above average digital maturity"},b2b_journey:{score:3,conf:"medium",note:"Balanced; language split complicates"},workplace_safety:{score:4,conf:"high",note:"Codex welzijn op het werk; first aid mandatory"},sme_procurement:{score:4,conf:"medium",note:"Similar to NL in Flanders"},trust_b2b:{score:3,conf:"medium",note:"Flemish closer to NL; Wallonia to FR"},cpr_rate:{score:3,conf:"medium",note:"~35-45% bystander CPR est."},mandatory_training:{score:4,conf:"high",note:"Mandatory in schools AND driver's license (confirmed)"},nonprofit:{score:3,conf:"medium",note:"Rode Kruis/Croix-Rouge active"},ecom_maturity:{score:4,conf:"high",note:"86% internet; good online shopping"},health_online:{score:3,conf:"medium",note:"Mixed online/offline for health"},affiliate_potential:{score:3,conf:"medium",note:"Rode Kruis Vlaanderen, Ligue Cardiologique"},trust_b2c:{score:3,conf:"medium",note:"NL proximity helps in Flanders"},sub_culture:{score:4,conf:"medium",note:"Follows NL/DE subscription trends"},recurring_payment:{score:4,conf:"high",note:"Bancontact dominant + SEPA"},autorenewal_law:{score:4,conf:"high",note:"New 2025/2026: must notify 15 days before tacit renewal deadline"},price_sensitivity:{score:3,conf:"medium",note:"Moderate; higher taxes impact disposable income"},churn_risk:{score:3,conf:"low",note:"Limited data; estimated moderate"},logistics:{score:4,conf:"high",note:"Served from NL/EU hubs; short distances"},legal:{score:3,conf:"medium",note:"Bilingual legal requirements add complexity"},language:{score:4,conf:"high",note:"Dutch + French both operational"},cc_burden:{score:3,conf:"medium",note:"Split languages increase per-market CC cost"},regulatory:{score:4,conf:"medium",note:"Standard EU advertising rules"},vat:{score:3,conf:"medium",note:"Belgian VAT registration may be needed"},payment_compat:{score:4,conf:"high",note:"Bancontact + SEPA supported"},local_entity:{score:2,conf:"high",note:"No entity; affects credibility in both communities"},debt_collection:{score:3,conf:"low",note:"Debt Group coverage unconfirmed"}}},
+SE:{name:"Sweden",code:"SE",status:"live",keyInsight:"Scores well on readiness (DESI #4, 75-80% CPR, strong subscription culture) but 0 sales proves that without a local entity, even the best market conditions fail. Currency (SEK) adds friction.",fields:{population:{score:2,conf:"high",note:"10.5M"},ohca:{score:4,conf:"high",note:"~120/100k (Swedish registry)"},sme_density:{score:4,conf:"high",note:"~55 SMEs/1000"},aed_base:{score:4,conf:"medium",note:"SMS Livrarddare program; growing"},competition:{score:3,conf:"high",note:"Medigo, Brandfast, Firstaid.se; 12-month binding common"},digital_b2b:{score:5,conf:"high",note:"DESI 65.1 (#4); very high digital maturity"},b2b_journey:{score:5,conf:"high",note:"Online-led; digital-first culture"},workplace_safety:{score:4,conf:"high",note:"Strong Arbetsmiljoverket"},sme_procurement:{score:5,conf:"medium",note:"Digital-first purchasing"},trust_b2b:{score:3,conf:"medium",note:"Open to international but prefer Nordic/local"},cpr_rate:{score:5,conf:"high",note:"~75-80% bystander CPR; 30-year increasing trend"},mandatory_training:{score:4,conf:"high",note:"Mandatory in schools since 2014"},nonprofit:{score:4,conf:"high",note:"Hjart-Lungfonden; SMS Livrarddare innovative"},ecom_maturity:{score:5,conf:"high",note:"90%+ bought online"},health_online:{score:4,conf:"medium",note:"High digital comfort"},affiliate_potential:{score:4,conf:"medium",note:"Hjart-Lungfonden, Roda Korset"},trust_b2c:{score:3,conf:"medium",note:"No local presence hurts"},sub_culture:{score:5,conf:"high",note:"Very strong; Klarna home market; 34.6% of Nordic SaaS"},recurring_payment:{score:5,conf:"high",note:"Swish (8.7M users), Bankgiro, autogiro standard"},autorenewal_law:{score:4,conf:"medium",note:"Swedish consumer protection beyond base CRD"},price_sensitivity:{score:4,conf:"medium",note:"High purchasing power; SEK adds complexity"},churn_risk:{score:4,conf:"medium",note:"Good payment culture"},logistics:{score:3,conf:"medium",note:"Serviceable from EU hubs but distance costs"},legal:{score:4,conf:"medium",note:"Straightforward Swedish law"},language:{score:4,conf:"high",note:"Swedish available at Newco"},cc_burden:{score:5,conf:"medium",note:"Online-led; low CC expected"},regulatory:{score:4,conf:"medium",note:"Lakemedelsverket for medical"},vat:{score:3,conf:"medium",note:"SEK; Swedish VAT registration needed"},payment_compat:{score:4,conf:"medium",note:"SEPA + Klarna; SEK pricing needed"},local_entity:{score:1,conf:"high",note:"No entity — 0 subs proves the impact"},debt_collection:{score:2,conf:"low",note:"Coverage unconfirmed"}}},
+NO:{name:"Norway",code:"NO",status:"evaluating",keyInsight:"Highest CPR penetration globally (90%) combined with near-zero subscription competition and highest purchasing power. Max 6-month commitment law is a churn risk factor but manageable.",fields:{population:{score:2,conf:"high",note:"5.5M (SSB 2025)"},ohca:{score:4,conf:"medium",note:"~95/100k est."},sme_density:{score:4,conf:"medium",note:"~55 SMEs/1000 est."},aed_base:{score:3,conf:"medium",note:"Growing; fastest-growing AED market globally to 2030"},competition:{score:4,conf:"high",note:"Folkestarteren (NOK 500-800/mo, MORE expensive), Medix leasing. Most are purchase-only"},digital_b2b:{score:5,conf:"high",note:"Very high digital maturity; Nordic digital leader"},b2b_journey:{score:5,conf:"medium",note:"Online-led expected; similar to SE/DK"},workplace_safety:{score:4,conf:"medium",note:"Strong Arbeidstilsynet"},sme_procurement:{score:5,conf:"medium",note:"Digital-first SME culture"},trust_b2b:{score:3,conf:"medium",note:"Open to international; prefer Nordic"},cpr_rate:{score:5,conf:"high",note:"~90% CPR training; mandatory since 1961 in schools, 2003 drivers"},mandatory_training:{score:5,conf:"high",note:"Schools since 1961 + drivers since 2003 — world benchmark"},nonprofit:{score:5,conf:"high",note:"LHL (52K members, sells AEDs); NorCAR mandatory since 2013; 113.no registry"},ecom_maturity:{score:5,conf:"high",note:"98% internet; very high e-commerce"},health_online:{score:4,conf:"medium",note:"High online comfort"},affiliate_potential:{score:4,conf:"medium",note:"LHL, Norsk Luftambulanse, Rode Kors"},trust_b2c:{score:3,conf:"medium",note:"Open to international; prefer Nordic/local"},sub_culture:{score:5,conf:"high",note:"Strong subscription economy; Vipps culture"},recurring_payment:{score:5,conf:"high",note:"Vipps (11M+ users), AvtaleGiro standard"},autorenewal_law:{score:3,conf:"high",note:"Max 6-month commitment; must notify every 6 months"},price_sensitivity:{score:5,conf:"high",note:"Highest purchasing power; ~EUR 33/mo is trivial"},churn_risk:{score:3,conf:"high",note:"6-month max rule increases churn; can terminate after 6mo"},logistics:{score:3,conf:"low",note:"TBD — need logistics partner for Norway"},legal:{score:4,conf:"medium",note:"EEA; relatively straightforward"},language:{score:3,conf:"medium",note:"Not yet at Newco but mutual intelligibility with Danish"},cc_burden:{score:5,conf:"medium",note:"Online-led expected"},regulatory:{score:4,conf:"medium",note:"Standard; Legemiddelverket for medical"},vat:{score:3,conf:"medium",note:"Non-EU/EEA; NOK; separate MVA system"},payment_compat:{score:3,conf:"medium",note:"NOK needed; Vipps integration may be required"},local_entity:{score:2,conf:"medium",note:"Likely needed for trust + regulatory (non-EU)"},debt_collection:{score:2,conf:"low",note:"Coverage unconfirmed"}}},
+DK:{name:"Denmark",code:"DK",status:"evaluating",keyInsight:"Highest-scoring new market. 81% CPR training, DESI #2, DKK pegged to EUR (low FX risk), Falck is 50% more expensive. Satellite multiplier boosts score further via Norway.",fields:{population:{score:2,conf:"high",note:"5.9M (Eurostat 2025)"},ohca:{score:4,conf:"high",note:"~100/100k (Danish Registry)"},sme_density:{score:4,conf:"medium",note:"~55 SMEs/1000"},aed_base:{score:4,conf:"medium",note:"High density; TrygFonden AED network"},competition:{score:3,conf:"high",note:"Falck dominant (EUR 49-74/mo, 3yr lock-in), LifeAid, Genopliv. No P4A-style sub"},digital_b2b:{score:5,conf:"high",note:"DESI 69.3 (#2); 91% e-commerce (Eurostat 2024)"},b2b_journey:{score:5,conf:"medium",note:"Online-led; Danish B2B very digital"},workplace_safety:{score:4,conf:"medium",note:"Strong Arbejdstilsynet"},sme_procurement:{score:5,conf:"medium",note:"Digital-first"},trust_b2b:{score:3,conf:"medium",note:"Open to international; prefer Nordic/local"},cpr_rate:{score:5,conf:"high",note:"81% CPR-trained (mandatory for drivers)"},mandatory_training:{score:5,conf:"high",note:"Schools since 2005 (pioneer) + driver's license — both mandatory"},nonprofit:{score:5,conf:"high",note:"TrygFonden/Hjerteforeningen — HeartRunner app, hjertestarter.dk registry"},ecom_maturity:{score:5,conf:"high",note:"91% bought online (Eurostat 2024)"},health_online:{score:4,conf:"medium",note:"High comfort"},affiliate_potential:{score:5,conf:"medium",note:"TrygFonden, Hjerteforeningen — very strong ecosystem"},trust_b2c:{score:3,conf:"medium",note:"Trust needs building"},sub_culture:{score:5,conf:"high",note:"Strong subscription culture; MobilePay pioneer"},recurring_payment:{score:5,conf:"high",note:"MobilePay (4M+ users), Dankort, SEPA DD"},autorenewal_law:{score:4,conf:"medium",note:"Standard Nordic consumer protection"},price_sensitivity:{score:4,conf:"high",note:"High purchasing power; DKK pegged to EUR"},churn_risk:{score:4,conf:"medium",note:"Good payment culture"},logistics:{score:3,conf:"low",note:"TBD — need partner confirmation"},legal:{score:4,conf:"medium",note:"EU member; straightforward"},language:{score:3,conf:"medium",note:"Danish not yet at Newco; easy to add"},cc_burden:{score:5,conf:"medium",note:"Online-led expected"},regulatory:{score:4,conf:"medium",note:"Standard EU; Laegemiddelstyrelsen"},vat:{score:3,conf:"medium",note:"DKK (pegged EUR); Danish VAT registration"},payment_compat:{score:3,conf:"medium",note:"DKK; MobilePay may be important"},local_entity:{score:3,conf:"medium",note:"Helpful; EU member; cross-border feasible"},debt_collection:{score:2,conf:"low",note:"Coverage unconfirmed"}}},
+FI:{name:"Finland",code:"FI",status:"evaluating",keyInsight:"DESI #1, only Nordic with EUR currency, near-zero subscription competition (genuine whitespace). Finnish language is the main barrier — unrelated to any language Newco operates.",fields:{population:{score:2,conf:"high",note:"5.6M"},ohca:{score:3,conf:"medium",note:"~85/100k est."},sme_density:{score:4,conf:"medium",note:"~55 SMEs/1000"},aed_base:{score:3,conf:"medium",note:"Moderate; Defi.fi registry; 7.9% AED use before EMS"},competition:{score:5,conf:"high",note:"Near-zero subscription: SafeAid/Presto opaque leasing only. Genuine whitespace"},digital_b2b:{score:5,conf:"high",note:"DESI 69.6 (#1 in EU)"},b2b_journey:{score:5,conf:"medium",note:"Digital-first culture"},workplace_safety:{score:4,conf:"medium",note:"Strong Tyosuojeluhallinto"},sme_procurement:{score:5,conf:"medium",note:"Digital procurement standard"},trust_b2b:{score:3,conf:"medium",note:"Open to international; prefer Nordic"},cpr_rate:{score:4,conf:"medium",note:"~50-60% est.; rescue duty culture"},mandatory_training:{score:3,conf:"high",note:"Mandatory in schools; not for drivers"},nonprofit:{score:4,conf:"high",note:"Sydanliitto (60K members, 15 heart districts, 200 local associations); Defi.fi"},ecom_maturity:{score:5,conf:"high",note:"96% internet; very high e-commerce"},health_online:{score:4,conf:"medium",note:"High digital comfort"},affiliate_potential:{score:3,conf:"medium",note:"Sydanliitto, Punainen Risti"},trust_b2c:{score:3,conf:"medium",note:"Open; Nordics trade freely"},sub_culture:{score:5,conf:"high",note:"Fastest-growing Nordic SaaS (15.65% CAGR)"},recurring_payment:{score:5,conf:"high",note:"E-invoicing advanced; recurring standard"},autorenewal_law:{score:4,conf:"medium",note:"Standard EU/Nordic CRD"},price_sensitivity:{score:4,conf:"medium",note:"Good purchasing power; EUR — no FX complexity"},churn_risk:{score:4,conf:"medium",note:"Good payment culture"},logistics:{score:3,conf:"low",note:"TBD — more remote from EU hubs"},legal:{score:4,conf:"medium",note:"EU member; straightforward"},language:{score:2,conf:"medium",note:"Finnish unrelated to others; new language at Newco"},cc_burden:{score:5,conf:"medium",note:"Digital-first; low CC expected"},regulatory:{score:4,conf:"medium",note:"Standard EU; Fimea for medical"},vat:{score:4,conf:"high",note:"EUR — unlike NO/DK/SE, no currency complexity"},payment_compat:{score:5,conf:"high",note:"EUR; SEPA standard; no local method required"},local_entity:{score:3,conf:"medium",note:"Helpful; EU cross-border feasible"},debt_collection:{score:2,conf:"low",note:"Coverage unconfirmed"}}},
+AT:{name:"Austria",code:"AT",status:"evaluating",keyInsight:"German satellite: existing DE content, call centre, and legal knowledge mostly transfer. EUR currency. No Austrian-native subscription leader. Lowest incremental cost of any expansion.",fields:{population:{score:2,conf:"high",note:"9.1M (Eurostat 2025)"},ohca:{score:3,conf:"medium",note:"~77/100k (Vienna 2019-2023 data)"},sme_density:{score:4,conf:"medium",note:"~55 SMEs/1000"},aed_base:{score:3,conf:"medium",note:"Moderate; PULS awareness programs"},competition:{score:4,conf:"high",note:"Fragmented: WERO (DE) EUR 30/mo only long-term. No Austrian subscription leader"},digital_b2b:{score:4,conf:"high",note:"DESI 54.7; close to Germany"},b2b_journey:{score:4,conf:"medium",note:"Similar to DE; digital with some formality"},workplace_safety:{score:4,conf:"medium",note:"Strong ArbeitnehmerInnenschutzgesetz"},sme_procurement:{score:4,conf:"medium",note:"Increasingly online"},trust_b2b:{score:4,conf:"medium",note:"German-language affinity with P4A DE"},cpr_rate:{score:3,conf:"medium",note:"~45-55% est."},mandatory_training:{score:4,conf:"high",note:"16-hour first aid for driver's license (confirmed mandatory)"},nonprofit:{score:4,conf:"high",note:"PULS (founded 2008, university physicians); Rotes Kreuz very active"},ecom_maturity:{score:4,conf:"high",note:"89% internet"},health_online:{score:3,conf:"medium",note:"Conservative; similar to DE"},affiliate_potential:{score:3,conf:"medium",note:"Rotes Kreuz, Samariterbund"},trust_b2c:{score:4,conf:"medium",note:"DE entity + language = credibility"},sub_culture:{score:4,conf:"medium",note:"Follows DE trends; good adoption"},recurring_payment:{score:4,conf:"high",note:"EPS (73% PayPal Q4 2025); SEPA DD"},autorenewal_law:{score:3,conf:"medium",note:"KSchG similar to but less strict than DE"},price_sensitivity:{score:4,conf:"medium",note:"EUR; good purchasing power"},churn_risk:{score:3,conf:"low",note:"Similar to DE expectations"},logistics:{score:4,conf:"medium",note:"Procardio (EU hub); close to DE"},legal:{score:3,conf:"medium",note:"Similar to DE; Austria-specific reqs"},language:{score:5,conf:"high",note:"German already operational — satellite of DE"},cc_burden:{score:4,conf:"medium",note:"Moderate; similar to DE"},regulatory:{score:4,conf:"medium",note:"Standard EU; BASG for medical"},vat:{score:4,conf:"medium",note:"EUR; standard EU VAT"},payment_compat:{score:5,conf:"high",note:"EUR; SEPA; EPS; same as DE mostly"},local_entity:{score:3,conf:"medium",note:"DE entity provides some cross-border credibility"},debt_collection:{score:3,conf:"low",note:"May be serviceable from DE"}}},
+IE:{name:"Ireland",code:"IE",status:"evaluating",keyInsight:"English + EUR = lowest localization cost of any new market. Irish Heart Foundation very active. But competitive market (defibshop.ie at EUR 30/mo matches P4A). UK entity provides credibility.",fields:{population:{score:2,conf:"high",note:"5.3M"},ohca:{score:3,conf:"medium",note:"~85/100k est."},sme_density:{score:4,conf:"medium",note:"~55 SMEs/1000"},aed_base:{score:3,conf:"medium",note:"Growing; VAT removed Jan 2023"},competition:{score:2,conf:"high",note:"defibshop.ie EUR 30/mo (near-identical), Hearts.ie EUR 45/mo, Fleming Medical EUR 70/mo"},digital_b2b:{score:5,conf:"high",note:"DESI 62.7; Europe's SaaS hub"},b2b_journey:{score:4,conf:"medium",note:"Digital-led; UK-like"},workplace_safety:{score:4,conf:"medium",note:"Safety Act 2005; first aid mandatory"},sme_procurement:{score:4,conf:"medium",note:"Direct online accessible"},trust_b2b:{score:4,conf:"medium",note:"English + UK entity builds credibility"},cpr_rate:{score:3,conf:"medium",note:"~40-50% est."},mandatory_training:{score:2,conf:"medium",note:"Not mandatory; voluntary IHF programs"},nonprofit:{score:5,conf:"high",note:"Irish Heart Foundation — Hard & Fast campaign, Heartsaver courses, CFR community course, Hands for Life"},ecom_maturity:{score:4,conf:"high",note:"96% e-commerce (Eurostat 2024 — highest in EU)"},health_online:{score:3,conf:"medium",note:"UK-like; mixed for health"},affiliate_potential:{score:4,conf:"medium",note:"IHF, GAA clubs — strong community network"},trust_b2c:{score:4,conf:"medium",note:"English + UK entity = trust"},sub_culture:{score:4,conf:"medium",note:"Follows UK trends; strong adoption"},recurring_payment:{score:4,conf:"high",note:"Card payments; Direct Debit; SEPA"},autorenewal_law:{score:4,conf:"medium",note:"Standard EU CRD; less strict than DE/NL"},price_sensitivity:{score:3,conf:"medium",note:"High cost of living; moderate sensitivity"},churn_risk:{score:4,conf:"low",note:"Good payment culture"},logistics:{score:4,conf:"medium",note:"Teamwork UK hub; close proximity"},legal:{score:4,conf:"medium",note:"EU; English common law; straightforward"},language:{score:5,conf:"high",note:"English — fully operational"},cc_burden:{score:4,conf:"medium",note:"Moderate; UK-like"},regulatory:{score:4,conf:"medium",note:"Standard EU; HPRA for medical"},vat:{score:4,conf:"medium",note:"EUR; standard EU VAT"},payment_compat:{score:5,conf:"high",note:"EUR + SEPA; standard methods"},local_entity:{score:3,conf:"medium",note:"UK entity provides credibility; EU cross-border feasible"},debt_collection:{score:3,conf:"low",note:"Serviceable from UK likely"}}},
+CH:{name:"Switzerland",code:"CH",status:"evaluating",keyInsight:"Highest purchasing power + low price sensitivity. All competitors opaque/quote-based — transparent pricing would be unique. But non-EU complexity (CHF, customs, 26 cantons) makes effort high.",fields:{population:{score:2,conf:"high",note:"8.9M"},ohca:{score:3,conf:"medium",note:"~85/100k"},sme_density:{score:5,conf:"medium",note:"~65 SMEs/1000"},aed_base:{score:3,conf:"low",note:"Moderate; decentralized"},competition:{score:3,conf:"medium",note:"Rettungskette.ch, resQshock, Procamed — all quote-based, opaque pricing"},digital_b2b:{score:4,conf:"medium",note:"High maturity; comparable to DESI top-tier"},b2b_journey:{score:4,conf:"medium",note:"Professional digital B2B"},workplace_safety:{score:5,conf:"medium",note:"Very strong SUVA/SECO; strict compliance"},sme_procurement:{score:4,conf:"medium",note:"Direct online common"},trust_b2b:{score:3,conf:"medium",note:"Trust-heavy; multilingual helps"},cpr_rate:{score:4,conf:"medium",note:"~55-60% est.; strong first aid culture"},mandatory_training:{score:4,conf:"medium",note:"Nothelferkurs mandatory for drivers"},nonprofit:{score:4,conf:"medium",note:"Schweizerische Herzstiftung; KIDSHEART schools initiative; SWISSRECA registry"},ecom_maturity:{score:4,conf:"medium",note:"95% internet"},health_online:{score:3,conf:"medium",note:"Conservative; quality over convenience"},affiliate_potential:{score:3,conf:"low",note:"Herzstiftung, Rotes Kreuz"},trust_b2c:{score:3,conf:"medium",note:"Quality-focused; trust earned slowly"},sub_culture:{score:4,conf:"medium",note:"Strong subscription culture; high SaaS"},recurring_payment:{score:4,conf:"medium",note:"TWINT growing; LSV+/DD standard; CHF"},autorenewal_law:{score:4,conf:"medium",note:"Less strict than DE"},price_sensitivity:{score:5,conf:"medium",note:"Highest purchasing power; very low sensitivity"},churn_risk:{score:4,conf:"medium",note:"Very reliable payment culture"},logistics:{score:3,conf:"low",note:"Non-EU; customs; separate arrangement needed"},legal:{score:3,conf:"medium",note:"Non-EU; 26 cantonal systems; complex"},language:{score:4,conf:"medium",note:"DE + FR both operational; covers ~90% of CH"},cc_burden:{score:4,conf:"medium",note:"Professional B2B expects digital self-serve"},regulatory:{score:3,conf:"medium",note:"Swissmedic; non-EU separate requirements"},vat:{score:2,conf:"medium",note:"Non-EU; MWST system; CHF currency"},payment_compat:{score:2,conf:"medium",note:"CHF required; TWINT may be important"},local_entity:{score:2,conf:"medium",note:"Likely needed; non-EU; trust-heavy"},debt_collection:{score:3,conf:"low",note:"Betreibungsamt system; decent landscape"}}},
+LU:{name:"Luxembourg",code:"LU",status:"evaluating",keyInsight:"Zero-friction entry using existing FR+DE assets. Highest GDP per capita in EU. Tiny market (660K) limits ROI but near-zero incremental cost.",fields:{population:{score:1,conf:"high",note:"681K"},ohca:{score:3,conf:"low",note:"~80/100k est."},sme_density:{score:5,conf:"low",note:"~75 SMEs/1000 est."},aed_base:{score:2,conf:"low",note:"8.6% AED use before EMS (ENSURE); monthly inspection req."},competition:{score:4,conf:"medium",note:"No local providers; served by BE/DE"},digital_b2b:{score:4,conf:"high",note:"Good DESI; highly connected"},b2b_journey:{score:4,conf:"low",note:"International workforce; digital-led"},workplace_safety:{score:4,conf:"low",note:"Strong ITM framework"},sme_procurement:{score:4,conf:"low",note:"International; direct online"},trust_b2b:{score:4,conf:"low",note:"Very international; multilingual"},cpr_rate:{score:3,conf:"low",note:"~40% est."},mandatory_training:{score:3,conf:"low",note:"First aid for drivers"},nonprofit:{score:2,conf:"low",note:"No dedicated org; served by BE/FR"},ecom_maturity:{score:4,conf:"high",note:"93% internet"},health_online:{score:3,conf:"low",note:"Moderate"},affiliate_potential:{score:2,conf:"low",note:"Tiny market; limited"},trust_b2c:{score:4,conf:"low",note:"Very international; multilingual"},sub_culture:{score:4,conf:"low",note:"High income; subscription-comfortable"},recurring_payment:{score:4,conf:"low",note:"EUR; SEPA; international norms"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:5,conf:"low",note:"Highest GDP/capita in EU"},churn_risk:{score:4,conf:"low",note:"High income; low default"},logistics:{score:4,conf:"low",note:"Tiny; serviceable from NL/BE easily"},legal:{score:4,conf:"low",note:"EU; business-friendly; multilingual"},language:{score:4,conf:"low",note:"FR+DE+Luxembourgish; both FR and DE operational"},cc_burden:{score:4,conf:"low",note:"Digital + multilingual"},regulatory:{score:4,conf:"low",note:"Standard EU"},vat:{score:4,conf:"low",note:"EUR; standard"},payment_compat:{score:5,conf:"low",note:"EUR; SEPA; all standard"},local_entity:{score:4,conf:"low",note:"Cross-border from NL feasible"},debt_collection:{score:3,conf:"low",note:"Serviceable from NL/BE"}}},
+IT:{name:"Italy",code:"IT",status:"evaluating",keyInsight:"Largest untapped market by population (58.9M) with strong mandatory AED legislation. But low digital maturity, high CC dependency, strong local brand preference, and competitors from EUR 25/mo make it high-effort, low-ROI per unit.",fields:{population:{score:5,conf:"high",note:"58.9M"},ohca:{score:4,conf:"medium",note:"~110/100k"},sme_density:{score:5,conf:"high",note:"~70 SMEs/1000 (highest in EU)"},aed_base:{score:3,conf:"medium",note:"Mandatory: all sports + companies >250 employees"},competition:{score:3,conf:"high",note:"EMD112 (EUR 25/mo), Cardiosafe (EUR 30-35/mo); operational rental established"},digital_b2b:{score:2,conf:"high",note:"DESI 49.3; lagging digital"},b2b_journey:{score:2,conf:"medium",note:"Relationship-heavy; in-person preferred"},workplace_safety:{score:3,conf:"medium",note:"D.Lgs 81/2008; mandatory AED for >250 employees"},sme_procurement:{score:2,conf:"medium",note:"Formal; relationship-based"},trust_b2b:{score:2,conf:"medium",note:"Strong local preference"},cpr_rate:{score:2,conf:"medium",note:"~25-30%"},mandatory_training:{score:3,conf:"high",note:"Mandatory in schools AND driver's license (Law 116/2021); training required for designated AED responders"},nonprofit:{score:3,conf:"medium",note:"Fondazione Italiana per il Cuore; IRC active"},ecom_maturity:{score:3,conf:"high",note:"60% online shopping (Eurostat 2024)"},health_online:{score:2,conf:"medium",note:"Low online health purchasing"},affiliate_potential:{score:3,conf:"low",note:"IRC, Croce Rossa"},trust_b2c:{score:2,conf:"medium",note:"Strong local brand preference"},sub_culture:{score:2,conf:"medium",note:"Operational rental (noleggio operativo) established but ownership culture strong"},recurring_payment:{score:3,conf:"medium",note:"Cards dominant online; invoice/cash in B2B esp. south"},autorenewal_law:{score:3,conf:"high",note:"Article 65-bis (Dec 2023): 30-day renewal notice; max 2yr tacit renewal"},price_sensitivity:{score:2,conf:"medium",note:"Significant; esp. south. Competitors from EUR 25/mo — cheaper than P4A"},churn_risk:{score:2,conf:"low",note:"Higher expected defaults"},logistics:{score:3,conf:"low",note:"Procardio may cover"},legal:{score:3,conf:"medium",note:"Complex; regional variation"},language:{score:2,conf:"medium",note:"Italian not at Newco"},cc_burden:{score:1,conf:"medium",note:"Very high CC dependency; low digital adoption"},regulatory:{score:3,conf:"medium",note:"AIFA; requires health authority approval for medical device social media"},vat:{score:4,conf:"medium",note:"EUR; standard"},payment_compat:{score:4,conf:"medium",note:"EUR; SEPA"},local_entity:{score:1,conf:"medium",note:"Practically required"},debt_collection:{score:2,conf:"low",note:"Complex Italian collection"}}},
+ES:{name:"Spain",code:"ES",status:"evaluating",keyInsight:"Most competitive AED rental market in Europe (10+ providers, 17K+ installations by Salvavidas alone). Regional AED mandates in 7 autonomous communities create demand but also regulatory fragmentation.",fields:{population:{score:5,conf:"high",note:"48.1M"},ohca:{score:3,conf:"medium",note:"~85/100k; 3.5% AED use before EMS"},sme_density:{score:4,conf:"medium",note:"~55 SMEs/1000"},aed_base:{score:3,conf:"medium",note:"Regional; 7 communities with mandates"},competition:{score:1,conf:"high",note:"VERY HIGH: 10+ providers; Proyecto Salvavidas (17K+ installations), Respira, DOC. EUR 45-80/mo"},digital_b2b:{score:3,conf:"high",note:"DESI 60.8; growing"},b2b_journey:{score:3,conf:"medium",note:"Balanced; improving digital"},workplace_safety:{score:3,conf:"medium",note:"Ley Prevencion; varies by autonomous community"},sme_procurement:{score:3,conf:"medium",note:"Mix of online and traditional"},trust_b2b:{score:2,conf:"medium",note:"Prefer local/Spanish"},cpr_rate:{score:2,conf:"medium",note:"~25-35%"},mandatory_training:{score:2,conf:"high",note:"Training certificate REQUIRED to use AED (one of 3 EU countries)"},nonprofit:{score:3,conf:"medium",note:"FEC (4K+ members); Cardio-Safe Area certification"},ecom_maturity:{score:4,conf:"high",note:"65% online shopping"},health_online:{score:2,conf:"medium",note:"Lower for health"},affiliate_potential:{score:3,conf:"medium",note:"FEC Cardio-Safe certification could tie in"},trust_b2c:{score:2,conf:"medium",note:"Prefer Spanish brands"},sub_culture:{score:3,conf:"medium",note:"Growing but B2B lagging"},recurring_payment:{score:3,conf:"medium",note:"Debit cards, Bizum growing; cash still significant"},autorenewal_law:{score:4,conf:"medium",note:"Standard EU CRD"},price_sensitivity:{score:2,conf:"medium",note:"Cash culture; price-conscious; competitors EUR 45-80 so P4A has price advantage"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:3,conf:"low",note:"Procardio may cover"},legal:{score:3,conf:"medium",note:"17 autonomous community variation"},language:{score:2,conf:"medium",note:"Spanish not at Newco"},cc_burden:{score:3,conf:"medium",note:"Moderate-high expected"},regulatory:{score:3,conf:"medium",note:"Some regions require health authority approval for medical device ads; AED training cert required"},vat:{score:4,conf:"medium",note:"EUR; standard"},payment_compat:{score:4,conf:"medium",note:"EUR; SEPA; Bizum nice-to-have"},local_entity:{score:2,conf:"medium",note:"Likely needed for trust"},debt_collection:{score:2,conf:"low",note:"Coverage unconfirmed"}}},
+PT:{name:"Portugal",code:"PT",status:"evaluating",keyInsight:"DAE Express at EUR 67/mo is significantly more expensive — pricing advantage. INEM compliance required. Developing AED legislation could create future mandate-driven demand.",fields:{population:{score:2,conf:"high",note:"10.4M"},ohca:{score:3,conf:"medium",note:"~80/100k"},sme_density:{score:5,conf:"high",note:"~90 SMEs/1000 (IfM Bonn confirmed — very high)"},aed_base:{score:2,conf:"low",note:"Low density; INEM national program"},competition:{score:4,conf:"high",note:"DAE Express EUR 67/mo+VAT (expensive); Desfibrilhador DOC. Limited sub market"},digital_b2b:{score:3,conf:"high",note:"DESI 50.8; improving rapidly"},b2b_journey:{score:3,conf:"medium",note:"Balanced; growing digital"},workplace_safety:{score:3,conf:"medium",note:"EU-aligned"},sme_procurement:{score:3,conf:"medium",note:"Mix"},trust_b2b:{score:2,conf:"medium",note:"Prefer Portuguese"},cpr_rate:{score:2,conf:"medium",note:"~20-25%"},mandatory_training:{score:2,conf:"medium",note:"Not widely mandatory"},nonprofit:{score:2,conf:"medium",note:"FPC — moderate; INEM licensing required"},ecom_maturity:{score:3,conf:"high",note:"49% online shoppers"},health_online:{score:2,conf:"low",note:"Lower online health"},affiliate_potential:{score:2,conf:"low",note:"FPC, Cruz Vermelha — limited"},trust_b2c:{score:2,conf:"medium",note:"Prefer Portuguese brands"},sub_culture:{score:3,conf:"medium",note:"Growing from low base"},recurring_payment:{score:3,conf:"medium",note:"SEPA; MB WAY growing"},autorenewal_law:{score:4,conf:"medium",note:"Standard EU CRD"},price_sensitivity:{score:2,conf:"medium",note:"Lower purchasing power; price-sensitive"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:3,conf:"low",note:"Distance from EU hubs"},legal:{score:3,conf:"medium",note:"EU; straightforward"},language:{score:1,conf:"medium",note:"Portuguese not at Newco"},cc_burden:{score:3,conf:"medium",note:"Moderate expected"},regulatory:{score:4,conf:"medium",note:"INFARMED; standard EU"},vat:{score:4,conf:"medium",note:"EUR; standard"},payment_compat:{score:4,conf:"medium",note:"EUR; SEPA; MB WAY nice-to-have"},local_entity:{score:2,conf:"medium",note:"Likely needed"},debt_collection:{score:2,conf:"low",note:"Coverage unconfirmed"}}},
+PL:{name:"Poland",code:"PL",status:"evaluating",keyInsight:"Largest Eastern European market with strong digital payment infra (BLIK). But PLN currency, lower purchasing power, and limited AED awareness make it a later-phase target.",fields:{population:{score:4,conf:"high",note:"37.7M"},ohca:{score:3,conf:"medium",note:"~80/100k"},sme_density:{score:3,conf:"medium",note:"~40 SMEs/1000"},aed_base:{score:2,conf:"low",note:"Low; WOSP donated 198+ AEDs"},competition:{score:5,conf:"high",note:"Very limited sub: RESCUEShop.pl (PLN 209/mo); mostly purchase market. Govt AED subsidies exist"},digital_b2b:{score:3,conf:"high",note:"DESI 40.5; growing"},b2b_journey:{score:3,conf:"medium",note:"Mix; improving"},workplace_safety:{score:3,conf:"medium",note:"Kodeks pracy; basic framework"},sme_procurement:{score:3,conf:"medium",note:"Increasingly online; BLIK adoption"},trust_b2b:{score:2,conf:"medium",note:"Prefer local"},cpr_rate:{score:2,conf:"medium",note:"~20-30%"},mandatory_training:{score:2,conf:"medium",note:"Basic first aid for drivers"},nonprofit:{score:2,conf:"medium",note:"WOSP (hugely popular charity but periodic AED focus)"},ecom_maturity:{score:4,conf:"high",note:"84% companies sell online; $87bn digital economy"},health_online:{score:2,conf:"medium",note:"Lower for health"},affiliate_potential:{score:2,conf:"low",note:"WOSP, PTK — limited"},trust_b2c:{score:2,conf:"medium",note:"Prefer Polish"},sub_culture:{score:2,conf:"medium",note:"Growing but traditional B2B strong"},recurring_payment:{score:3,conf:"high",note:"BLIK (~30% share, recurring now available); Przelewy24 (165+ banks)"},autorenewal_law:{score:4,conf:"medium",note:"Standard EU CRD; UOKiK enforces"},price_sensitivity:{score:1,conf:"medium",note:"PLN; lower purchasing power; EUR 49/mo equivalent challenging"},churn_risk:{score:2,conf:"low",note:"Higher default risk"},logistics:{score:2,conf:"low",note:"Limited from current hubs"},legal:{score:3,conf:"medium",note:"EU member"},language:{score:1,conf:"medium",note:"Polish not at Newco; complex language"},cc_burden:{score:2,conf:"medium",note:"High CC expected"},regulatory:{score:4,conf:"medium",note:"Standard EU; URPL for medical"},vat:{score:3,conf:"medium",note:"PLN; Polish VAT registration"},payment_compat:{score:3,conf:"medium",note:"PLN; BLIK/Przelewy24 integration may be needed"},local_entity:{score:2,conf:"medium",note:"Likely needed"},debt_collection:{score:2,conf:"low",note:"Coverage unconfirmed"}}},
+CZ:{name:"Czech Republic",code:"CZ",status:"evaluating",keyInsight:"High SME density (99/1000 — highest in EU) but CZK currency and limited AED awareness hold it back. No subscription competitors identified — whitespace exists but market nascent.",fields:{population:{score:2,conf:"high",note:"10.9M"},ohca:{score:3,conf:"medium",note:"~95/100k (relatively high)"},sme_density:{score:5,conf:"high",note:"~99 SMEs/1000 (IfM Bonn confirmed — highest in EU)"},aed_base:{score:2,conf:"low",note:"Low-moderate; Zachranka app for AED registry"},competition:{score:5,conf:"high",note:"No subscription providers found; purchase-only market"},digital_b2b:{score:3,conf:"high",note:"DESI 49.3"},b2b_journey:{score:3,conf:"medium",note:"Balanced"},workplace_safety:{score:3,conf:"medium",note:"Standard H&S"},sme_procurement:{score:3,conf:"medium",note:"Increasingly online; 86% e-commerce"},trust_b2b:{score:2,conf:"medium",note:"Prefer local"},cpr_rate:{score:3,conf:"medium",note:"~40-45%; active Czech resuscitation program"},mandatory_training:{score:3,conf:"high",note:"4x45min first aid in driving school (confirmed)"},nonprofit:{score:3,conf:"medium",note:"Czech Alliance for CVD (CAKO) — new EHN member 2024; Zachranka app"},ecom_maturity:{score:4,conf:"high",note:"86% e-commerce (Eurostat 2024)"},health_online:{score:3,conf:"medium",note:"Moderate"},affiliate_potential:{score:2,conf:"low",note:"CAKO new; limited AED ecosystem"},trust_b2c:{score:2,conf:"medium",note:"Prefer local brands"},sub_culture:{score:3,conf:"medium",note:"Growing subscription market"},recurring_payment:{score:3,conf:"high",note:"Card payments strong; contactless widespread; SEPA growing"},autorenewal_law:{score:4,conf:"medium",note:"Standard EU"},price_sensitivity:{score:2,conf:"medium",note:"CZK; moderate-high sensitivity"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:3,conf:"low",note:"Serviceable from EU hubs"},legal:{score:3,conf:"medium",note:"Czech civil code"},language:{score:1,conf:"medium",note:"Czech not at Newco"},cc_burden:{score:3,conf:"medium",note:"Moderate"},regulatory:{score:4,conf:"medium",note:"SUKL; anyone can use AED without training (confirmed)"},vat:{score:3,conf:"medium",note:"CZK; Czech VAT registration"},payment_compat:{score:3,conf:"medium",note:"CZK; local payment methods"},local_entity:{score:2,conf:"medium",note:"Helpful"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+GR:{name:"Greece",code:"GR",status:"evaluating",keyInsight:"High SME density but lowest digital maturity (DESI 38.9), very limited AED infrastructure, and significant economic challenges. Not recommended.",fields:{population:{score:2,conf:"high",note:"10.4M"},ohca:{score:3,conf:"low",note:"~85/100k"},sme_density:{score:5,conf:"medium",note:"~70 SMEs/1000"},aed_base:{score:1,conf:"low",note:"Very low density"},competition:{score:5,conf:"low",note:"Minimal"},digital_b2b:{score:2,conf:"high",note:"DESI 38.9"},b2b_journey:{score:2,conf:"medium",note:"Relationship-heavy"},workplace_safety:{score:2,conf:"medium",note:"Basic; enforcement gaps"},sme_procurement:{score:2,conf:"medium",note:"Traditional"},trust_b2b:{score:2,conf:"medium",note:"Prefer local"},cpr_rate:{score:1,conf:"low",note:"~15-20%"},mandatory_training:{score:1,conf:"low",note:"Not mandatory"},nonprofit:{score:2,conf:"low",note:"Hellenic Cardiological Society — academic focus"},ecom_maturity:{score:3,conf:"high",note:"~55% online shopping"},health_online:{score:2,conf:"low",note:"Low"},affiliate_potential:{score:1,conf:"low",note:"Very limited"},trust_b2c:{score:2,conf:"medium",note:"Prefer Greek"},sub_culture:{score:2,conf:"medium",note:"Low subscription adoption"},recurring_payment:{score:2,conf:"medium",note:"EUR but cash significant"},autorenewal_law:{score:4,conf:"low",note:"Standard EU"},price_sensitivity:{score:1,conf:"medium",note:"Significant economic challenges"},churn_risk:{score:2,conf:"low",note:"Higher default"},logistics:{score:2,conf:"low",note:"Geographical challenge"},legal:{score:3,conf:"low",note:"Complex bureaucracy"},language:{score:1,conf:"medium",note:"Greek; complex script"},cc_burden:{score:1,conf:"low",note:"Very high CC dependency"},regulatory:{score:3,conf:"low",note:"EOF for medical"},vat:{score:4,conf:"medium",note:"EUR"},payment_compat:{score:3,conf:"low",note:"EUR; SEPA"},local_entity:{score:1,conf:"medium",note:"Practically required"},debt_collection:{score:1,conf:"low",note:"Very challenging"}}},
+HU:{name:"Hungary",code:"HU",status:"evaluating",keyInsight:"HUF currency, lower purchasing power, and basic AED infrastructure. Not recommended for current phase.",fields:{population:{score:2,conf:"high",note:"9.6M"},ohca:{score:3,conf:"low",note:"~90/100k"},sme_density:{score:4,conf:"medium",note:"~55 SMEs/1000"},aed_base:{score:2,conf:"low",note:"Low"},competition:{score:5,conf:"low",note:"Minimal; served by Austrian distributors"},digital_b2b:{score:2,conf:"high",note:"DESI 42.4"},b2b_journey:{score:2,conf:"low",note:"Traditional"},workplace_safety:{score:3,conf:"low",note:"Basic"},sme_procurement:{score:2,conf:"low",note:"Traditional"},trust_b2b:{score:2,conf:"low",note:"Local preference"},cpr_rate:{score:2,conf:"low",note:"~25-30%"},mandatory_training:{score:2,conf:"high",note:"First aid for driver's license (confirmed)"},nonprofit:{score:2,conf:"low",note:"Hungarian Resuscitation Council — limited"},ecom_maturity:{score:3,conf:"high",note:"79% e-commerce (Eurostat 2024)"},health_online:{score:2,conf:"low",note:"Low"},affiliate_potential:{score:1,conf:"low",note:"Very limited"},trust_b2c:{score:2,conf:"low",note:"Local preference"},sub_culture:{score:2,conf:"low",note:"Low adoption; mobile payments growing"},recurring_payment:{score:2,conf:"low",note:"HUF; direct debit less common"},autorenewal_law:{score:3,conf:"low",note:"EU standard"},price_sensitivity:{score:1,conf:"medium",note:"HUF; lower purchasing power"},churn_risk:{score:2,conf:"low",note:"Higher risk"},logistics:{score:2,conf:"low",note:"Limited"},legal:{score:3,conf:"low",note:"Hungarian law"},language:{score:1,conf:"medium",note:"Hungarian isolated; very hard to add"},cc_burden:{score:2,conf:"low",note:"High CC expected"},regulatory:{score:3,conf:"low",note:"OGYEI for medical"},vat:{score:3,conf:"low",note:"HUF; Hungarian VAT"},payment_compat:{score:2,conf:"low",note:"HUF; local methods needed"},local_entity:{score:1,conf:"low",note:"Required"},debt_collection:{score:1,conf:"low",note:"Challenging"}}},
+RO:{name:"Romania",code:"RO",status:"evaluating",keyInsight:"Lowest DESI (30.6), lowest subscription culture, very limited AED infrastructure. Large population (19M) but ROI per unit is lowest of any EU market.",fields:{population:{score:3,conf:"high",note:"19.0M"},ohca:{score:3,conf:"low",note:"~85/100k; 5.3% AED use before EMS (ENSURE)"},sme_density:{score:2,conf:"high",note:"~29 SMEs/1000 (IfM Bonn confirmed — among lowest)"},aed_base:{score:1,conf:"low",note:"Very low; professional first responders only"},competition:{score:5,conf:"low",note:"No subscription market"},digital_b2b:{score:1,conf:"high",note:"DESI 30.6 (lowest in EU)"},b2b_journey:{score:1,conf:"low",note:"In-person required"},workplace_safety:{score:2,conf:"low",note:"Basic; enforcement gaps"},sme_procurement:{score:2,conf:"low",note:"Traditional"},trust_b2b:{score:1,conf:"low",note:"Strong local"},cpr_rate:{score:1,conf:"low",note:"~13-15% (among lowest)"},mandatory_training:{score:1,conf:"low",note:"Not mandatory"},nonprofit:{score:1,conf:"low",note:"Romanian Society of Cardiology — clinical focus"},ecom_maturity:{score:3,conf:"high",note:"60% e-commerce (Eurostat 2024)"},health_online:{score:1,conf:"low",note:"Very low"},affiliate_potential:{score:1,conf:"low",note:"Minimal"},trust_b2c:{score:1,conf:"low",note:"Strong local"},sub_culture:{score:1,conf:"low",note:"Ownership culture; very low subscription"},recurring_payment:{score:2,conf:"low",note:"RON; cash significant"},autorenewal_law:{score:3,conf:"medium",note:"EU standard; consumer protection actually favorable in some aspects"},price_sensitivity:{score:1,conf:"medium",note:"Lowest purchasing power in EU"},churn_risk:{score:1,conf:"low",note:"High default risk"},logistics:{score:1,conf:"low",note:"No coverage"},legal:{score:2,conf:"low",note:"Complex bureaucracy"},language:{score:1,conf:"low",note:"Romanian not at Newco"},cc_burden:{score:1,conf:"low",note:"CC required"},regulatory:{score:3,conf:"low",note:"ANMDMR for medical"},vat:{score:3,conf:"low",note:"RON; Romanian VAT"},payment_compat:{score:2,conf:"low",note:"RON needed"},local_entity:{score:1,conf:"low",note:"Required"},debt_collection:{score:1,conf:"low",note:"Very challenging"}}},
+BG:{name:"Bulgaria",code:"BG",status:"evaluating",keyInsight:"Recently adopted EUR (2026) removes one barrier, but lowest digital maturity and income levels in EU. Not viable for foreseeable future.",fields:{population:{score:2,conf:"high",note:"6.5M"},ohca:{score:3,conf:"low",note:"~80/100k"},sme_density:{score:3,conf:"low",note:"~40 SMEs/1000"},aed_base:{score:1,conf:"low",note:"Very low"},competition:{score:5,conf:"low",note:"Minimal"},digital_b2b:{score:2,conf:"high",note:"DESI 37.7"},b2b_journey:{score:1,conf:"low",note:"Traditional"},workplace_safety:{score:2,conf:"low",note:"Basic"},sme_procurement:{score:2,conf:"low",note:"Traditional"},trust_b2b:{score:1,conf:"low",note:"Local"},cpr_rate:{score:1,conf:"low",note:"~15%"},mandatory_training:{score:1,conf:"low",note:"Not mandatory"},nonprofit:{score:1,conf:"low",note:"Bulgarian Society of Cardiology — clinical"},ecom_maturity:{score:2,conf:"high",note:"57% e-commerce (lowest EU, Eurostat 2024)"},health_online:{score:1,conf:"low",note:"Very low"},affiliate_potential:{score:1,conf:"low",note:"Minimal"},trust_b2c:{score:1,conf:"low",note:"Local only"},sub_culture:{score:1,conf:"low",note:"Very low"},recurring_payment:{score:2,conf:"low",note:"EUR (2026); digital wallets growing"},autorenewal_law:{score:3,conf:"low",note:"EU standard"},price_sensitivity:{score:1,conf:"medium",note:"Lowest income in EU"},churn_risk:{score:1,conf:"low",note:"High risk"},logistics:{score:1,conf:"low",note:"No coverage"},legal:{score:2,conf:"low",note:"Complex"},language:{score:1,conf:"low",note:"Bulgarian/Cyrillic"},cc_burden:{score:1,conf:"low",note:"CC required"},regulatory:{score:3,conf:"low",note:"BDA for medical"},vat:{score:4,conf:"medium",note:"EUR (2026)"},payment_compat:{score:3,conf:"low",note:"EUR now"},local_entity:{score:1,conf:"low",note:"Required"},debt_collection:{score:1,conf:"low",note:"Very challenging"}}},
+SK:{name:"Slovakia",code:"SK",status:"evaluating",keyInsight:"EUR currency and highest SME density confirmed (91/1000) but limited AED awareness (0.9% AED use before EMS). Potential but not priority.",fields:{population:{score:2,conf:"high",note:"5.4M"},ohca:{score:3,conf:"low",note:"~85/100k"},sme_density:{score:5,conf:"high",note:"~91 SMEs/1000 (IfM Bonn confirmed)"},aed_base:{score:2,conf:"medium",note:"Full AED registry exists; 0.9% AED use before EMS (ENSURE)"},competition:{score:5,conf:"low",note:"No subscription providers"},digital_b2b:{score:3,conf:"high",note:"DESI 43.4"},b2b_journey:{score:3,conf:"low",note:"Mixed"},workplace_safety:{score:3,conf:"low",note:"Standard"},sme_procurement:{score:3,conf:"low",note:"Mix"},trust_b2b:{score:2,conf:"low",note:"Prefer local"},cpr_rate:{score:2,conf:"low",note:"~25-30%"},mandatory_training:{score:2,conf:"low",note:"Basic"},nonprofit:{score:2,conf:"low",note:"Slovak Society of Cardiology — clinical"},ecom_maturity:{score:4,conf:"high",note:"85% e-commerce (Eurostat 2024)"},health_online:{score:2,conf:"low",note:"Lower"},affiliate_potential:{score:1,conf:"low",note:"Limited"},trust_b2c:{score:2,conf:"low",note:"Local"},sub_culture:{score:2,conf:"low",note:"Growing from low base"},recurring_payment:{score:3,conf:"low",note:"EUR; SEPA; contactless growing"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:2,conf:"low",note:"EUR; moderate purchasing power"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:2,conf:"low",note:"Limited"},legal:{score:3,conf:"low",note:"EU member"},language:{score:1,conf:"low",note:"Slovak close to Czech but new"},cc_burden:{score:2,conf:"low",note:"High CC"},regulatory:{score:4,conf:"low",note:"SUKL"},vat:{score:4,conf:"low",note:"EUR"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:2,conf:"low",note:"Helpful"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+HR:{name:"Croatia",code:"HR",status:"evaluating",keyInsight:"EUR adopted 2023 and highest intra-EU cross-border shopping (81%). Small market, limited AED infra.",fields:{population:{score:1,conf:"high",note:"3.9M"},ohca:{score:3,conf:"low",note:"~80/100k"},sme_density:{score:3,conf:"low",note:"~40 SMEs/1000"},aed_base:{score:2,conf:"low",note:"Low"},competition:{score:5,conf:"low",note:"Minimal"},digital_b2b:{score:2,conf:"high",note:"DESI 46.0"},b2b_journey:{score:2,conf:"low",note:"Traditional"},workplace_safety:{score:2,conf:"low",note:"Basic"},sme_procurement:{score:2,conf:"low",note:"Traditional"},trust_b2b:{score:2,conf:"low",note:"Local"},cpr_rate:{score:2,conf:"low",note:"~20-25%"},mandatory_training:{score:2,conf:"high",note:"First aid for driver's license (confirmed)"},nonprofit:{score:2,conf:"low",note:"Croatian Cardiac Society — limited"},ecom_maturity:{score:3,conf:"high",note:"81% cross-border shopping (highest in EU)"},health_online:{score:2,conf:"low",note:"Low"},affiliate_potential:{score:1,conf:"low",note:"Limited"},trust_b2c:{score:2,conf:"low",note:"Local"},sub_culture:{score:2,conf:"low",note:"Low"},recurring_payment:{score:3,conf:"low",note:"EUR; SEPA"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:2,conf:"low",note:"EUR; lower purchasing power"},churn_risk:{score:2,conf:"low",note:"Higher risk"},logistics:{score:2,conf:"low",note:"Limited"},legal:{score:3,conf:"low",note:"EU"},language:{score:1,conf:"low",note:"Croatian not at Newco"},cc_burden:{score:2,conf:"low",note:"High CC"},regulatory:{score:3,conf:"low",note:"HALMED"},vat:{score:4,conf:"low",note:"EUR"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:2,conf:"low",note:"Helpful"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+LT:{name:"Lithuania",code:"LT",status:"evaluating",keyInsight:"Growing digital economy but tiny market (2.9M), no AED infrastructure, no first responder system.",fields:{population:{score:1,conf:"high",note:"2.9M"},ohca:{score:3,conf:"low",note:"~80/100k"},sme_density:{score:4,conf:"low",note:"~55 SMEs/1000"},aed_base:{score:1,conf:"low",note:"Very low; no registry"},competition:{score:5,conf:"low",note:"None"},digital_b2b:{score:3,conf:"high",note:"DESI 53.5"},b2b_journey:{score:3,conf:"low",note:"Mix"},workplace_safety:{score:3,conf:"low",note:"Standard"},sme_procurement:{score:3,conf:"low",note:"Growing"},trust_b2b:{score:2,conf:"low",note:"Local"},cpr_rate:{score:2,conf:"low",note:"~20-25%"},mandatory_training:{score:2,conf:"high",note:"Baltic state: first aid for license (confirmed)"},nonprofit:{score:1,conf:"low",note:"No first responder system"},ecom_maturity:{score:3,conf:"high",note:"72% e-commerce (Eurostat 2024)"},health_online:{score:2,conf:"low",note:"Low"},affiliate_potential:{score:1,conf:"low",note:"Minimal"},trust_b2c:{score:2,conf:"low",note:"Local"},sub_culture:{score:3,conf:"low",note:"Growing"},recurring_payment:{score:3,conf:"low",note:"EUR; SEPA"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:2,conf:"low",note:"EUR; lower purchasing power"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:2,conf:"low",note:"Limited"},legal:{score:3,conf:"low",note:"EU"},language:{score:1,conf:"low",note:"Lithuanian not at Newco"},cc_burden:{score:2,conf:"low",note:"High CC"},regulatory:{score:4,conf:"low",note:"VVKT"},vat:{score:4,conf:"low",note:"EUR"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:2,conf:"low",note:"Helpful"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+SI:{name:"Slovenia",code:"SI",status:"evaluating",keyInsight:"EUR, decent digital adoption, AED mapping exists (7.3% use rate). Very small market (2.1M) but could be served as satellite.",fields:{population:{score:1,conf:"high",note:"2.1M"},ohca:{score:3,conf:"low",note:"~85/100k"},sme_density:{score:4,conf:"low",note:"~55 SMEs/1000"},aed_base:{score:2,conf:"medium",note:"AED mapping exists; 7.3% AED use before EMS (ENSURE)"},competition:{score:5,conf:"low",note:"Minimal"},digital_b2b:{score:3,conf:"high",note:"DESI 49.0"},b2b_journey:{score:3,conf:"low",note:"Mix"},workplace_safety:{score:3,conf:"low",note:"Decent framework"},sme_procurement:{score:3,conf:"low",note:"Growing"},trust_b2b:{score:3,conf:"low",note:"Open; small market"},cpr_rate:{score:3,conf:"low",note:"~35-40%"},mandatory_training:{score:3,conf:"high",note:"CPR in schools and driver's license (confirmed)"},nonprofit:{score:2,conf:"low",note:"Slovenian Society of Cardiology"},ecom_maturity:{score:4,conf:"high",note:"89% internet"},health_online:{score:3,conf:"low",note:"Moderate"},affiliate_potential:{score:2,conf:"low",note:"Limited"},trust_b2c:{score:3,conf:"low",note:"Open to international"},sub_culture:{score:3,conf:"low",note:"Moderate"},recurring_payment:{score:3,conf:"low",note:"EUR; SEPA"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:3,conf:"low",note:"EUR; moderate purchasing power"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:3,conf:"low",note:"Serviceable"},legal:{score:3,conf:"low",note:"EU"},language:{score:1,conf:"low",note:"Slovenian not at Newco"},cc_burden:{score:3,conf:"low",note:"Moderate"},regulatory:{score:4,conf:"low",note:"JAZMP"},vat:{score:4,conf:"low",note:"EUR"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:3,conf:"low",note:"Small open market"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+LV:{name:"Latvia",code:"LV",status:"evaluating",keyInsight:"Growing fintech hub (EUR 508M revenue) but tiny market and limited AED infrastructure.",fields:{population:{score:1,conf:"high",note:"1.8M"},ohca:{score:3,conf:"low",note:"~80/100k"},sme_density:{score:4,conf:"low",note:"~55 SMEs/1000"},aed_base:{score:1,conf:"low",note:"Very low"},competition:{score:5,conf:"low",note:"None"},digital_b2b:{score:3,conf:"high",note:"DESI 50.4"},b2b_journey:{score:3,conf:"low",note:"Mix"},workplace_safety:{score:2,conf:"low",note:"Basic"},sme_procurement:{score:3,conf:"low",note:"Growing"},trust_b2b:{score:2,conf:"low",note:"Local"},cpr_rate:{score:2,conf:"low",note:"~20%"},mandatory_training:{score:2,conf:"high",note:"Baltic state: first aid for license (confirmed)"},nonprofit:{score:2,conf:"low",note:"Latvian Heart Health Alliance — new EHN member 2024"},ecom_maturity:{score:3,conf:"high",note:"~70% online shopping est."},health_online:{score:2,conf:"low",note:"Low"},affiliate_potential:{score:1,conf:"low",note:"Minimal"},trust_b2c:{score:2,conf:"low",note:"Local"},sub_culture:{score:2,conf:"low",note:"Growing fintech hub"},recurring_payment:{score:3,conf:"medium",note:"EUR; SEPA Instant mature; open banking well-adopted"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:2,conf:"low",note:"EUR; lower purchasing power"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:2,conf:"low",note:"Limited"},legal:{score:3,conf:"low",note:"EU"},language:{score:1,conf:"low",note:"Latvian not at Newco"},cc_burden:{score:2,conf:"low",note:"High CC"},regulatory:{score:4,conf:"low",note:"ZVA"},vat:{score:4,conf:"low",note:"EUR"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:2,conf:"low",note:"Helpful"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+EE:{name:"Estonia",code:"EE",status:"evaluating",keyInsight:"Most digitalized government in Europe, strong fintech/startup ecosystem, EUR currency. But tiny market (1.4M), limited AED awareness, and Estonian language is a barrier.",fields:{population:{score:1,conf:"high",note:"1.4M"},ohca:{score:3,conf:"low",note:"~80/100k"},sme_density:{score:4,conf:"low",note:"~60 SMEs/1000"},aed_base:{score:2,conf:"low",note:"Low; no specific regulation"},competition:{score:5,conf:"low",note:"None"},digital_b2b:{score:5,conf:"high",note:"DESI 56.5; e-governance pioneer"},b2b_journey:{score:4,conf:"low",note:"Digital-first"},workplace_safety:{score:3,conf:"low",note:"EU-aligned"},sme_procurement:{score:4,conf:"low",note:"Digital procurement advanced"},trust_b2b:{score:3,conf:"low",note:"Open; digital-first culture"},cpr_rate:{score:2,conf:"low",note:"~25-30%"},mandatory_training:{score:2,conf:"high",note:"Baltic state: first aid for license (confirmed)"},nonprofit:{score:2,conf:"low",note:"Estonian Society of Cardiology — minimal"},ecom_maturity:{score:4,conf:"high",note:"79% e-commerce (Eurostat 2024)"},health_online:{score:3,conf:"low",note:"Moderate; digital culture helps"},affiliate_potential:{score:2,conf:"low",note:"Limited"},trust_b2c:{score:3,conf:"low",note:"Small digital market; open"},sub_culture:{score:4,conf:"low",note:"High SaaS adoption; startup culture"},recurring_payment:{score:4,conf:"medium",note:"EUR; SEPA Instant; open banking well-adopted"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:3,conf:"low",note:"EUR; moderate but growing purchasing power"},churn_risk:{score:3,conf:"low",note:"Digital-savvy"},logistics:{score:2,conf:"low",note:"Remote from EU hubs"},legal:{score:4,conf:"low",note:"Very business-friendly; e-residency"},language:{score:1,conf:"low",note:"Estonian (Finno-Ugric); hard to add"},cc_burden:{score:4,conf:"low",note:"Low CC; digital-first"},regulatory:{score:4,conf:"low",note:"Light-touch; Ravimiamet"},vat:{score:4,conf:"low",note:"EUR; simple"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:3,conf:"low",note:"E-residency makes entity easy"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+CY:{name:"Cyprus",code:"CY",status:"evaluating",keyInsight:"Very small market (920K). English widely used in business is an advantage. Not economically viable standalone.",fields:{population:{score:1,conf:"high",note:"920K"},ohca:{score:3,conf:"low",note:"~75/100k"},sme_density:{score:4,conf:"low",note:"~60 SMEs/1000"},aed_base:{score:1,conf:"low",note:"Very low"},competition:{score:5,conf:"low",note:"None"},digital_b2b:{score:3,conf:"high",note:"DESI 43.8"},b2b_journey:{score:3,conf:"low",note:"English used in business"},workplace_safety:{score:2,conf:"low",note:"Basic"},sme_procurement:{score:3,conf:"low",note:"Mix"},trust_b2b:{score:3,conf:"low",note:"English common; open"},cpr_rate:{score:2,conf:"low",note:"~20%"},mandatory_training:{score:1,conf:"low",note:"Not mandatory"},nonprofit:{score:1,conf:"low",note:"Cyprus Society of Cardiology; no first responder system"},ecom_maturity:{score:3,conf:"high",note:"~65% online shopping est."},health_online:{score:2,conf:"low",note:"Low"},affiliate_potential:{score:1,conf:"low",note:"Tiny market"},trust_b2c:{score:3,conf:"low",note:"English-speaking; open"},sub_culture:{score:3,conf:"low",note:"Moderate; UK influence"},recurring_payment:{score:3,conf:"low",note:"EUR; SEPA"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:3,conf:"low",note:"EUR; moderate purchasing power"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:2,conf:"low",note:"Island; expensive"},legal:{score:3,conf:"low",note:"English common law tradition"},language:{score:4,conf:"low",note:"English widely used in business"},cc_burden:{score:3,conf:"low",note:"Moderate"},regulatory:{score:4,conf:"low",note:"Standard EU"},vat:{score:4,conf:"low",note:"EUR"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:3,conf:"low",note:"Small; cross-border feasible"},debt_collection:{score:2,conf:"low",note:"Unconfirmed"}}},
+MT:{name:"Malta",code:"MT",status:"evaluating",keyInsight:"English is official language — zero localization needed. But tiny market (574K) makes standalone entry uneconomic.",fields:{population:{score:1,conf:"high",note:"574K"},ohca:{score:3,conf:"low",note:"~70/100k"},sme_density:{score:4,conf:"low",note:"~60 SMEs/1000"},aed_base:{score:1,conf:"low",note:"AED Malta awareness initiative exists"},competition:{score:5,conf:"low",note:"Minimal"},digital_b2b:{score:3,conf:"high",note:"DESI 61.2 (surprisingly high)"},b2b_journey:{score:3,conf:"low",note:"English common"},workplace_safety:{score:2,conf:"low",note:"Basic"},sme_procurement:{score:3,conf:"low",note:"Mix"},trust_b2b:{score:4,conf:"low",note:"English-speaking; open"},cpr_rate:{score:2,conf:"low",note:"~20%"},mandatory_training:{score:1,conf:"low",note:"Not mandatory"},nonprofit:{score:2,conf:"low",note:"AED Malta (Karti bil-Bajd initiative)"},ecom_maturity:{score:3,conf:"high",note:"~70% online shopping est."},health_online:{score:2,conf:"low",note:"Low"},affiliate_potential:{score:1,conf:"low",note:"Tiny market"},trust_b2c:{score:4,conf:"low",note:"English official; UK-influenced"},sub_culture:{score:3,conf:"low",note:"Moderate; UK influence"},recurring_payment:{score:3,conf:"low",note:"EUR; SEPA"},autorenewal_law:{score:4,conf:"low",note:"EU standard"},price_sensitivity:{score:3,conf:"low",note:"EUR; moderate purchasing power"},churn_risk:{score:3,conf:"low",note:"Moderate"},logistics:{score:2,conf:"low",note:"Island; expensive"},legal:{score:3,conf:"low",note:"English common law"},language:{score:5,conf:"low",note:"English official language"},cc_burden:{score:3,conf:"low",note:"Moderate"},regulatory:{score:4,conf:"low",note:"Standard EU"},vat:{score:4,conf:"low",note:"EUR"},payment_compat:{score:4,conf:"low",note:"EUR; SEPA"},local_entity:{score:3,conf:"low",note:"Cross-border feasible"},debt_collection:{score:2,conf:"low",note:"Tiny market"}}},
+};
+
+// ========================================
+// SCORING ENGINE
+// ========================================
+let currentWeights={revenue:.15,b2b:.21,b2c:.14,subfit:.15,effort:.35};
+let b2bBlend=.60,sortCol='score',sortDir=-1,statusFilter='all',searchTerm='';
+let selectedCountries=new Set();
+
+function calcPillarScore(d,key){const p=PILLARS[key];let ws=0,tw=0;for(const f of p.fields){const fd=d.fields[f.id];if(fd&&fd.score!==null){ws+=fd.score*f.weight;tw+=f.weight;}}return tw>0?ws/tw:0;}
+
+function calcCompositeScore(d){const s={};for(const k of Object.keys(PILLARS))s[k]=calcPillarScore(d,k);const bl=s.b2b*b2bBlend+s.b2c*(1-b2bBlend);const rw=currentWeights.b2b+currentWeights.b2c;const tw=currentWeights.revenue+rw+currentWeights.subfit+currentWeights.effort;const base=s.revenue*(currentWeights.revenue/tw)+bl*(rw/tw)+s.subfit*(currentWeights.subfit/tw)+s.effort*(currentWeights.effort/tw);const sat=SATELLITES.find(x=>x.anchorCode===d.code);const m=sat?sat.multiplier:1;return{pillarScores:s,blendedReadiness:bl,baseScore:base,multiplier:m,finalScore:base*m};}
+
+function getGrade(s){if(s>=4.5)return{grade:"A+",cls:"grade-aplus"};if(s>=4)return{grade:"A",cls:"grade-a"};if(s>=3.5)return{grade:"B+",cls:"grade-bplus"};if(s>=3)return{grade:"B",cls:"grade-b"};if(s>=2.5)return{grade:"C",cls:"grade-c"};return{grade:"D",cls:"grade-d"};}
+
+function scoreColor(s){if(s>=4.5)return"var(--grade-aplus)";if(s>=4)return"var(--grade-a)";if(s>=3.5)return"var(--grade-bplus)";if(s>=3)return"var(--grade-b)";if(s>=2.5)return"var(--grade-c)";return"var(--grade-d)";}
+
+// ========================================
+// RENDER FUNCTIONS
+// ========================================
+
+function renderExecSummary(){
+  document.getElementById('execFindings').innerHTML=EXEC_FINDINGS.map(f=>`<li>${f}</li>`).join('');
+  document.getElementById('expansionOrder').innerHTML=EXPANSION_ORDER.map(c=>`<span class="expansion-chip tier${c.tier}">${FLAGS[c.code]} ${c.name}</span>`).join('');
+}
+
+function drawSparkline(canvas,data,color){
+  const ctx=canvas.getContext('2d');const w=canvas.width,h=canvas.height;
+  const max=Math.max(...data,1),min=Math.min(...data,0);
+  ctx.clearRect(0,0,w,h);ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=2;
+  data.forEach((v,i)=>{const x=i/(data.length-1)*w;const y=h-(v-min)/(max-min||1)*h;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.stroke();
+}
+
+function renderBenchmarks(){
+  const order=["UK","DE","NL","FR","BE","SE"];
+  document.getElementById('benchmarkGrid').innerHTML=order.map(code=>{
+    const d=LIVE_PERFORMANCE[code];const ec=d.entity?"entity-yes":"entity-no";
+    const eb=d.entity?`<span class="entity-badge yes">${d.entitySince}</span>`:`<span class="entity-badge no">No entity</span>`;
+    return`<div class="benchmark-card ${ec}"><h3><span style="font-size:20px">${FLAGS[code]}</span> ${code} ${eb}</h3><dl class="benchmark-stat"><dt>Avg subs/mo</dt><dd>${d.avgSubs}</dd><dt>Avg CPO</dt><dd>${d.avgCPO?'€'+d.avgCPO:'N/A'}</dd><dt>Avg ad spend</dt><dd>€${d.avgSpend.toLocaleString()}</dd><dt>Indirect %</dt><dd>${d.indirectPct}%</dd><dt>2025 share</dt><dd>${d.share2025}%</dd></dl><canvas class="sparkline" width="120" height="28" data-code="${code}"></canvas></div>`;
+  }).join('');
+  document.querySelectorAll('.sparkline[data-code]').forEach(c=>{
+    const d=LIVE_PERFORMANCE[c.dataset.code];
+    drawSparkline(c,d.monthly,d.entity?'#27AE6F':'#d35f2d');
+  });
+}
+
+function renderTable(){
+  const tbody=document.getElementById('tableBody');
+  const rows=Object.entries(COUNTRIES).map(([code,data])=>{const r=calcCompositeScore(data);return{code,data,result:r,grade:getGrade(r.finalScore)};});
+  rows.sort((a,b)=>{let va,vb;switch(sortCol){case'country':return sortDir*a.data.name.localeCompare(b.data.name);case'status':va=a.data.status==='live'?0:1;vb=b.data.status==='live'?0:1;break;case'revenue':va=a.result.pillarScores.revenue;vb=b.result.pillarScores.revenue;break;case'b2b':va=a.result.pillarScores.b2b;vb=b.result.pillarScores.b2b;break;case'b2c':va=a.result.pillarScores.b2c;vb=b.result.pillarScores.b2c;break;case'subfit':va=a.result.pillarScores.subfit;vb=b.result.pillarScores.subfit;break;case'effort':va=a.result.pillarScores.effort;vb=b.result.pillarScores.effort;break;case'satellite':va=a.result.multiplier;vb=b.result.multiplier;break;default:va=a.result.finalScore;vb=b.result.finalScore;}return sortDir*((vb||0)-(va||0));});
+  const filtered=rows.filter(r=>{if(statusFilter==='live'&&r.data.status!=='live')return false;if(statusFilter==='evaluating'&&r.data.status!=='evaluating')return false;if(searchTerm&&!r.data.name.toLowerCase().includes(searchTerm.toLowerCase()))return false;return true;});
+  document.getElementById('resultCount').textContent=`${filtered.length} of ${rows.length} countries`;
+  tbody.innerHTML=filtered.map((r,i)=>{
+    const ps=r.result.pillarScores,il=r.data.status==='live',pct=(r.result.finalScore/5*100).toFixed(0);
+    const sb=il?'<span class="status-badge live">Live</span>':'<span class="status-badge new">New</span>';
+    return`<tr class="${il?'live-market':''}" data-code="${r.code}"><td><input type="checkbox" class="compare-check" data-code="${r.code}" ${selectedCountries.has(r.code)?'checked':''}></td><td style="font-weight:600;color:#6b7280">${i+1}</td><td><div class="country-cell"><span class="flag">${FLAGS[r.code]||''}</span>${r.data.name}</div></td><td>${sb}</td><td class="pillar-score" style="color:${scoreColor(ps.revenue)}">${ps.revenue.toFixed(1)}</td><td class="pillar-score" style="color:${scoreColor(ps.b2b)}">${ps.b2b.toFixed(1)}</td><td class="pillar-score" style="color:${scoreColor(ps.b2c)}">${ps.b2c.toFixed(1)}</td><td class="pillar-score" style="color:${scoreColor(ps.subfit)}">${ps.subfit.toFixed(1)}</td><td class="pillar-score" style="color:${scoreColor(ps.effort)}">${ps.effort.toFixed(1)}</td><td style="font-size:11px;color:${r.result.multiplier>1?'var(--leaf-green)':'#6b7280'}">${r.result.multiplier>1?r.result.multiplier.toFixed(2)+'x':'—'}</td><td><div class="score-bar"><div class="score-bar-bg"><div class="score-bar-fill" style="width:${pct}%;background:${scoreColor(r.result.finalScore)}"></div></div><span class="score-val">${r.result.finalScore.toFixed(2)}</span></div></td><td><span class="grade-badge ${r.grade.cls}">${r.grade.grade}</span></td></tr><tr class="detail-row" data-detail="${r.code}"><td colspan="12">${renderDetail(r)}</td></tr>`;
+  }).join('');
+  tbody.querySelectorAll('tr[data-code]').forEach(row=>{row.addEventListener('click',e=>{if(e.target.type==='checkbox')return;document.querySelector(`tr[data-detail="${row.dataset.code}"]`).classList.toggle('open');});});
+  tbody.querySelectorAll('.compare-check').forEach(cb=>{cb.addEventListener('change',e=>{e.stopPropagation();cb.checked?selectedCountries.add(cb.dataset.code):selectedCountries.delete(cb.dataset.code);updateCompareBtn();});});
+}
+
+function renderDetail(r){
+  const po=['revenue','b2b','b2c','subfit','effort'];
+  // Pillar scores grid
+  let html=`<div class="detail-content"><div class="detail-grid">${po.map(key=>{
+    const p=PILLARS[key],sc=r.result.pillarScores[key];
+    return`<div class="detail-pillar" style="border-top-color:${p.color}"><h4>${p.name}<span style="color:${scoreColor(sc)}">${sc.toFixed(2)}</span></h4>${p.fields.map(f=>{
+      const fd=r.data.fields[f.id],s=fd?fd.score:null,c=fd?fd.conf:'tbd';
+      const dots=Array(5).fill(0).map((_,i)=>`<div class="field-dot ${s!==null&&i<s?'filled':''}"></div>`).join('');
+      return`<div class="field-row" title="${fd?fd.note:'TBD'}"><span class="field-name">${f.name}<span class="confidence-tag confidence-${c}">${c}</span></span><span class="field-score">${s!==null?s:'?'}</span><div class="field-dots">${dots}</div></div>`;
+    }).join('')}</div>`;
+  }).join('')}</div>`;
+
+  // Competitor + Regulatory panels
+  const comp=COMPETITOR_DATA[r.code];
+  const reg=REGULATORY_DATA[r.code];
+
+  html+=`<div class="detail-extras">`;
+  if(comp){
+    const presClass=comp.presence==='VERY HIGH'?'presence-veryhigh':comp.presence==='HIGH'?'presence-high':comp.presence==='MODERATE'||comp.presence==='MODERATE-HIGH'?'presence-moderate':'presence-low';
+    html+=`<div class="detail-panel"><h4>Competitor landscape</h4>`;
+    if(comp.competitors.length>0){html+=comp.competitors.map(c=>`<div class="competitor-item"><strong>${c.name}</strong> — <span class="price">${c.pricing}</span><br><span style="color:#6b7280;font-size:11px">${c.model}</span></div>`).join('');}
+    else{html+=`<div style="font-size:12px;color:#6b7280;padding:8px 0;">No local subscription competitors identified</div>`;}
+    html+=`<div style="margin-top:8px;display:flex;gap:8px;align-items:center;"><span class="presence-badge ${presClass}">Sub presence: ${comp.presence}</span>`;
+    if(comp.whitespace){html+=`<span style="font-size:11px;color:#6b7280;">Whitespace: ${comp.whitespace}</span>`;}
+    html+=`</div>`;
+    if(comp.insight){html+=`<div style="font-size:12px;color:#6b7280;margin-top:6px;font-style:italic;">${comp.insight}</div>`;}
+    html+=`</div>`;
+  }
+  if(reg){
+    html+=`<div class="detail-panel"><h4>Regulatory and legal</h4>`;
+    html+=`<div class="reg-row"><span class="reg-label">AED mandate</span><span class="reg-value">${reg.aedMandate}</span></div>`;
+    if(reg.aedUseRate){html+=`<div class="reg-row"><span class="reg-label">AED use before EMS</span><span class="reg-value">${reg.aedUseRate}</span></div>`;}
+    html+=`<div class="reg-row"><span class="reg-label">Auto-renewal law</span><span class="reg-value">${reg.autoRenewal}</span></div>`;
+    html+=`<div class="reg-row"><span class="reg-label">Ad restrictions</span><span class="reg-value">${reg.adRestrictions}</span></div>`;
+    html+=`<div class="reg-row"><span class="reg-label">Currency</span><span class="reg-value">${reg.currency}</span></div>`;
+    html+=`<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e5e7eb;"><div style="font-size:12px;"><strong style="color:var(--deep-blue)">${reg.heartFoundation}</strong> <span class="presence-badge ${reg.hfActivity==='VERY HIGH'?'presence-veryhigh':reg.hfActivity==='HIGH'?'presence-high':'presence-moderate'}">${reg.hfActivity}</span></div></div>`;
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+
+  // Key insight
+  if(r.data.keyInsight){
+    html+=`<div class="key-insight-box"><strong>Key insight:</strong> ${r.data.keyInsight}</div>`;
+  }
+  html+=`</div>`;
+  return html;
+}
+
+function renderProfiles(){
+  const container=document.getElementById('profileCards');
+  container.innerHTML=PROFILES.map(p=>{
+    const d=COUNTRIES[p.code],r=calcCompositeScore(d),g=getGrade(r.finalScore);
+    const comp=COMPETITOR_DATA[p.code];
+    return`<div class="profile-card ${p.tier===2?'tier2':''}">
+    <div class="profile-grid">
+      <div class="profile-stats">
+        <h3><span class="flag" style="font-size:28px">${FLAGS[p.code]}</span> ${d.name}</h3>
+        <div style="margin:8px 0;"><span class="grade-badge ${g.cls}" style="width:40px;height:28px;font-size:13px;">${g.grade}</span> <span style="font-size:14px;font-weight:600;margin-left:4px;">${r.finalScore.toFixed(2)}</span></div>
+        <span class="tier-badge t${p.tier}">Tier ${p.tier}</span>
+        <div class="profile-meta">
+          <span>${d.fields.population.note}</span>
+          <span>Currency: ${REGULATORY_DATA[p.code]?.currency||'N/A'}</span>
+          <span>${r.multiplier>1?'Satellite: '+r.multiplier+'x multiplier':'No satellite multiplier'}</span>
+        </div>
+        <div class="profile-radar"><canvas id="profileRadar${p.code}" width="160" height="160"></canvas></div>
+      </div>
+      <div>
+        <div class="profile-why"><h4>Why this market</h4><ul>${p.why.map(w=>`<li>${w}</li>`).join('')}</ul></div>
+        <div class="profile-risks" style="margin-top:12px;"><h4>Key risks</h4><ul>${p.risks.map(r=>`<li>${r}</li>`).join('')}</ul></div>
+        ${p.satellite?`<div class="sat-info"><strong>Language satellite:</strong> ${p.satellite}</div>`:''}
+      </div>
+      <div class="profile-competitors">
+        <h4>Competitors</h4>
+        ${comp?comp.competitors.slice(0,3).map(c=>`<div class="comp-line"><strong>${c.name}</strong> — ${c.pricing}</div>`).join(''):'<div style="font-size:12px;color:#6b7280">No subscription competitors</div>'}
+        ${comp?`<div style="margin-top:6px;"><span class="presence-badge ${comp.presence==='VERY HIGH'?'presence-veryhigh':comp.presence==='HIGH'?'presence-high':comp.presence.includes('MODERATE')?'presence-moderate':'presence-low'}">${comp.presence}</span></div>`:''}
+        <div style="margin-top:12px;font-size:12px;color:var(--inkt-body);"><strong>Competitive edge:</strong> ${p.edge}</div>
+      </div>
+    </div></div>`;
+  }).join('');
+  // Draw profile radar charts
+  PROFILES.forEach(p=>{
+    const d=COUNTRIES[p.code],r=calcCompositeScore(d);
+    const ctx=document.getElementById(`profileRadar${p.code}`)?.getContext('2d');
+    if(!ctx)return;
+    new Chart(ctx,{type:'radar',data:{labels:['Revenue','B2B','B2C','Sub fit','Ease'],datasets:[{data:[r.pillarScores.revenue,r.pillarScores.b2b,r.pillarScores.b2c,r.pillarScores.subfit,r.pillarScores.effort],backgroundColor:'rgba(38,91,164,.12)',borderColor:'#265BA4',borderWidth:2,pointBackgroundColor:'#265BA4',pointRadius:3}]},options:{responsive:true,scales:{r:{min:0,max:5,ticks:{stepSize:1,display:false},grid:{color:'#e5e7eb'},pointLabels:{font:{size:10,family:'Montserrat'}}}},plugins:{legend:{display:false}}}});
+  });
+}
+
+function renderClusters(){
+  document.getElementById('clusterGrid').innerHTML=SATELLITES.map(s=>`<div class="cluster-card"><div class="cluster-anchor">${FLAGS[s.anchorCode]||''} ${s.anchor} ${s.note?'<span style="font-size:11px;color:#6b7280">('+s.note+')</span>':''}</div><div class="cluster-arrow" style="color:var(--leaf-green);font-size:18px;">↓</div><div class="cluster-satellites">${s.unlocks.join(', ')}</div><div class="cluster-multiplier">${s.multiplier}x multiplier</div></div>`).join('');
+}
+
+function renderMethodology(){
+  document.getElementById('methodologyGrid').innerHTML=Object.entries(PILLARS).map(([k,p])=>`<div class="methodology-pillar" style="border-left-color:${p.color}"><div class="weight">${Math.round((currentWeights[k]||0)*100)}%</div><h4>${p.name}</h4><ul>${p.fields.map(f=>`<li>${f.name}</li>`).join('')}</ul></div>`).join('');
+}
+
+// ========================================
+// COMPARISON
+// ========================================
+function updateCompareBtn(){const n=selectedCountries.size;document.getElementById('compareBtn').textContent=`Compare selected (${n})`;document.getElementById('compareBtn').disabled=n<2||n>3;}
+function showComparison(){
+  if(selectedCountries.size<2)return;const panel=document.getElementById('comparisonPanel'),content=document.getElementById('comparisonContent');panel.classList.add('show');
+  const codes=[...selectedCountries];
+  content.innerHTML=codes.map(code=>{const d=COUNTRIES[code],r=calcCompositeScore(d),g=getGrade(r.finalScore);return`<div class="comparison-country"><h3>${FLAGS[code]} ${d.name} <span class="grade-badge ${g.cls}">${g.grade}</span></h3><div>Score: ${r.finalScore.toFixed(2)}</div><div class="radar-chart-container"><canvas id="radar-${code}"></canvas></div></div>`;}).join('');
+  codes.forEach(code=>{const r=calcCompositeScore(COUNTRIES[code]);new Chart(document.getElementById(`radar-${code}`).getContext('2d'),{type:'radar',data:{labels:['Revenue','B2B','B2C','Sub fit','Ease'],datasets:[{data:[r.pillarScores.revenue,r.pillarScores.b2b,r.pillarScores.b2c,r.pillarScores.subfit,r.pillarScores.effort],backgroundColor:'rgba(38,91,164,.15)',borderColor:'#265BA4',borderWidth:2,pointBackgroundColor:'#265BA4',pointRadius:3}]},options:{responsive:true,scales:{r:{min:0,max:5,ticks:{stepSize:1,display:false},grid:{color:'#e5e7eb'},pointLabels:{font:{size:11,family:'Montserrat'}}}},plugins:{legend:{display:false}}}});});
+}
+function clearComparison(){document.getElementById('comparisonPanel').classList.remove('show');selectedCountries.clear();document.querySelectorAll('.compare-check').forEach(cb=>cb.checked=false);updateCompareBtn();}
+
+// ========================================
+// EXPORT
+// ========================================
+function exportCSV(){
+  const rows=Object.entries(COUNTRIES).map(([code,data])=>{const r=calcCompositeScore(data);const g=getGrade(r.finalScore);const ps=r.pillarScores;const fs={};for(const[pk,pillar]of Object.entries(PILLARS))for(const f of pillar.fields){const fd=data.fields[f.id];fs[f.id]=fd?fd.score:'';}return{Country:data.name,Code:code,Status:data.status,Revenue:ps.revenue.toFixed(2),B2B:ps.b2b.toFixed(2),B2C:ps.b2c.toFixed(2),SubFit:ps.subfit.toFixed(2),Effort:ps.effort.toFixed(2),Satellite:r.multiplier.toFixed(2),Score:r.finalScore.toFixed(2),Grade:g.grade,...fs};});
+  rows.sort((a,b)=>parseFloat(b.Score)-parseFloat(a.Score));
+  const h=Object.keys(rows[0]);const csv=[h.join(','),...rows.map(r=>h.map(k=>`"${r[k]}"`).join(','))].join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='p4a_market_expansion_scores.csv';a.click();
+}
+
+function resetWeights(){
+  currentWeights={revenue:.15,b2b:.21,b2c:.14,subfit:.15,effort:.35};b2bBlend=.60;
+  document.querySelectorAll('.pillar-weight').forEach(s=>{s.value=Math.round(currentWeights[s.dataset.pillar]*100);s.nextElementSibling.textContent=Math.round(currentWeights[s.dataset.pillar]*100)+'%';});
+  document.getElementById('b2bBlend').value=60;document.getElementById('blendVal').textContent='60/40';
+  renderTable();renderMethodology();
+}
+
+// ========================================
+// EVENT HANDLERS
+// ========================================
+document.querySelectorAll('thead th[data-sort]').forEach(th=>{th.addEventListener('click',()=>{const col=th.dataset.sort;if(sortCol===col)sortDir*=-1;else{sortCol=col;sortDir=-1;}document.querySelectorAll('thead th').forEach(t=>t.classList.remove('sorted'));th.classList.add('sorted');renderTable();});});
+document.getElementById('searchInput').addEventListener('input',e=>{searchTerm=e.target.value;renderTable();});
+document.querySelectorAll('.filter-btn[data-filter]').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn[data-filter]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');statusFilter=btn.dataset.filter;renderTable();});});
+document.getElementById('advancedToggle').addEventListener('click',()=>{document.getElementById('advancedControls').classList.toggle('show');});
+document.querySelectorAll('.pillar-weight').forEach(s=>{s.addEventListener('input',()=>{currentWeights[s.dataset.pillar]=parseInt(s.value)/100;s.nextElementSibling.textContent=s.value+'%';renderTable();renderMethodology();});});
+document.getElementById('b2bBlend').addEventListener('input',e=>{b2bBlend=parseInt(e.target.value)/100;document.getElementById('blendVal').textContent=`${e.target.value}/${100-e.target.value}`;renderTable();});
+document.getElementById('compareBtn').addEventListener('click',showComparison);
+document.getElementById('selectAll').addEventListener('change',e=>{document.querySelectorAll('.compare-check').forEach(cb=>{cb.checked=e.target.checked;e.target.checked?selectedCountries.add(cb.dataset.code):selectedCountries.delete(cb.dataset.code);});updateCompareBtn();});
+
+// Tab navigation
+document.querySelectorAll('.nav-tab').forEach(tab=>{tab.addEventListener('click',()=>{const target=document.getElementById(tab.dataset.target);if(target)target.scrollIntoView({behavior:'smooth'});document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');});});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));const tab=document.querySelector(`.nav-tab[data-target="${e.target.id}"]`);if(tab)tab.classList.add('active');}});},{threshold:.2,rootMargin:'-120px 0px 0px 0px'});
+document.querySelectorAll('section[id]').forEach(s=>observer.observe(s));
+
+// ========================================
+// INIT
+// ========================================
+renderExecSummary();
+renderBenchmarks();
+renderTable();
+renderProfiles();
+renderClusters();
+renderMethodology();
+</script>
+</body>
+</html>
