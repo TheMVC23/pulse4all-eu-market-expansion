@@ -254,21 +254,21 @@ footer a{color:var(--light-blue);}
       <div class="summary-card">
         <div class="label">June 2026 — all waves live</div>
         <div class="big">100<span class="unit">subs</span></div>
-        <div class="stats"><strong>€32K</strong> spend · <strong>€324</strong> CPO<br>W1 converts · W2 + W3 launch</div>
+        <div class="stats"><strong>€38K</strong> spend · <strong>€380</strong> CPO<br>W1 converts · W2 + W3 launch</div>
       </div>
       <div class="summary-card">
         <div class="label">September 2026 — accelerating</div>
         <div class="big">250<span class="unit">subs</span></div>
-        <div class="stats"><strong>€58K</strong> spend · <strong>€227</strong> CPO<br>~60% of peak run rate</div>
+        <div class="stats"><strong>€80K</strong> spend · <strong>€309</strong> CPO<br>~60% of peak run rate</div>
       </div>
       <div class="summary-card peak">
         <div class="label">January 2027 — full run rate</div>
         <div class="big">400<span class="unit">subs</span></div>
-        <div class="stats"><strong>€87K</strong> spend · <strong>€218</strong> CPO · <strong>7.7%</strong> share ✓</div>
+        <div class="stats"><strong>€108K</strong> spend · <strong>€271</strong> CPO · <strong>7.7%</strong> share ✓</div>
       </div>
     </div>
     <div class="run-rate">
-      <strong>Annual run rate at full maturity:</strong> 4,800 new subscriptions per year · ~€13K new MRR added every month · €1.05M annual ad budget · 7.7% blended share of the 5,195/mo combined AED market across these 7 countries
+      <strong>Annual run rate at full maturity:</strong> 4,800 new subscriptions per year · ~€13K new MRR added every month · €1.30M annual ad budget · 7.7% blended share of the 5,195/mo combined AED market across these 7 countries. Higher CPO by design — prioritize getting sales in over chasing efficiency in year 1.
     </div>
   </div>
 </section>
@@ -302,7 +302,7 @@ footer a{color:var(--light-blue);}
 
 <section class="section">
   <h2>Calendar-month portfolio forecast</h2>
-  <p class="section-lead">Subscriptions per calendar month as waves overlay each other. Each wave follows its own M1 → M8 trajectory from its launch date. Portfolio hits its peak run rate once all three waves have reached M8 — approximately January 2027. The jump from May (€400 CPO, Wave 1 only) to June (€324 CPO, all three waves active) is the first signal the front-loaded M1 strategy is working; the bigger drop to €227 by September reflects all waves exiting learning phase together.</p>
+  <p class="section-lead">Subscriptions per calendar month as waves overlay each other. Each wave follows its own M1 → M8 trajectory from its launch date. Portfolio hits its peak run rate once all three waves have reached M8 — approximately January 2027. CPO stays high by design (€400 cap at M1, €271 blended at peak) — year 1 is about proving volume and building brand, not optimizing efficiency. The M1→M2 CPO dip is modest because we keep spend high rather than pulling back.</p>
 
   <div class="calendar-wrapper">
     <table class="calendar-table">
@@ -374,11 +374,11 @@ footer a{color:var(--light-blue);}
       </thead>
       <tbody>
         <tr><td>Month 1</td><td>Max-spend at the €400 cap to fill pipeline. Ad platforms in learning phase, tracking/pixel debugging, creative iteration, CC training where applicable. Leads generated here convert later.</td><td>~20-27% of peak</td><td>€400 (cap)</td></tr>
-        <tr><td>Month 2</td><td>Learning phase exits, creative dialled in, M1 leads converting via email + remarketing, first customer reviews building</td><td>~28-45% of peak</td><td>~€220-350</td></tr>
-        <tr><td>Month 3</td><td>Acceleration — steady state hit, social proof accumulating, full budget deployable</td><td>~36-55% of peak</td><td>~€210-320</td></tr>
-        <tr><td>Months 4-5</td><td>Word-of-mouth begins, affiliate programs activate, organic + brand search rising</td><td>~55-80% of peak</td><td>~€200-300</td></tr>
-        <tr><td>Months 6-7</td><td>Nearing peak efficiency, stable CAC-LTV</td><td>~88-99% of peak</td><td>~€190-285</td></tr>
-        <tr><td>Month 8+</td><td>Peak — fully optimized funnel</td><td>100% peak</td><td>€185-280 per market</td></tr>
+        <tr><td>Month 2</td><td>Learning phase exits, creative dialled in, M1 leads converting via email + remarketing, first customer reviews building</td><td>~28-45% of peak</td><td>~€355-395</td></tr>
+        <tr><td>Month 3</td><td>Acceleration — steady state hit, social proof accumulating, full budget deployable</td><td>~36-55% of peak</td><td>~€320-370</td></tr>
+        <tr><td>Months 4-5</td><td>Word-of-mouth begins, affiliate programs activate, organic + brand search rising</td><td>~55-80% of peak</td><td>~€295-360</td></tr>
+        <tr><td>Months 6-7</td><td>Nearing peak efficiency, stable CAC-LTV</td><td>~88-99% of peak</td><td>~€265-340</td></tr>
+        <tr><td>Month 8+</td><td>Peak — fully optimized funnel (year 1 target; efficiency improves in year 2)</td><td>100% peak</td><td>€240-330 per market</td></tr>
       </tbody>
     </table>
   </div>
@@ -472,25 +472,25 @@ const NAMES = {AT:"Austria",FR:"France",SE:"Sweden",BE:"Belgium",DK:"Denmark",IE
 const FORECAST = [
   {code:"FR", rank:1, entity:true, confidence:"HIGH", wave:1, launchDate:"28 Apr 2026", cc:true,
     m1:{subs:30, cpo:400, spend:12000},
-    m2:{subs:32, cpo:280, spend:8960},
-    m3:{subs:42, cpo:250, spend:10500},
-    m8:{subs:100, cpo:215, spend:21500, share:3.7},
+    m2:{subs:32, cpo:370, spend:11840},
+    m3:{subs:42, cpo:340, spend:14280},
+    m8:{subs:100, cpo:260, spend:26000, share:3.7},
     headline:"Biggest absolute opportunity — entity + CC + mass market",
     marketSize:"2,685 AEDs/month (32,222/year) — 3rd largest market in Europe",
     rationale:[
       "Local entity at launch removes the SINGLE biggest historical drag on France performance",
-      "M1 frontloaded at €12K / €400 CPO to maximize lead capture — those leads convert in M2 and M3 as entity trust + CC closing rates kick in",
-      "Historical best CPO was €355 (Jun 2025) with no entity; with entity + Shopify + CC we project €215 at peak",
+      "M1 frontloaded at €12K / €400 CPO to maximize lead capture — keep spend high in M2/M3 rather than chasing a lower CPO",
+      "Peak CPO of €260 reflects year-1 reality in a new market — efficiency optimization is a year-2 problem, not a year-1 one",
       "Peak of 100 subs/mo is only 3.7% of France's 2,685/mo AED market — significant upside headroom once we prove the playbook",
       "Cracking France unlocks Wallonia, French-speaking Switzerland, and Luxembourg (1.15x satellite multiplier)",
-      "Budget at peak is €21.5K/mo — within the standard €25K ceiling, no budget exception needed at this conservative trajectory"
+      "Budget at peak is €26K/mo — essentially at the standard €25K ceiling, no major exception needed at this conservative trajectory"
     ]
   },
   {code:"AT", rank:2, entity:false, confidence:"HIGH", wave:2, launchDate:"12 May 2026", cc:true,
     m1:{subs:16, cpo:400, spend:6400},
-    m2:{subs:22, cpo:220, spend:4840},
-    m3:{subs:34, cpo:210, spend:7140},
-    m8:{subs:75, cpo:200, spend:15000, share:14.7},
+    m2:{subs:22, cpo:360, spend:7920},
+    m3:{subs:34, cpo:330, spend:11220},
+    m8:{subs:75, cpo:250, spend:18750, share:14.7},
     headline:"German satellite — DE assets transfer directly",
     marketSize:"509 AEDs/month (6,111/year)",
     rationale:[
@@ -504,25 +504,25 @@ const FORECAST = [
   },
   {code:"SE", rank:3, entity:true, confidence:"HIGH", wave:1, launchDate:"28 Apr 2026", cc:false,
     m1:{subs:16, cpo:400, spend:6400},
-    m2:{subs:14, cpo:280, spend:3920},
-    m3:{subs:18, cpo:230, spend:4140},
-    m8:{subs:55, cpo:185, spend:10175, share:11.9},
-    headline:"Entity + digital-only — lowest peak CPO in the portfolio",
+    m2:{subs:14, cpo:370, spend:5180},
+    m3:{subs:18, cpo:340, spend:6120},
+    m8:{subs:55, cpo:270, spend:14850, share:11.9},
+    headline:"Entity + digital-only — best long-term efficiency",
     marketSize:"463 AEDs/month (5,556/year)",
     rationale:[
       "Entity at launch combined with best historical CPO (€261) of any live P4A market",
       "Digital-only model — no CC agent means €5K/mo saved; automation + email drive conversion (DESI #4 digital maturity supports this)",
-      "M2 dips slightly vs M1 as €400-CPO learning spend pulls back, then M3 onward ramps as email/remarketing kick in",
+      "Peak CPO held at €270 in year 1 to prioritize volume; Sweden's digital maturity means efficiency can be pushed lower in year 2",
       "Klarna home market + 75-80% CPR rate — subscription culture is deeply embedded, buyers self-serve",
-      "Peak CPO of €185 is the lowest in the portfolio, offsetting the modest volume",
-      "11.9% share at peak — room to push higher once digital-only playbook is proven"
+      "11.9% share at peak — room to push higher once digital-only playbook is proven",
+      "Digital-only penalty already priced in (vs CC markets at €240-250 peak) — holds the door open to drop CPO later once email flows are tuned"
     ]
   },
   {code:"BE", rank:4, entity:true, confidence:"HIGH", wave:1, launchDate:"28 Apr 2026", cc:true,
     m1:{subs:14, cpo:400, spend:5600},
-    m2:{subs:14, cpo:250, spend:3500},
-    m3:{subs:18, cpo:220, spend:3960},
-    m8:{subs:50, cpo:190, spend:9500, share:9.0},
+    m2:{subs:14, cpo:355, spend:4970},
+    m3:{subs:18, cpo:320, spend:5760},
+    m8:{subs:50, cpo:240, spend:12000, share:9.0},
     headline:"Entity + dual-language CC already operational",
     marketSize:"556 AEDs/month (6,667/year)",
     rationale:[
@@ -536,9 +536,9 @@ const FORECAST = [
   },
   {code:"DK", rank:5, entity:false, confidence:"MEDIUM", wave:3, launchDate:"26 May 2026", cc:false,
     m1:{subs:10, cpo:400, spend:4000},
-    m2:{subs:14, cpo:320, spend:4480},
-    m3:{subs:19, cpo:300, spend:5700},
-    m8:{subs:45, cpo:265, spend:11925, share:11.4},
+    m2:{subs:14, cpo:380, spend:5320},
+    m3:{subs:19, cpo:360, spend:6840},
+    m8:{subs:45, cpo:310, spend:13950, share:11.4},
     headline:"Highest AED per-capita market in Europe — digital-only launch",
     marketSize:"394 AEDs/month (4,722/year) — highest AED density per capita in Europe (800 per million)",
     rationale:[
@@ -552,9 +552,9 @@ const FORECAST = [
   },
   {code:"IE", rank:6, entity:false, confidence:"MEDIUM", wave:2, launchDate:"12 May 2026", cc:true,
     m1:{subs:8, cpo:400, spend:3200},
-    m2:{subs:11, cpo:290, spend:3190},
-    m3:{subs:17, cpo:260, spend:4420},
-    m8:{subs:40, cpo:230, spend:9200, share:15.7},
+    m2:{subs:11, cpo:370, spend:4070},
+    m3:{subs:17, cpo:340, spend:5780},
+    m8:{subs:40, cpo:280, spend:11200, share:15.7},
     headline:"English + EUR + UK assets — lowest localization cost",
     marketSize:"255 AEDs/month (3,056/year) — smallest of the 7 markets",
     rationale:[
@@ -568,9 +568,9 @@ const FORECAST = [
   },
   {code:"NO", rank:7, entity:false, confidence:"MEDIUM", wave:3, launchDate:"26 May 2026", cc:false,
     m1:{subs:6, cpo:400, spend:2400},
-    m2:{subs:8, cpo:350, spend:2800},
-    m3:{subs:12, cpo:320, spend:3840},
-    m8:{subs:35, cpo:280, spend:9800, share:10.5},
+    m2:{subs:8, cpo:390, spend:3120},
+    m3:{subs:12, cpo:370, spend:4440},
+    m8:{subs:35, cpo:330, spend:11550, share:10.5},
     headline:"Strongest demand signal in Europe — digital-only Nordic launch",
     marketSize:"333 AEDs/month (~4,000/year estimate)",
     rationale:[
