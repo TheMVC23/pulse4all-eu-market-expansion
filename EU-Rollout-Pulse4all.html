@@ -188,17 +188,17 @@ footer a{color:var(--light-blue);}
 <section class="hero">
   <div class="container">
     <h2>7 markets. 757 subscriptions per month at peak.</h2>
-    <p class="lead">Monthly subscription forecast for the rollout of Denmark, Norway, Austria, Ireland, and the reopening of France, Sweden, and Belgium — all three reopening markets with local entities at launch.</p>
+    <p class="lead">Monthly subscription forecast for the rollout of Denmark, Norway, Austria, Ireland, and the reopening of France, Sweden, and Belgium — all three reopening markets with local entities at launch. Cautious ramp-in: Month 1 and Month 2 assume a realistic imperfect launch (half the volume a perfect-launch model would predict), then acceleration to peak.</p>
     <div class="summary-grid">
       <div class="summary-card">
-        <div class="label">Month 1 — ramp</div>
-        <div class="big">258<span class="unit">subs/mo</span></div>
-        <div class="stats"><strong>€70K</strong> spend · <strong>€271</strong> blended CPO</div>
+        <div class="label">Month 1 — cautious ramp</div>
+        <div class="big">130<span class="unit">subs/mo</span></div>
+        <div class="stats"><strong>€35K</strong> spend · <strong>€269</strong> blended CPO</div>
       </div>
       <div class="summary-card">
-        <div class="label">Month 2 — optimizing</div>
-        <div class="big">461<span class="unit">subs/mo</span></div>
-        <div class="stats"><strong>€111K</strong> spend · <strong>€241</strong> blended CPO</div>
+        <div class="label">Month 2 — accelerating</div>
+        <div class="big">232<span class="unit">subs/mo</span></div>
+        <div class="stats"><strong>€57K</strong> spend · <strong>€246</strong> blended CPO</div>
       </div>
       <div class="summary-card peak">
         <div class="label">Month 8 — peak</div>
@@ -216,7 +216,7 @@ footer a{color:var(--light-blue);}
 
 <section class="section">
   <h2>Monthly subscription forecast by market</h2>
-  <p class="section-lead">Markets ranked by confidence and expected M8 performance. Max CPO capped at €400 per market. Max budget €20-25K per country only when subscription volume supports it. Entity badges indicate which markets have a local entity at launch (FR/BE/SE) — this removes the single biggest historical drag and unlocks an additional ~15% CPO improvement.</p>
+  <p class="section-lead">Markets ranked by confidence and expected M8 performance. M1 and M2 assume a cautious ramp-in (~50% of the volume a perfect launch would produce) to account for tracking setup, creative iteration, ad platform learning, and localization friction. Max CPO capped at €400 per market. Max budget €20-25K per country only once subscription volume supports it. Entity badges indicate which markets have a local entity at launch (FR/BE/SE) — this removes the single biggest historical drag and unlocks an additional ~15% CPO improvement.</p>
 
   <div class="forecast-table-wrapper">
     <table class="forecast-table">
@@ -251,20 +251,20 @@ footer a{color:var(--light-blue);}
 <section class="section">
   <div class="info-block">
     <h2>Monthly ramp logic</h2>
-    <p class="block-lead">Each market follows this CPO curve. Budget scales in month N+1 only if month N hit or beat target CPO — no blind spend increases.</p>
+    <p class="block-lead">Each market follows this curve. Budget scales in month N+1 only if month N hit or beat target CPO — no blind spend increases. M1/M2 are deliberately throttled (~50% of a perfect-launch model) to account for the real-world friction of going live.</p>
     <table class="ramp-table">
       <thead>
         <tr>
           <th style="width:120px;">Month</th>
           <th>What's happening</th>
-          <th style="width:180px;">CPO vs peak</th>
+          <th style="width:200px;">Volume vs peak</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Month 1</td><td>Ad platform learning phase, call-centre training, initial brand awareness, ads indexing</td><td>+25-35% vs peak</td></tr>
-        <tr><td>Month 2</td><td>Exiting learning phase, creative optimization, first customer reviews starting to build</td><td>+10-15% vs peak</td></tr>
-        <tr><td>Months 3-5</td><td>Hitting steady state, affiliate programs activating, social proof accumulating</td><td>+5-10% vs peak</td></tr>
-        <tr><td>Months 6-8</td><td>Peak efficiency, word-of-mouth kicks in, fully optimized funnel</td><td>peak (baseline)</td></tr>
+        <tr><td>Month 1</td><td>Ad platform learning phase, call-centre training, tracking/pixel debugging, creative iteration, initial brand awareness — launches are never perfect</td><td>~17% of peak volume · CPO +25-35%</td></tr>
+        <tr><td>Month 2</td><td>Exiting learning phase, creative dialled in, first customer reviews starting to build, budget starts scaling</td><td>~30% of peak volume · CPO +10-15%</td></tr>
+        <tr><td>Months 3-5</td><td>Rapid acceleration — steady state hit, affiliate programs activating, social proof accumulating, full budget deployable</td><td>50-85% of peak · CPO +5-10%</td></tr>
+        <tr><td>Months 6-8</td><td>Peak efficiency, word-of-mouth kicks in, fully optimized funnel</td><td>100% peak (baseline)</td></tr>
       </tbody>
     </table>
   </div>
@@ -275,7 +275,7 @@ footer a{color:var(--light-blue);}
     <ul class="triggers-list">
       <li><strong>→</strong> If blended CPO exceeds <strong>€320 in Month 1</strong>, pause new-market launches and concentrate budget on FR/BE/SE (where entity advantage is known)</li>
       <li><strong>→</strong> If any single market absorbs <strong>&gt;35% of total weekly budget</strong>, diversify before scaling further — avoids over-concentration risk</li>
-      <li><strong>→</strong> If M2 totals come in below <strong>70% of forecast (below 320 subs)</strong>, reassess the ~20% Shopify uplift assumption with actual CRO data before committing to M3 budget</li>
+      <li><strong>→</strong> If M2 totals come in below <strong>70% of forecast (below 162 subs)</strong>, reassess the ~20% Shopify uplift assumption with actual CRO data before committing to M3 budget</li>
     </ul>
   </div>
 
@@ -348,8 +348,8 @@ const NAMES = {AT:"Austria",FR:"France",SE:"Sweden",BE:"Belgium",DK:"Denmark",IE
 
 const FORECAST = [
   {code:"AT", rank:1, entity:false, confidence:"HIGH",
-    m1:{subs:42, cpo:240, spend:10000},
-    m2:{subs:86, cpo:210, spend:18000},
+    m1:{subs:21, cpo:238, spend:5000},
+    m2:{subs:43, cpo:209, spend:9000},
     m8:{subs:125, cpo:200, spend:25000, share:24.6},
     headline:"German satellite — all Pulse4all DE assets transfer directly",
     marketSize:"509 AEDs/month (6,111/year)",
@@ -363,8 +363,8 @@ const FORECAST = [
     ]
   },
   {code:"FR", rank:2, entity:true, confidence:"HIGH",
-    m1:{subs:62, cpo:290, spend:18000},
-    m2:{subs:96, cpo:260, spend:25000},
+    m1:{subs:31, cpo:290, spend:9000},
+    m2:{subs:48, cpo:271, spend:13000},
     m8:{subs:220, cpo:220, spend:25000, share:8.2},
     headline:"Entity at launch changes everything — biggest absolute opportunity",
     marketSize:"2,685 AEDs/month (32,222/year) — 3rd largest market in Europe",
@@ -378,8 +378,8 @@ const FORECAST = [
     ]
   },
   {code:"SE", rank:3, entity:true, confidence:"HIGH",
-    m1:{subs:45, cpo:220, spend:10000},
-    m2:{subs:77, cpo:195, spend:15000},
+    m1:{subs:23, cpo:217, spend:5000},
+    m2:{subs:39, cpo:205, spend:8000},
     m8:{subs:110, cpo:185, spend:20000, share:23.8},
     headline:"Best unit economics of all 7 markets",
     marketSize:"463 AEDs/month (5,556/year)",
@@ -393,8 +393,8 @@ const FORECAST = [
     ]
   },
   {code:"BE", rank:4, entity:true, confidence:"HIGH",
-    m1:{subs:42, cpo:240, spend:10000},
-    m2:{subs:71, cpo:210, spend:15000},
+    m1:{subs:21, cpo:238, spend:5000},
+    m2:{subs:36, cpo:222, spend:8000},
     m8:{subs:105, cpo:195, spend:20000, share:18.9},
     headline:"Entity + dual-language call centre already operational",
     marketSize:"556 AEDs/month (6,667/year)",
@@ -408,8 +408,8 @@ const FORECAST = [
     ]
   },
   {code:"DK", rank:5, entity:false, confidence:"MEDIUM",
-    m1:{subs:24, cpo:340, spend:8000},
-    m2:{subs:47, cpo:300, spend:14000},
+    m1:{subs:12, cpo:333, spend:4000},
+    m2:{subs:24, cpo:292, spend:7000},
     m8:{subs:75, cpo:260, spend:20000, share:19.0},
     headline:"Highest AED per-capita market in Europe (no entity yet)",
     marketSize:"394 AEDs/month (4,722/year) — highest AED density per capita in Europe (800 per million)",
@@ -423,8 +423,8 @@ const FORECAST = [
     ]
   },
   {code:"IE", rank:6, entity:false, confidence:"MEDIUM",
-    m1:{subs:24, cpo:290, spend:7000},
-    m2:{subs:46, cpo:260, spend:12000},
+    m1:{subs:12, cpo:292, spend:3500},
+    m2:{subs:23, cpo:261, spend:6000},
     m8:{subs:65, cpo:230, spend:15000, share:25.5},
     headline:"English + EUR + UK assets — lowest localization cost of any new market",
     marketSize:"255 AEDs/month (3,056/year) — smallest of the 7 markets",
@@ -438,8 +438,8 @@ const FORECAST = [
     ]
   },
   {code:"NO", rank:7, entity:false, confidence:"MEDIUM",
-    m1:{subs:19, cpo:360, spend:7000},
-    m2:{subs:38, cpo:320, spend:12000},
+    m1:{subs:10, cpo:350, spend:3500},
+    m2:{subs:19, cpo:316, spend:6000},
     m8:{subs:57, cpo:280, spend:16000, share:17.1},
     headline:"Strongest demand signal in Europe but highest launch effort",
     marketSize:"333 AEDs/month (~4,000/year estimate)",
