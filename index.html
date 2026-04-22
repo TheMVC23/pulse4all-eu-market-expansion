@@ -279,6 +279,7 @@ tbody td{padding:10px;vertical-align:middle;}
     <button class="nav-tab active" data-target="overview">Overview</button>
     <button class="nav-tab" data-target="rankings">Rankings</button>
     <button class="nav-tab" data-target="expansion">Expansion profiles</button>
+    <button class="nav-tab" data-target="forecast">Sales forecast</button>
     <button class="nav-tab" data-target="fieldref">Field reference</button>
     <button class="nav-tab" data-target="methodology">Methodology</button>
   </div>
@@ -409,6 +410,122 @@ tbody td{padding:10px;vertical-align:middle;}
   <h2>Language satellite clusters</h2>
   <p style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);">Launching in an anchor market unlocks adjacent markets at lower incremental cost</p>
   <div class="cluster-grid" id="clusterGrid"></div>
+</div>
+
+</section>
+
+<!-- ============ SALES FORECAST ============ -->
+<section id="forecast">
+
+<h2 style="margin:var(--sp-3) 0 var(--sp-1);">7-market rollout forecast</h2>
+<p style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);">Month 1, Month 2, and Month 8 (peak) projections. Grounded in UK/NL/DE historical benchmarks, FR/BE/SE when funded (H1 2025), real AED market sizes, and +20% Shopify uplift. Max CPO EUR 400, max budget EUR 20-25K per country.</p>
+
+<!-- Summary totals -->
+<div class="benchmarks" style="background:var(--inkt);color:var(--white);">
+  <h2 style="color:var(--white);">Portfolio summary</h2>
+  <div class="benchmark-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:var(--sp-2);border-left:4px solid var(--light-blue);">
+      <div style="font-size:11px;color:var(--light-blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Month 1</div>
+      <div style="font-size:28px;font-weight:700;">258 <span style="font-size:14px;color:var(--light-blue);font-weight:400;">subs/mo</span></div>
+      <div style="font-size:12px;margin-top:4px;">Spend: <strong>€70K</strong> | Blended CPO: <strong>€271</strong> | Share: 5.0%</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:var(--sp-2);border-left:4px solid var(--light-blue);">
+      <div style="font-size:11px;color:var(--light-blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Month 2</div>
+      <div style="font-size:28px;font-weight:700;">461 <span style="font-size:14px;color:var(--light-blue);font-weight:400;">subs/mo</span></div>
+      <div style="font-size:12px;margin-top:4px;">Spend: <strong>€111K</strong> | Blended CPO: <strong>€241</strong> | Share: 8.9%</div>
+    </div>
+    <div style="background:rgba(39,174,111,0.15);border-radius:12px;padding:var(--sp-2);border-left:4px solid var(--leaf-green);">
+      <div style="font-size:11px;color:var(--leaf-green);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Month 8 (peak)</div>
+      <div style="font-size:28px;font-weight:700;">757 <span style="font-size:14px;color:var(--light-blue);font-weight:400;">subs/mo</span></div>
+      <div style="font-size:12px;margin-top:4px;">Spend: <strong>€141K</strong> | Blended CPO: <strong>€186</strong> | Share: <strong style="color:var(--leaf-green);">14.6% ✓</strong></div>
+    </div>
+  </div>
+  <div style="margin-top:var(--sp-2);font-size:12px;color:var(--light-blue);">
+    At M8 run rate: <strong style="color:var(--white);">9,084 new subs/year</strong> added | <strong style="color:var(--white);">€25K new MRR/month</strong> added | <strong style="color:var(--white);">€1.69M</strong> annual ad budget | Hits the 15% blended market share benchmark (UK/NL/DE trajectory)
+  </div>
+</div>
+
+<!-- Forecast table -->
+<div class="table-wrapper" style="margin-top:var(--sp-3);">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:40px;cursor:default;">#</th>
+        <th style="cursor:default;">Market</th>
+        <th style="cursor:default;">Entity</th>
+        <th style="cursor:default;text-align:center;">M1 Subs</th>
+        <th style="cursor:default;text-align:center;">M1 CPO</th>
+        <th style="cursor:default;text-align:center;">M1 Spend</th>
+        <th style="cursor:default;text-align:center;">M2 Subs</th>
+        <th style="cursor:default;text-align:center;">M2 CPO</th>
+        <th style="cursor:default;text-align:center;">M2 Spend</th>
+        <th style="cursor:default;text-align:center;">M8 Peak</th>
+        <th style="cursor:default;text-align:center;">M8 CPO</th>
+        <th style="cursor:default;text-align:center;">M8 Share</th>
+        <th style="cursor:default;text-align:center;">Confidence</th>
+      </tr>
+    </thead>
+    <tbody id="forecastTableBody"></tbody>
+  </table>
+</div>
+
+<!-- Per-market rationale cards -->
+<h3 style="margin:var(--sp-3) 0 var(--sp-2);font-size:16px;">Per-market rationale</h3>
+<div id="forecastCards"></div>
+
+<!-- Monthly ramp logic -->
+<div class="methodology" style="margin-top:var(--sp-3);">
+  <h2>Monthly ramp logic</h2>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);">Each market follows this general CPO curve. Budget scales only when prior month CPO target is met.</p>
+  <table style="width:100%;font-size:12px;border-collapse:collapse;">
+    <thead><tr style="background:#f8f9fa;"><th style="text-align:left;padding:8px;border-bottom:2px solid #e5e7eb;">Month</th><th style="text-align:left;padding:8px;border-bottom:2px solid #e5e7eb;">What's happening</th><th style="text-align:left;padding:8px;border-bottom:2px solid #e5e7eb;">CPO vs peak</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">Month 1</td><td style="padding:8px;">Ad platform learning phase, CC training, initial brand awareness</td><td style="padding:8px;color:#6b7280;">+25-35% vs peak</td></tr>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">Month 2</td><td style="padding:8px;">Exiting learning phase, creative optimization, early reviews building</td><td style="padding:8px;color:#6b7280;">+10-15% vs peak</td></tr>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">Months 3-5</td><td style="padding:8px;">Hitting steady state, affiliate programs starting, social proof accumulating</td><td style="padding:8px;color:#6b7280;">+5-10% vs peak</td></tr>
+      <tr><td style="padding:8px;font-weight:600;color:var(--deep-blue);">Months 6-8</td><td style="padding:8px;">Peak efficiency, word-of-mouth kicks in, optimized funnel</td><td style="padding:8px;color:var(--leaf-green);font-weight:600;">peak (baseline)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Portfolio triggers -->
+<div class="methodology" style="margin-top:var(--sp-3);">
+  <h2>Portfolio-level kill triggers and risks</h2>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);">If these conditions hit, pause/rebalance before scaling further.</p>
+
+  <h3 style="font-size:14px;margin:var(--sp-2) 0 var(--sp-1);">Portfolio triggers</h3>
+  <ul style="list-style:none;font-size:12px;">
+    <li style="padding:6px 0;border-bottom:1px solid #f0f0f0;"><strong style="color:var(--grade-c);">→</strong> If blended CPO exceeds <strong>€320 in M1</strong>, pause new-market launches and focus budget on FR/BE/SE (where entity advantage is known)</li>
+    <li style="padding:6px 0;border-bottom:1px solid #f0f0f0;"><strong style="color:var(--grade-c);">→</strong> If any single market absorbs <strong>&gt;35% of total weekly budget</strong>, diversify before scaling further</li>
+    <li style="padding:6px 0;"><strong style="color:var(--grade-c);">→</strong> If M2 totals come in below <strong>70% of forecast (320 subs)</strong>, reassess the Shopify uplift assumption with actual CRO data</li>
+  </ul>
+
+  <h3 style="font-size:14px;margin:var(--sp-3) 0 var(--sp-1);">Per-market risks and mitigations</h3>
+  <table style="width:100%;font-size:12px;border-collapse:collapse;">
+    <thead><tr style="background:#f8f9fa;"><th style="text-align:left;padding:8px;border-bottom:2px solid #e5e7eb;">Market</th><th style="text-align:left;padding:8px;border-bottom:2px solid #e5e7eb;">Primary risk</th><th style="text-align:left;padding:8px;border-bottom:2px solid #e5e7eb;">Mitigation / kill trigger</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">🇫🇷 France</td><td style="padding:8px;">CPO stays above €400 in M1</td><td style="padding:8px;color:#6b7280;">Hold budget at €18K until CPO drops below €350</td></tr>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">🇳🇴 Norway</td><td style="padding:8px;">Language ramp delays launch</td><td style="padding:8px;color:#6b7280;">Bridge with Danish-language CC until Norwegian operational</td></tr>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">🇩🇰 Denmark</td><td style="padding:8px;">Brand perceived as foreign</td><td style="padding:8px;color:#6b7280;">Pursue TrygFonden / Hjerteforeningen partnership in M2-M3</td></tr>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">🇮🇪 Ireland</td><td style="padding:8px;">defibshop.ie price matching at €30/mo</td><td style="padding:8px;color:#6b7280;">Lead with flexibility (3-month min vs competitor lock-ins)</td></tr>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">🇦🇹 Austria</td><td style="padding:8px;">Over-reliance on DE model</td><td style="padding:8px;color:#6b7280;">Monitor Austrian-specific buyer signals monthly; adjust creative</td></tr>
+      <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:8px;font-weight:600;color:var(--deep-blue);">🇸🇪 Sweden</td><td style="padding:8px;">Ad CPC inflation without entity benefit materializing</td><td style="padding:8px;color:#6b7280;">Verify entity is operational before scaling beyond €10K</td></tr>
+      <tr><td style="padding:8px;font-weight:600;color:var(--deep-blue);">🇧🇪 Belgium</td><td style="padding:8px;">Flanders/Wallonia split confuses campaigns</td><td style="padding:8px;color:#6b7280;">Run fully separate campaigns per language from day 1</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Assumptions -->
+<div class="methodology" style="margin-top:var(--sp-3);">
+  <h2>Key assumptions</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-2);font-size:12px;">
+    <div style="padding:12px;background:var(--bg-blue);border-radius:8px;"><strong style="color:var(--deep-blue);">Shopify uplift: ~20%</strong><br><span style="color:#6b7280;">New Shopify sites deliver ~20% CPO improvement vs old WordPress baseline (stated: 25% better site → conservative 20% CPO translation)</span></div>
+    <div style="padding:12px;background:var(--bg-blue);border-radius:8px;"><strong style="color:var(--deep-blue);">Entity trust boost: +15%</strong><br><span style="color:#6b7280;">Local entity in FR/BE/SE removes trust barrier, adds another 15% CPO improvement on top of Shopify boost</span></div>
+    <div style="padding:12px;background:var(--bg-blue);border-radius:8px;"><strong style="color:var(--deep-blue);">CC languages already ready</strong><br><span style="color:#6b7280;">DE (→AT), EN (→IE), FR+NL (→BE), FR (→FR), SE (→SE). Needs to add: Danish (DK), Norwegian (NO)</span></div>
+    <div style="padding:12px;background:var(--bg-blue);border-radius:8px;"><strong style="color:var(--deep-blue);">Budget scaling discipline</strong><br><span style="color:#6b7280;">Budget scales in month N+1 only if month N hit or beat target CPO. No blind spend increases.</span></div>
+    <div style="padding:12px;background:var(--bg-blue);border-radius:8px;"><strong style="color:var(--deep-blue);">Newco ramp costs</strong><br><span style="color:#6b7280;">~€5K/mo fixed cost per new language added (DK, NO). Factored into total budget.</span></div>
+    <div style="padding:12px;background:var(--bg-blue);border-radius:8px;"><strong style="color:var(--deep-blue);">No partnerships in base case</strong><br><span style="color:#6b7280;">Forecast assumes no BHF-equivalent partnerships yet. Adding LHL (NO), TrygFonden (DK), IHF (IE) would accelerate further.</span></div>
+  </div>
 </div>
 
 </section>
@@ -637,6 +754,111 @@ const PROFILES=[
   {code:"CH",tier:2,why:["Highest purchasing power + low price sensitivity","Strong subscription culture and SaaS adoption","Opaque competitor pricing — transparency is P4A's advantage","Schweizerische Herzstiftung + KIDSHEART schools initiative"],risks:["Non-EU: customs, separate VAT (MWST), CHF currency","3 language zones (DE/FR/IT) add complexity","Complex cantonal legal system (26 cantons)","Local entity likely needed — trust-heavy market"],edge:"All competitors are quote-based. P4A's transparent monthly pricing would be unique. DE+FR language assets cover ~90% of population.",satellite:"Benefits from both Germany (DE) and France (FR) language investment"}
 ];
 
+// Sales forecast data — M1, M2, M8 per market
+const FORECAST = [
+  {code:"AT", rank:1, entity:false, confidence:"HIGH",
+    m1:{subs:42, cpo:240, spend:10000},
+    m2:{subs:86, cpo:210, spend:18000},
+    m8:{subs:125, cpo:200, spend:25000, share:24.6},
+    headline:"German satellite — DE transfers wholesale",
+    rationale:[
+      "German language, content, legal, CC all transfer directly from DE",
+      "DE launched Dec 2024 at €80 CPO, hit €151 in M2 — AT should mirror this",
+      "20% Shopify improvement on top of DE baseline → €240 M1 CPO",
+      "No Austrian-native subscription leader (WERO is only and German-based)",
+      "16-hour first aid mandatory for driver's license = strong B2C demand signal"
+    ],
+    marketSize:"509 AEDs/mo (6,111/yr)"
+  },
+  {code:"FR", rank:2, entity:true, confidence:"HIGH",
+    m1:{subs:62, cpo:290, spend:18000},
+    m2:{subs:96, cpo:260, spend:25000},
+    m8:{subs:220, cpo:220, spend:25000, share:8.2},
+    headline:"Entity at launch changes everything",
+    rationale:[
+      "Local entity at launch removes the SINGLE BIGGEST historical drag",
+      "Historical best CPO was €355 (Jun 2025) with no entity — now with entity + Shopify → expect €280-290 M1",
+      "Massive 2,685/mo market — budget-constrained, not market-constrained",
+      "8% market share at peak is realistic given FR price sensitivity + language/culture",
+      "Cracking FR unlocks Wallonia, French Switzerland, Luxembourg (1.15x satellite)"
+    ],
+    marketSize:"2,685 AEDs/mo (32,222/yr) — 3rd largest in Europe"
+  },
+  {code:"SE", rank:3, entity:true, confidence:"HIGH",
+    m1:{subs:45, cpo:220, spend:10000},
+    m2:{subs:77, cpo:195, spend:15000},
+    m8:{subs:110, cpo:185, spend:20000, share:23.8},
+    headline:"Best unit economics of the 7",
+    rationale:[
+      "Entity + best historical CPO (€261) of any P4A market",
+      "DESI #4, 75-80% CPR rate, Klarna home market (strong subscription culture)",
+      "Shopify 20% × entity 15% → expect €210-220 CPO M1",
+      "Small market (463/mo) caps absolute volume but delivers highest efficiency",
+      "This market was unfairly characterized before — with entity + budget it's a top performer"
+    ],
+    marketSize:"463 AEDs/mo (5,556/yr)"
+  },
+  {code:"BE", rank:4, entity:true, confidence:"HIGH",
+    m1:{subs:42, cpo:240, spend:10000},
+    m2:{subs:71, cpo:210, spend:15000},
+    m8:{subs:105, cpo:195, spend:20000, share:18.9},
+    headline:"Entity + dual language CC operational",
+    rationale:[
+      "Entity + Dutch/French CC already operational at Newco",
+      "Historical peak 21 subs in Jan 2025 at €340 CPO — with more budget + entity + site",
+      "Flanders leverages NL content/ads directly; Wallonia benefits from FR entity content",
+      "Split language market historically added friction — entity reduces this",
+      "Bancontact dominant domestic payment method — already supported"
+    ],
+    marketSize:"556 AEDs/mo (6,667/yr)"
+  },
+  {code:"DK", rank:5, entity:false, confidence:"MEDIUM",
+    m1:{subs:24, cpo:340, spend:8000},
+    m2:{subs:47, cpo:300, spend:14000},
+    m8:{subs:75, cpo:260, spend:20000, share:19.0},
+    headline:"Highest AED per-capita market in Europe (no entity yet)",
+    rationale:[
+      "Highest per-capita AED market in Europe (800 per million)",
+      "No P4A-style subscription competitor (Falck at €49-74/mo with 3yr lock-in)",
+      "DKK pegged to EUR = minimal FX risk",
+      "No entity in M1/M2 — slower trust build than FR/BE/SE",
+      "Newco needs to add Danish (close to Norwegian — bridge possible)",
+      "TrygFonden partnership would significantly accelerate trajectory"
+    ],
+    marketSize:"394 AEDs/mo (4,722/yr)"
+  },
+  {code:"IE", rank:6, entity:false, confidence:"MEDIUM",
+    m1:{subs:24, cpo:290, spend:7000},
+    m2:{subs:46, cpo:260, spend:12000},
+    m8:{subs:65, cpo:230, spend:15000, share:25.5},
+    headline:"English + EUR + UK satellite — minimal localization",
+    rationale:[
+      "English language + EUR currency — near-zero localization cost",
+      "UK assets, content, CC all transfer directly",
+      "defibshop.ie at €30/mo is a near-identical direct competitor",
+      "Small market (255/mo) naturally caps scale even at high share %",
+      "Irish Heart Foundation very active — strong partnership potential",
+      "25% market share at peak — highest % but lowest absolute volume"
+    ],
+    marketSize:"255 AEDs/mo (3,056/yr) — smallest of the 7"
+  },
+  {code:"NO", rank:7, entity:false, confidence:"MEDIUM",
+    m1:{subs:19, cpo:360, spend:7000},
+    m2:{subs:38, cpo:320, spend:12000},
+    m8:{subs:57, cpo:280, spend:16000, share:17.1},
+    headline:"Strongest demand signal but highest effort",
+    rationale:[
+      "90% CPR training penetration (mandatory since 1961) — strongest demand signal in Europe",
+      "Fastest-growing AED market globally through 2030",
+      "Non-EU complexity: NOK currency, MVA system, customs handling",
+      "Newco language ramp needed (Norwegian close to Danish mitigates)",
+      "Max 6-month commitment law is a churn risk factor",
+      "LHL partnership (52K members) would significantly accelerate"
+    ],
+    marketSize:"333 AEDs/mo (~4,000/yr est.)"
+  }
+];
+
 // ========================================
 // COUNTRY SCORES (all 29 countries)
 // ========================================
@@ -833,6 +1055,90 @@ function renderProfiles(){
   });
 }
 
+function renderForecast(){
+  const tbody = document.getElementById('forecastTableBody');
+  const cards = document.getElementById('forecastCards');
+  if(!tbody || !cards) return;
+
+  // Country name lookup
+  const names = {AT:"Austria",FR:"France",SE:"Sweden",BE:"Belgium",DK:"Denmark",IE:"Ireland",NO:"Norway"};
+
+  // Render table
+  tbody.innerHTML = FORECAST.map(f => {
+    const entityBadge = f.entity
+      ? '<span class="entity-badge yes">Yes (at launch)</span>'
+      : '<span class="entity-badge no">No</span>';
+    const confClass = f.confidence === 'HIGH' ? 'presence-high' : 'presence-moderate';
+    return `<tr><td style="font-weight:600;color:#6b7280;">${f.rank}</td>
+      <td><div class="country-cell"><span class="flag">${FLAGS[f.code]}</span>${names[f.code]}</div></td>
+      <td>${entityBadge}</td>
+      <td style="text-align:center;font-weight:600;">${f.m1.subs}</td>
+      <td style="text-align:center;">€${f.m1.cpo}</td>
+      <td style="text-align:center;color:#6b7280;">€${(f.m1.spend/1000).toFixed(0)}K</td>
+      <td style="text-align:center;font-weight:600;">${f.m2.subs}</td>
+      <td style="text-align:center;">€${f.m2.cpo}</td>
+      <td style="text-align:center;color:#6b7280;">€${(f.m2.spend/1000).toFixed(0)}K</td>
+      <td style="text-align:center;font-weight:700;color:var(--leaf-green);">${f.m8.subs}</td>
+      <td style="text-align:center;">€${f.m8.cpo}</td>
+      <td style="text-align:center;font-weight:600;">${f.m8.share}%</td>
+      <td style="text-align:center;"><span class="presence-badge ${confClass}">${f.confidence}</span></td>
+    </tr>`;
+  }).join('');
+
+  // Render cards
+  cards.innerHTML = FORECAST.map(f => {
+    const entityBadge = f.entity
+      ? '<span class="entity-badge yes">Entity at launch ✓</span>'
+      : '<span class="entity-badge no">No entity</span>';
+    const confClass = f.confidence === 'HIGH' ? 'presence-high' : 'presence-moderate';
+    const borderColor = f.confidence === 'HIGH' ? 'var(--leaf-green)' : 'var(--denim-blue)';
+
+    return `<div class="profile-card" style="border-left-color:${borderColor};">
+      <div style="display:grid;grid-template-columns:280px 1fr;gap:var(--sp-3);">
+        <div>
+          <h3 style="font-size:18px;margin-bottom:6px;"><span class="flag" style="font-size:28px;">${FLAGS[f.code]}</span> ${names[f.code]}</h3>
+          <div style="margin-bottom:6px;">
+            <span class="presence-badge ${confClass}">${f.confidence} confidence</span>
+            <span style="margin-left:4px;">${entityBadge}</span>
+          </div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);"><strong>${f.headline}</strong></div>
+          <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">Market size</div>
+          <div style="font-size:13px;margin-bottom:var(--sp-2);">${f.marketSize}</div>
+          <div style="background:var(--bg-blue);border-radius:8px;padding:10px;font-size:11px;">
+            <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:4px 12px;align-items:baseline;">
+              <span></span>
+              <strong style="color:var(--deep-blue);">M1</strong>
+              <strong style="color:var(--deep-blue);">M2</strong>
+              <strong style="color:var(--leaf-green);">M8 peak</strong>
+              <span style="color:#6b7280;">Subs</span>
+              <strong>${f.m1.subs}</strong>
+              <strong>${f.m2.subs}</strong>
+              <strong style="color:var(--leaf-green);">${f.m8.subs}</strong>
+              <span style="color:#6b7280;">CPO</span>
+              <span>€${f.m1.cpo}</span>
+              <span>€${f.m2.cpo}</span>
+              <span style="color:var(--leaf-green);">€${f.m8.cpo}</span>
+              <span style="color:#6b7280;">Spend</span>
+              <span>€${(f.m1.spend/1000).toFixed(0)}K</span>
+              <span>€${(f.m2.spend/1000).toFixed(0)}K</span>
+              <span style="color:var(--leaf-green);">€${(f.m8.spend/1000).toFixed(0)}K</span>
+            </div>
+            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #d1d5db;font-size:11px;color:#6b7280;">
+              M8 market share: <strong style="color:var(--inkt-body);">${f.m8.share}%</strong>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:13px;margin-bottom:var(--sp-1);">Why these numbers</h4>
+          <ul style="list-style:none;font-size:12px;">
+            ${f.rationale.map(r => `<li style="padding:4px 0;display:flex;align-items:flex-start;gap:6px;"><span style="color:${borderColor};flex-shrink:0;">→</span> <span>${r}</span></li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
 function renderClusters(){
   document.getElementById('clusterGrid').innerHTML=SATELLITES.map(s=>`<div class="cluster-card"><div class="cluster-anchor">${FLAGS[s.anchorCode]||''} ${s.anchor} ${s.note?'<span style="font-size:11px;color:#6b7280">('+s.note+')</span>':''}</div><div class="cluster-arrow" style="color:var(--leaf-green);font-size:18px;">↓</div><div class="cluster-satellites">${s.unlocks.join(', ')}</div><div class="cluster-multiplier">${s.multiplier}x multiplier</div></div>`).join('');
 }
@@ -894,6 +1200,7 @@ renderExecSummary();
 renderBenchmarks();
 renderTable();
 renderProfiles();
+renderForecast();
 renderClusters();
 renderMethodology();
 </script>
