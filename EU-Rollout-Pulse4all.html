@@ -243,8 +243,8 @@ footer a{color:var(--light-blue);}
 
 <section class="hero">
   <div class="container">
-    <h2>4 May to January 2027 — 7 markets, 400 subscriptions per month at peak</h2>
-    <p class="lead">Staggered rollout in three waves over five weeks. Wave 1 gets four weeks to stabilise before Wave 2 launches; Wave 3 follows Wave 2 by one week. Month 1 is deliberately frontloaded at the €400 CPO cap to fill the pipeline — leads generated in M1 convert in M2 and M3 as learning phases exit and word-of-mouth kicks in. Monthly trajectory: 60 → 100 → 140 → 200 → 250 → 300 → 350 → 400 subs.</p>
+    <h2>11 May to January 2027 — 7 markets, 400 subscriptions per month at peak</h2>
+    <p class="lead">Staggered rollout in three waves over five weeks. Wave 1 gets three weeks to stabilise before Wave 2 launches; Wave 3 follows Wave 2 by two weeks. Month 1 is deliberately frontloaded at the €400 CPO cap to fill the pipeline — leads generated in M1 convert in M2 and M3 as learning phases exit and word-of-mouth kicks in. Monthly trajectory: 60 → 100 → 140 → 200 → 250 → 300 → 350 → 400 subs.</p>
     <div class="summary-grid">
       <div class="summary-card">
         <div class="label">May 2026 — Wave 1 live</div>
@@ -277,11 +277,11 @@ footer a{color:var(--light-blue);}
 
 <section class="section">
   <h2>Launch schedule — 3 waves over 5 weeks</h2>
-  <p class="section-lead">Wave 1 gets four weeks to bed in before Wave 2 goes live, then Wave 3 follows one week later. This lets the team stabilise the reopening markets (FR/BE/SE) first before piling on the satellite launches. Digital-only markets (SE, NO, DK) launch without a call centre agent — automation and email become the primary conversion path. This mirrors the German model where the CC only attributes for 30% of sales, and saves the €5K/mo per-language agent cost across three markets.</p>
+  <p class="section-lead">Wave 1 gets three weeks to bed in before Wave 2 goes live, then Wave 3 follows two weeks later. This lets the team stabilise the reopening markets (FR/BE/SE) first before piling on the satellite launches, and gives Wave 2 a fair window to prove out before the Nordic pair lands. Digital-only markets (SE, NO, DK) launch without a call centre agent — automation and email become the primary conversion path. This mirrors the German model where the CC only attributes for 30% of sales, and saves the €5K/mo per-language agent cost across three markets.</p>
   <div class="wave-grid">
     <div class="wave-card">
       <div class="wave-label">Wave 1</div>
-      <div class="wave-date">4 May 2026</div>
+      <div class="wave-date">11 May 2026</div>
       <div class="wave-markets"><span class="flag">🇧🇪</span>Belgium <span class="flag" style="margin-left:8px;">🇸🇪</span>Sweden <span class="flag" style="margin-left:8px;">🇫🇷</span>France</div>
       <div class="wave-note"><strong>Entity at launch</strong> in all three. Belgium + France have CC support; Sweden is digital-only. These are the reopening markets with existing brand footprint, so the ramp is fastest.</div>
     </div>
@@ -293,7 +293,7 @@ footer a{color:var(--light-blue);}
     </div>
     <div class="wave-card w3">
       <div class="wave-label">Wave 3</div>
-      <div class="wave-date">8 June 2026</div>
+      <div class="wave-date">15 June 2026</div>
       <div class="wave-markets"><span class="flag">🇳🇴</span>Norway <span class="flag" style="margin-left:8px;">🇩🇰</span>Denmark</div>
       <div class="wave-note"><strong>Digital-only pair.</strong> Nordic launches run without a call centre — automation + email drive conversion. Highest demand signals in Europe (90% CPR training NO, highest AED density DK), but highest launch friction too.</div>
     </div>
@@ -470,7 +470,7 @@ const FLAGS = {AT:"\u{1F1E6}\u{1F1F9}",FR:"\u{1F1EB}\u{1F1F7}",SE:"\u{1F1F8}\u{1
 const NAMES = {AT:"Austria",FR:"France",SE:"Sweden",BE:"Belgium",DK:"Denmark",IE:"Ireland",NO:"Norway"};
 
 const FORECAST = [
-  {code:"FR", rank:1, entity:true, confidence:"HIGH", wave:1, launchDate:"4 May 2026", cc:true,
+  {code:"FR", rank:1, entity:true, confidence:"HIGH", wave:1, launchDate:"11 May 2026", cc:true,
     m1:{subs:30, cpo:400, spend:12000},
     m2:{subs:32, cpo:370, spend:11840},
     m3:{subs:42, cpo:340, spend:14280},
@@ -502,7 +502,7 @@ const FORECAST = [
       "Peak of 75 subs/mo = 14.7% of Austrian AED market — strong share from a low-cost satellite launch"
     ]
   },
-  {code:"SE", rank:3, entity:true, confidence:"HIGH", wave:1, launchDate:"4 May 2026", cc:false,
+  {code:"SE", rank:3, entity:true, confidence:"HIGH", wave:1, launchDate:"11 May 2026", cc:false,
     m1:{subs:16, cpo:400, spend:6400},
     m2:{subs:14, cpo:370, spend:5180},
     m3:{subs:18, cpo:340, spend:6120},
@@ -518,7 +518,7 @@ const FORECAST = [
       "Digital-only penalty already priced in (vs CC markets at €240-250 peak) — holds the door open to drop CPO later once email flows are tuned"
     ]
   },
-  {code:"BE", rank:4, entity:true, confidence:"HIGH", wave:1, launchDate:"4 May 2026", cc:true,
+  {code:"BE", rank:4, entity:true, confidence:"HIGH", wave:1, launchDate:"11 May 2026", cc:true,
     m1:{subs:14, cpo:400, spend:5600},
     m2:{subs:14, cpo:355, spend:4970},
     m3:{subs:18, cpo:320, spend:5760},
@@ -534,7 +534,7 @@ const FORECAST = [
       "9% share at peak — conservative for a dual-language market with entity, leaves headroom to push harder"
     ]
   },
-  {code:"DK", rank:5, entity:false, confidence:"MEDIUM", wave:3, launchDate:"8 Jun 2026", cc:false,
+  {code:"DK", rank:5, entity:false, confidence:"MEDIUM", wave:3, launchDate:"15 Jun 2026", cc:false,
     m1:{subs:10, cpo:400, spend:4000},
     m2:{subs:14, cpo:380, spend:5320},
     m3:{subs:19, cpo:360, spend:6840},
@@ -566,7 +566,7 @@ const FORECAST = [
       "15.7% share at peak is the highest % of any market — Ireland punches above its weight in relative terms"
     ]
   },
-  {code:"NO", rank:7, entity:false, confidence:"MEDIUM", wave:3, launchDate:"8 Jun 2026", cc:false,
+  {code:"NO", rank:7, entity:false, confidence:"MEDIUM", wave:3, launchDate:"15 Jun 2026", cc:false,
     m1:{subs:6, cpo:400, spend:2400},
     m2:{subs:8, cpo:390, spend:3120},
     m3:{subs:12, cpo:370, spend:4440},
