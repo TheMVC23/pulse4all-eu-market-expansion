@@ -6,6 +6,7 @@
 <title>Pulse4all — EU Rollout Sales Forecast</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 <style>
 :root {
   --sand: #FFFDF6;
@@ -878,8 +879,10 @@ function renderChart(){
       borderWidth: 1.5,
       fill: true,
       tension: 0.3,
-      pointRadius: 0,
-      pointHoverRadius: 4
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
     },
     {
       label: 'Wave 1 — FR + BE + SE',
@@ -889,8 +892,10 @@ function renderChart(){
       borderWidth: 1.5,
       fill: true,
       tension: 0.3,
-      pointRadius: 0,
-      pointHoverRadius: 4
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
     },
     {
       label: 'Wave 2 — AT + IE',
@@ -900,8 +905,10 @@ function renderChart(){
       borderWidth: 1.5,
       fill: true,
       tension: 0.3,
-      pointRadius: 0,
-      pointHoverRadius: 4
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
     },
     {
       label: 'Wave 3 — NO + DK',
@@ -911,8 +918,10 @@ function renderChart(){
       borderWidth: 1.5,
       fill: true,
       tension: 0.3,
-      pointRadius: 0,
-      pointHoverRadius: 4
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
     },
     {
       label: 'Wave 4 — ES + FI',
@@ -922,18 +931,22 @@ function renderChart(){
       borderWidth: 1.5,
       fill: true,
       tension: 0.3,
-      pointRadius: 0,
-      pointHoverRadius: 4
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
     }
   ];
 
   new Chart(ctx, {
     type: 'line',
     data: { labels, datasets },
+    plugins: [ChartDataLabels],
     options: {
       responsive: true,
       maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
+      layout: { padding: { top: 28 } },
       plugins: {
         legend: {
           position: 'bottom',
@@ -949,6 +962,23 @@ function renderChart(){
           callbacks: {
             label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y} subs`,
             footer: (items) => 'Total: ' + items.reduce((a, b) => a + b.parsed.y, 0) + ' subs/mo'
+          }
+        },
+        datalabels: {
+          display: (ctx) => ctx.datasetIndex === ctx.chart.data.datasets.length - 1,
+          align: 'top',
+          anchor: 'end',
+          offset: 6,
+          color: '#0B133D',
+          font: { family: 'Montserrat', size: 11, weight: '700' },
+          backgroundColor: 'rgba(255, 255, 255, 0.92)',
+          borderColor: '#265BA4',
+          borderWidth: 1,
+          borderRadius: 6,
+          padding: { top: 3, bottom: 3, left: 7, right: 7 },
+          formatter: (value, ctx) => {
+            const i = ctx.dataIndex;
+            return ctx.chart.data.datasets.reduce((sum, ds) => sum + ds.data[i], 0);
           }
         }
       },
