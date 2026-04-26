@@ -65,6 +65,10 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .section h2{font-size:22px;margin-bottom:var(--sp-1);}
 .section .section-lead{font-size:13px;color:#6b7280;margin-bottom:var(--sp-3);max-width:900px;line-height:1.6;}
 
+/* Chart */
+.chart-wrapper{background:var(--white);border-radius:15px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.06);height:460px;position:relative;}
+@media(max-width:768px){.chart-wrapper{height:380px;padding:var(--sp-2);}}
+
 /* Launch schedule */
 .wave-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-2);}
 @media(max-width:600px){.wave-grid{grid-template-columns:1fr;}}
@@ -277,6 +281,14 @@ footer a{color:var(--light-blue);}
 </section>
 
 <div class="container">
+
+<section class="section">
+  <h2>Total monthly subscriptions — base + rollout</h2>
+  <p class="section-lead">DE and NL provide a steady 150 subs/mo base today (DE 80, NL 70). Each wave layers on top from its launch month, ramping to its M8 peak. By February 2027, the four-wave rollout adds 450 subs/mo on top of the base — taking the portfolio from 150 to 600 subs/mo, a 4× lift on the current run rate.</p>
+  <div class="chart-wrapper">
+    <canvas id="rolloutChart"></canvas>
+  </div>
+</section>
 
 <section class="section">
   <h2>Launch schedule — 4 waves over 7 weeks</h2>
@@ -852,6 +864,112 @@ function renderCards(){
 renderCalendar();
 renderTable();
 renderCards();
+
+// Stacked-area chart: monthly subs from existing base + each rollout wave
+function renderChart(){
+  const ctx = document.getElementById('rolloutChart').getContext('2d');
+  const labels = ['Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26','Dec 26','Jan 27','Feb 27'];
+  const datasets = [
+    {
+      label: 'DE + NL base (150)',
+      data: [150,150,150,150,150,150,150,150,150,150,150],
+      backgroundColor: 'rgba(11, 19, 61, 0.85)',
+      borderColor: '#0B133D',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0,
+      pointHoverRadius: 4
+    },
+    {
+      label: 'Wave 1 — FR + BE + SE',
+      data: [0,60,60,78,109,140,168,189,205,205,205],
+      backgroundColor: 'rgba(38, 91, 164, 0.85)',
+      borderColor: '#265BA4',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0,
+      pointHoverRadius: 4
+    },
+    {
+      label: 'Wave 2 — AT + IE',
+      data: [0,0,24,33,51,72,88,101,110,115,115],
+      backgroundColor: 'rgba(91, 141, 208, 0.85)',
+      borderColor: '#5B8DD0',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0,
+      pointHoverRadius: 4
+    },
+    {
+      label: 'Wave 3 — NO + DK',
+      data: [0,0,16,22,31,45,60,70,76,80,80],
+      backgroundColor: 'rgba(158, 207, 245, 0.85)',
+      borderColor: '#7CB6E8',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0,
+      pointHoverRadius: 4
+    },
+    {
+      label: 'Wave 4 — ES + FI',
+      data: [0,0,0,13,18,27,33,40,45,49,50],
+      backgroundColor: 'rgba(39, 174, 111, 0.85)',
+      borderColor: '#27AE6F',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 0,
+      pointHoverRadius: 4
+    }
+  ];
+
+  new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { family: 'Montserrat', size: 12 }, padding: 14, boxWidth: 14, usePointStyle: true, pointStyle: 'rectRounded' }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(11, 19, 61, 0.95)',
+          titleFont: { family: 'Montserrat', size: 13, weight: '600' },
+          bodyFont: { family: 'Montserrat', size: 12 },
+          footerFont: { family: 'Montserrat', size: 12, weight: '700' },
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: {
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y} subs`,
+            footer: (items) => 'Total: ' + items.reduce((a, b) => a + b.parsed.y, 0) + ' subs/mo'
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { family: 'Montserrat', size: 11 }, color: '#6b7280' }
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true,
+          grid: { color: 'rgba(0,0,0,0.05)' },
+          ticks: { font: { family: 'Montserrat', size: 11 }, color: '#6b7280', stepSize: 100 },
+          title: { display: true, text: 'Subscriptions per month', font: { family: 'Montserrat', size: 12, weight: '600' }, color: '#2E61A6' }
+        }
+      }
+    }
+  });
+}
+
+renderChart();
 </script>
 </body>
 </html>
