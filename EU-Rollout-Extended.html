@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse4all — EU Rollout · Extended Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<style>
+:root {
+  --sand: #FFFDF6;
+  --bg-blue: #EAF4FC;
+  --light-blue: #9ECFF5;
+  --denim-blue: #3B6FB3;
+  --deep-blue: #265BA4;
+  --deep-blue-heading: #2E61A6;
+  --leaf-green: #27AE6F;
+  --soft-rose: #F4D9D0;
+  --inkt: #0B133D;
+  --inkt-body: #1C2127;
+  --white: #FFFFFF;
+  --warm-white: #FDFBF1;
+  --grade-aplus: #1a8a4a;
+  --grade-a: #27AE6F;
+  --grade-bplus: #d4a017;
+  --grade-b: #e8963e;
+  --grade-c: #d35f2d;
+  --grade-d: #b33a2e;
+  --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px; --sp-6: 48px; --sp-8: 64px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;font-weight:400;color:var(--inkt-body);background:var(--sand);line-height:1.6;font-size:14px;}
+h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;color:var(--deep-blue-heading);font-weight:600;line-height:1.6;}
+.container{max-width:1440px;margin:0 auto;padding:0 var(--sp-3);}
+
+/* Header */
+header{background:var(--inkt);padding:var(--sp-3) 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+header .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-2);}
+.logo-area h1{font-size:22px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.logo-area .subtitle{font-size:13px;color:var(--light-blue);font-weight:400;}
+.header-meta{text-align:right;font-size:12px;color:var(--light-blue);}
+.header-meta a{color:var(--light-blue);text-decoration:none;}
+.header-meta a:hover{text-decoration:underline;}
+
+/* Hero summary */
+.hero{background:linear-gradient(135deg,var(--inkt) 0%,#1a2550 100%);color:var(--white);padding:var(--sp-6) 0;margin-bottom:var(--sp-4);}
+.hero h2{color:var(--white);font-size:32px;margin-bottom:var(--sp-1);line-height:1.2;}
+.hero .lead{font-size:16px;color:var(--light-blue);margin-bottom:var(--sp-4);max-width:900px;line-height:1.5;}
+
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);}
+.summary-card{background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);border-radius:16px;padding:var(--sp-3);border-left:4px solid var(--light-blue);}
+.summary-card.peak{background:rgba(39,174,111,0.15);border-left-color:var(--leaf-green);}
+.summary-card .label{font-size:11px;color:var(--light-blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:600;}
+.summary-card.peak .label{color:var(--leaf-green);}
+.summary-card .big{font-size:36px;font-weight:700;line-height:1;margin-bottom:4px;}
+.summary-card .unit{font-size:13px;color:var(--light-blue);font-weight:400;margin-left:4px;}
+.summary-card .stats{font-size:12px;margin-top:var(--sp-1);line-height:1.7;}
+.summary-card .stats strong{color:var(--white);}
+
+.run-rate{margin-top:var(--sp-3);padding:var(--sp-2);background:rgba(255,255,255,0.05);border-radius:12px;font-size:13px;color:var(--light-blue);}
+.run-rate strong{color:var(--white);}
+
+/* Section */
+.section{padding:var(--sp-4) 0;}
+.section h2{font-size:22px;margin-bottom:var(--sp-1);}
+.section .section-lead{font-size:13px;color:#6b7280;margin-bottom:var(--sp-3);max-width:900px;line-height:1.6;}
+
+/* Chart */
+.chart-wrapper{background:var(--white);border-radius:15px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.06);height:460px;position:relative;}
+@media(max-width:768px){.chart-wrapper{height:380px;padding:var(--sp-2);}}
+
+/* Launch schedule */
+.wave-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-2);}
+@media(max-width:600px){.wave-grid{grid-template-columns:1fr;}}
+.wave-card{background:var(--white);border-radius:14px;padding:var(--sp-3);box-shadow:0 1px 3px rgba(0,0,0,0.05);border-top:5px solid var(--deep-blue);}
+.wave-card.w2{border-top-color:var(--denim-blue);}
+.wave-card.w3{border-top-color:var(--light-blue);}
+.wave-card.w4{border-top-color:var(--leaf-green);}
+.wave-card .wave-label{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:6px;}
+.wave-card .wave-date{font-size:22px;font-weight:700;color:var(--deep-blue);margin-bottom:4px;}
+.wave-card .wave-markets{font-size:14px;margin-bottom:var(--sp-1);color:var(--inkt-body);}
+.wave-card .wave-markets .flag{font-size:20px;margin-right:4px;vertical-align:middle;}
+.wave-card .wave-note{font-size:12px;color:#6b7280;line-height:1.5;margin-top:var(--sp-1);}
+
+/* Calendar view */
+.calendar-wrapper{background:var(--white);border-radius:15px;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow-x:auto;}
+.calendar-table{width:100%;border-collapse:collapse;font-size:13px;}
+.calendar-table thead th{background:var(--inkt);color:var(--white);padding:14px 10px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
+.calendar-table thead th.center{text-align:center;}
+.calendar-table thead th.total{background:var(--leaf-green);}
+.calendar-table thead th.wave1{background:#2a334a;}
+.calendar-table thead th.wave2{background:#1f2a44;}
+.calendar-table thead th.wave3{background:#151d35;}
+.calendar-table thead th.wave4{background:#0d1530;}
+.calendar-table tbody td{padding:12px 10px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
+.calendar-table tbody tr:last-child td{border-bottom:none;}
+.calendar-table tbody tr:hover{background:var(--bg-blue);}
+.calendar-table .month-cell{font-weight:700;color:var(--deep-blue);white-space:nowrap;}
+.calendar-table .month-cell .sub{display:block;font-size:10px;color:#6b7280;font-weight:500;margin-top:2px;text-transform:uppercase;letter-spacing:0.5px;}
+.calendar-table .wave-cell{text-align:left;font-size:12px;line-height:1.5;}
+.calendar-table .wave-cell .stage{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-bottom:4px;letter-spacing:0.3px;}
+.calendar-table .wave-cell .stage-m1{background:#fef3c7;color:#92400e;}
+.calendar-table .wave-cell .stage-m2{background:#dbeafe;color:#1e40af;}
+.calendar-table .wave-cell .stage-m3{background:#c7d2fe;color:#3730a3;}
+.calendar-table .wave-cell .stage-m4, .calendar-table .wave-cell .stage-m5,
+.calendar-table .wave-cell .stage-m6, .calendar-table .wave-cell .stage-m7{background:#d1fae5;color:#065f46;}
+.calendar-table .wave-cell .stage-m8{background:var(--leaf-green);color:var(--white);}
+.calendar-table .wave-cell .stage-pre{background:#f3f4f6;color:#6b7280;}
+.calendar-table .wave-cell .figures{color:var(--inkt-body);font-weight:500;}
+.calendar-table .total-col{text-align:center;font-weight:600;background:#f8faf9;}
+.calendar-table .total-col.peak-row{background:#dcfce7;color:#065f46;font-weight:700;}
+.calendar-table .peak-subs{color:var(--leaf-green);font-weight:700;font-size:14px;}
+
+/* Per-market forecast table */
+.forecast-table-wrapper{background:var(--white);border-radius:15px;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow-x:auto;}
+.forecast-table{width:100%;border-collapse:collapse;font-size:13px;}
+.forecast-table thead th{background:var(--inkt);color:var(--white);padding:14px 10px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
+.forecast-table thead th.group-m1{background:#2a334a;}
+.forecast-table thead th.group-m2{background:#1f2a44;}
+.forecast-table thead th.group-m3{background:#1a2238;}
+.forecast-table thead th.group-m8{background:var(--leaf-green);}
+.forecast-table thead th.center{text-align:center;}
+.forecast-table tbody tr{border-bottom:1px solid #f0f0f0;transition:background .1s;}
+.forecast-table tbody tr:hover{background:var(--bg-blue);}
+.forecast-table tbody td{padding:12px 10px;vertical-align:middle;}
+.forecast-table tbody td.center{text-align:center;}
+.rank-num{font-weight:700;color:#6b7280;font-size:13px;}
+.country-cell{display:flex;align-items:center;gap:8px;font-weight:600;white-space:nowrap;}
+.country-cell .flag{font-size:22px;}
+
+/* Badges */
+.entity-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;}
+.entity-badge.yes{background:#dcfce7;color:#166534;}
+.entity-badge.no{background:#fef2f2;color:#991b1b;}
+.wave-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;}
+.wave-badge.w1{background:#e0e7ff;color:#3730a3;}
+.wave-badge.w2{background:#cffafe;color:#155e75;}
+.wave-badge.w3{background:#e0f2fe;color:#075985;}
+.wave-badge.w4{background:#dcfce7;color:#065f46;}
+.ops-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap;}
+.ops-badge.cc{background:#fce7f3;color:#9f1239;}
+.ops-badge.digital{background:#d1fae5;color:#065f46;}
+
+.peak-value{color:var(--leaf-green);font-weight:700;font-size:14px;}
+.share-badge{display:inline-block;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:700;background:var(--bg-blue);color:var(--deep-blue);}
+.conf-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;}
+.conf-high{background:#dcfce7;color:#166534;}
+.conf-medium{background:#fef9c3;color:#854d0e;}
+
+.total-row{background:var(--bg-blue) !important;font-weight:700;}
+.total-row td{padding:14px 10px;border-top:2px solid var(--deep-blue);}
+
+/* Cards */
+.market-cards{display:flex;flex-direction:column;gap:var(--sp-3);margin-top:var(--sp-2);}
+.market-card{background:var(--white);border-radius:16px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.05);border-left:6px solid var(--leaf-green);}
+.market-card.conf-med{border-left-color:var(--denim-blue);}
+
+.market-card-grid{display:grid;grid-template-columns:340px 1fr;gap:var(--sp-3);}
+@media(max-width:860px){.market-card-grid{grid-template-columns:1fr;}}
+
+.market-header{display:flex;align-items:baseline;gap:var(--sp-1);margin-bottom:var(--sp-1);flex-wrap:wrap;}
+.market-header h3{font-size:22px;margin:0;}
+.market-header .flag{font-size:32px;}
+.market-rank{font-size:12px;color:#6b7280;background:var(--bg-blue);padding:2px 10px;border-radius:10px;font-weight:600;}
+
+.market-badges{display:flex;gap:6px;margin-bottom:var(--sp-2);flex-wrap:wrap;}
+.market-headline{font-size:13px;color:var(--deep-blue);font-weight:600;margin-bottom:var(--sp-2);line-height:1.4;}
+.market-size{font-size:12px;color:#6b7280;margin-bottom:var(--sp-1);}
+.market-size strong{color:var(--inkt-body);}
+.market-launch{font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);}
+.market-launch strong{color:var(--inkt-body);}
+
+.metrics-grid{background:var(--bg-blue);border-radius:12px;padding:var(--sp-2);}
+.metrics-grid table{width:100%;font-size:12px;border-collapse:collapse;}
+.metrics-grid th{text-align:left;color:#6b7280;padding:4px 0;font-weight:600;border-bottom:1px solid #d1d5db;}
+.metrics-grid th.m8{color:var(--leaf-green);}
+.metrics-grid td{padding:6px 0;font-weight:600;}
+.metrics-grid td.m8{color:var(--leaf-green);font-weight:700;}
+.metrics-grid .share-line{margin-top:10px;padding-top:10px;border-top:1px solid #d1d5db;font-size:12px;color:#6b7280;}
+.metrics-grid .share-line strong{color:var(--inkt-body);font-size:14px;}
+
+.rationale h4{font-size:13px;margin-bottom:var(--sp-1);color:var(--deep-blue);}
+.rationale ul{list-style:none;font-size:13px;}
+.rationale li{padding:6px 0;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid #f5f5f5;line-height:1.5;}
+.rationale li:last-child{border-bottom:none;}
+.rationale li::before{content:"→";color:var(--leaf-green);font-weight:700;flex-shrink:0;font-size:14px;}
+.market-card.conf-med .rationale li::before{color:var(--denim-blue);}
+
+/* Ramp logic + assumptions + triggers */
+.info-block{background:var(--white);border-radius:15px;padding:var(--sp-3);box-shadow:0 1px 3px rgba(0,0,0,0.05);margin-bottom:var(--sp-3);}
+.info-block h2{font-size:18px;margin-bottom:var(--sp-1);}
+.info-block .block-lead{font-size:12px;color:#6b7280;margin-bottom:var(--sp-2);}
+
+.ramp-table{width:100%;font-size:13px;border-collapse:collapse;}
+.ramp-table th{text-align:left;padding:10px;background:#f8f9fa;border-bottom:2px solid #e5e7eb;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--deep-blue);}
+.ramp-table td{padding:12px 10px;border-bottom:1px solid #f0f0f0;}
+.ramp-table tr:last-child td{border-bottom:none;}
+.ramp-table tr:last-child td:last-child{color:var(--leaf-green);font-weight:600;}
+.ramp-table td:first-child{font-weight:600;color:var(--deep-blue);}
+
+.triggers-list{list-style:none;}
+.triggers-list li{padding:10px 14px;background:#fff8f5;border-left:3px solid var(--grade-c);border-radius:0 8px 8px 0;margin-bottom:10px;font-size:13px;line-height:1.5;}
+.triggers-list li strong{color:var(--grade-c);}
+
+.assumptions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-2);}
+.assumption-card{padding:14px 16px;background:var(--bg-blue);border-radius:10px;font-size:12px;line-height:1.5;}
+.assumption-card strong{color:var(--deep-blue);display:block;margin-bottom:6px;font-size:13px;}
+
+/* Future markets — exploratory section */
+.future-badge{display:inline-block;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px;background:var(--soft-rose);color:#9f1239;margin-left:12px;vertical-align:middle;letter-spacing:0.5px;text-transform:uppercase;}
+.future-wrapper{background:var(--warm-white);border-radius:15px;box-shadow:0 1px 3px rgba(0,0,0,0.05);overflow-x:auto;border:1.5px dashed #c5d3e3;}
+.future-wrapper .forecast-table tbody tr:hover{background:rgba(244,217,208,0.25);}
+
+/* Footer */
+footer{background:var(--inkt);color:var(--light-blue);padding:var(--sp-3) 0;text-align:center;font-size:12px;margin-top:var(--sp-6);}
+footer a{color:var(--light-blue);}
+
+/* Responsive */
+@media(max-width:1100px){
+  .summary-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .container{padding:0 var(--sp-2);}
+  .summary-grid{grid-template-columns:1fr;}
+  .hero h2{font-size:24px;}
+  header .container{flex-direction:column;text-align:center;}
+  .header-meta{text-align:center;}
+}
+
+/* Print */
+@media print{
+  header,footer{background:var(--white);color:var(--inkt);}
+  .hero{background:var(--white);color:var(--inkt);}
+  .hero h2,.hero .lead{color:var(--inkt);}
+  .summary-card{border:1px solid #e5e7eb;background:var(--white);color:var(--inkt);}
+  .summary-card .label,.summary-card .unit{color:#6b7280;}
+  body{font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo-area">
+      <h1>Pulse4all EU rollout — extended plan</h1>
+      <div class="subtitle">UK/NL/DE base + 4-wave expansion · operational costs · review framework · risks &amp; threats</div>
+    </div>
+    <div class="header-meta">
+      <div>Last updated: April 2026</div>
+      <div><a href="EU-Rollout-Pulse4all.html">← Back to basic plan</a></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h2>Extended plan — 310 base + 450 expansion = 760 subs/mo at peak</h2>
+    <p class="lead">UK + NL + DE deliver 310 subs/mo today (UK 160 · DE 80 · NL 70). The four-wave expansion adds 450 more across nine new markets by Feb 2027 — a 2.45× lift on today's run rate. This extended plan layers on the operational view: launch costs, ongoing opex, the 3-month per-market review gate, the end-July portfolio decision point, and the risks &amp; threats register.</p>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="label">April 2026 — today</div>
+        <div class="big">310<span class="unit">subs</span></div>
+        <div class="stats"><strong>UK 160</strong> · <strong>DE 80</strong> · <strong>NL 70</strong><br>Existing entities at steady state</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">July 2026 — all waves live</div>
+        <div class="big">456<span class="unit">subs</span></div>
+        <div class="stats"><strong>310</strong> base + <strong>146</strong> expansion<br>Wave 4 (ES + FI) launches</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">September 2026 — accelerating</div>
+        <div class="big">594<span class="unit">subs</span></div>
+        <div class="stats"><strong>310</strong> base + <strong>284</strong> expansion<br>~63% of expansion peak</div>
+      </div>
+      <div class="summary-card peak">
+        <div class="label">February 2027 — full run rate</div>
+        <div class="big">760<span class="unit">subs</span></div>
+        <div class="stats"><strong>310</strong> base + <strong>450</strong> expansion ✓<br><strong>2.45×</strong> today's run rate</div>
+      </div>
+    </div>
+    <div class="run-rate">
+      <strong>Annual run rate at full maturity:</strong> 9,120 subscriptions per year (5,400 net-new from expansion + 3,720 from existing entities) · ~€25K MRR · €1.49M annual ad budget for the expansion · €273K annual operational opex on top of ad spend (CC + CS + agency). Higher CPO by design — year 1 prioritises volume, year 2 optimises efficiency.
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<section class="section">
+  <h2>Total monthly subscriptions — base + rollout</h2>
+  <p class="section-lead">UK + DE + NL provide a steady 310 subs/mo base today (UK 160, DE 80, NL 70). Each wave layers on top from its launch month, ramping to its M8 peak. By February 2027, the four-wave rollout adds 450 subs/mo on top of the base — taking the portfolio from 310 to 760 subs/mo, a 2.45× lift on today's run rate.</p>
+  <div class="chart-wrapper">
+    <canvas id="rolloutChart"></canvas>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Launch schedule — 4 waves over 7 weeks</h2>
+  <p class="section-lead">Wave 1 (FR/BE/SE) reopens on 11 May. Three weeks later Wave 2 (AT/IE) goes live, then Wave 3 (NO/DK) two weeks after that, and Wave 4 (ES/FI) two weeks behind Wave 3. This staggers the team's attention so each launch gets a focused window. Digital-only markets — SE, NO, DK, Finland — run without a call centre agent (automation + email carry conversion); Spain has a CC agent because of the price-sensitive buyer profile. Net CC cost vs an "all markets get CC" baseline: minus €15K/mo (four markets digital-only saves €20K, Spain CC adds €5K).</p>
+  <div class="wave-grid">
+    <div class="wave-card">
+      <div class="wave-label">Wave 1</div>
+      <div class="wave-date">11 May 2026</div>
+      <div class="wave-markets"><span class="flag">🇧🇪</span>Belgium <span class="flag" style="margin-left:8px;">🇸🇪</span>Sweden <span class="flag" style="margin-left:8px;">🇫🇷</span>France</div>
+      <div class="wave-note"><strong>Entity at launch</strong> in all three. Belgium + France have CC support; Sweden is digital-only. These are the reopening markets with existing brand footprint, so the ramp is fastest.</div>
+    </div>
+    <div class="wave-card w2">
+      <div class="wave-label">Wave 2</div>
+      <div class="wave-date">1 June 2026</div>
+      <div class="wave-markets"><span class="flag">🇦🇹</span>Austria <span class="flag" style="margin-left:8px;">🇮🇪</span>Ireland</div>
+      <div class="wave-note"><strong>Satellite launches.</strong> Austria rides the German content, ads, legal and CC stack. Ireland rides the UK stack on English + EUR. Minimal net-new localization needed.</div>
+    </div>
+    <div class="wave-card w3">
+      <div class="wave-label">Wave 3</div>
+      <div class="wave-date">15 June 2026</div>
+      <div class="wave-markets"><span class="flag">🇳🇴</span>Norway <span class="flag" style="margin-left:8px;">🇩🇰</span>Denmark</div>
+      <div class="wave-note"><strong>Digital-only pair.</strong> Nordic launches run without a call centre — automation + email drive conversion. Highest demand signals in Europe (90% CPR training NO, highest AED density DK), but highest launch friction too.</div>
+    </div>
+    <div class="wave-card w4">
+      <div class="wave-label">Wave 4</div>
+      <div class="wave-date">29 June 2026</div>
+      <div class="wave-markets"><span class="flag">🇪🇸</span>Spain <span class="flag" style="margin-left:8px;">🇫🇮</span>Finland</div>
+      <div class="wave-note"><strong>Mixed model.</strong> Spain launches with a Spanish CC agent — price-sensitive buyers benefit from phone rescue. Finland is digital-only, riding DESI top-5 + Klarna home market. Conservative volumes — Spanish localization is fully net-new, Finnish market is small.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Calendar-month portfolio forecast</h2>
+  <p class="section-lead">Subscriptions per calendar month as waves overlay each other. Each wave follows its own M1 → M8 trajectory from its launch date. Portfolio hits its peak run rate once all four waves have reached M8 — approximately February 2027. CPO stays high by design (€400 cap at M1, €276 blended at peak) — year 1 is about proving volume and building brand, not optimizing efficiency. The M1→M2 CPO dip is modest because we keep spend high rather than pulling back.</p>
+
+  <div class="calendar-wrapper">
+    <table class="calendar-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th class="wave1">Wave 1 — FR · BE · SE</th>
+          <th class="wave2">Wave 2 — AT · IE</th>
+          <th class="wave3">Wave 3 — NO · DK</th>
+          <th class="wave4">Wave 4 — ES · FI</th>
+          <th class="total center">Monthly subs</th>
+          <th class="total center">Ad spend</th>
+          <th class="total center">Blended CPO</th>
+        </tr>
+      </thead>
+      <tbody id="calendarTableBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Per-market subscription forecast</h2>
+  <p class="section-lead">The same forecast viewed per-market, with each country's own M1 / M2 / M3 / M8-peak trajectory from its launch date. M1 is intentionally at the €400 cap everywhere to maximize lead capture; M2 and M3 show the payoff as those leads convert. Entity + CC / digital-only status is called out per market. Peak share reflects share of that country's monthly AED market (units/mo).</p>
+
+  <div class="forecast-table-wrapper">
+    <table class="forecast-table">
+      <thead>
+        <tr>
+          <th style="width:40px;">#</th>
+          <th>Market</th>
+          <th>Wave</th>
+          <th>Entity</th>
+          <th>Ops</th>
+          <th class="group-m1 center">M1 subs</th>
+          <th class="group-m1 center">M1 CPO</th>
+          <th class="group-m1 center">M1 spend</th>
+          <th class="group-m2 center">M2 subs</th>
+          <th class="group-m2 center">M2 CPO</th>
+          <th class="group-m3 center">M3 subs</th>
+          <th class="group-m3 center">M3 CPO</th>
+          <th class="group-m8 center">M8 peak</th>
+          <th class="group-m8 center">M8 CPO</th>
+          <th class="group-m8 center">M8 share</th>
+          <th class="center">Conf.</th>
+        </tr>
+      </thead>
+      <tbody id="forecastTableBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Per-market rationale</h2>
+  <p class="section-lead">Why we expect these specific numbers. Each card shows the reasoning tied to historical CSV data (UK/NL/DE benchmarks, FR/BE/SE when funded in H1 2025), real AED market size per country, the Shopify site uplift, and the CC / digital-only operating model.</p>
+  <div class="market-cards" id="marketCards"></div>
+</section>
+
+<section class="section">
+  <h2>🇳🇴 Norway operational scenarios — ship from Sweden vs. Norway</h2>
+  <p class="section-lead">Norway is non-EU and outside the EU customs union — every order requires customs handling regardless of where it ships from. The choice is where the warehouse sits and how often we cross the border. Status quo is shipping from NL; the two scenarios below evaluate moving inventory closer to the customer.</p>
+
+  <div class="info-block">
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th style="width:42%;">🇸🇪 Scenario A — Ship from Sweden</th>
+          <th style="width:42%;">🇳🇴 Scenario B — Ship from Norway</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Setup</strong></td>
+          <td>SE warehouse / 3PL serves all Nordic (DK, NO, SE, FI). Cross-border into NO via VOEC scheme on every order.</td>
+          <td>Local NO warehouse / 3PL. Domestic shipping for NO orders, no customs paperwork per shipment.</td>
+        </tr>
+        <tr>
+          <td><strong>Pros</strong></td>
+          <td>One regional warehouse for 4 markets; faster than NL→NO (~1-2 days vs 4-5); SE entity already exists; consolidates Nordic stock</td>
+          <td>Fastest delivery (next-day possible); best customer experience; no customs delays per order; fully domestic returns flow</td>
+        </tr>
+        <tr>
+          <td><strong>Cons</strong></td>
+          <td>Need to set up SE 3PL contract; still customs friction per order; SE→NO shipping cost higher than domestic NO</td>
+          <td>Standalone for one small market (35 subs/mo at peak); local stock holding requirement; possibly NO entity required; lowest leverage</td>
+        </tr>
+        <tr>
+          <td><strong>One-off setup</strong></td>
+          <td>~€15-25K (3PL onboarding, stock relocation)</td>
+          <td>~€25-35K (3PL onboarding, possible entity setup, stock positioning)</td>
+        </tr>
+        <tr>
+          <td><strong>Per-order shipping</strong></td>
+          <td>~€15-20 (cross-border)</td>
+          <td>~€8-12 (domestic)</td>
+        </tr>
+        <tr>
+          <td><strong>VAT / customs</strong></td>
+          <td>VOEC scheme registration in NO (foreign-seller VAT); SE VAT does not apply</td>
+          <td>NO VAT (MVA) registration required from the start; domestic VAT compliance simpler in NO</td>
+        </tr>
+        <tr>
+          <td><strong>Best fit when</strong></td>
+          <td>Nordic volume (DK + NO + FI together) supports a regional hub — likely once Wave 3 + 4 are live</td>
+          <td>NO standalone volume hits 60-80 subs/mo — currently not forecast until 2028+ at conservative trajectory</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:var(--sp-2);padding:var(--sp-2);background:var(--bg-blue);border-radius:10px;font-size:13px;line-height:1.6;">
+      <strong>Recommendation:</strong> Scenario A (SE warehouse) is more capital-efficient if we're committing to a Nordic regional hub anyway. Scenario B (NO warehouse) only justifies itself once NO volume crosses ~60 subs/mo — well above our 35-at-peak conservative forecast.<br><br>
+      <strong>Open items requiring confirmation before 15 June launch:</strong>
+      <ul style="margin-top:8px;padding-left:20px;">
+        <li>Does our current 3PL handle VOEC properly today, or do we need to switch / extend?</li>
+        <li>Norwegian entity requirement for B2C remote subscription (likely no via VOEC, but Bas / legal to confirm)</li>
+        <li>MVA registration threshold + filing cadence (NOK 50K cumulative)</li>
+        <li>Returns / RMA workflow — who handles inbound returns from NO?</li>
+        <li>Locked decision: which scenario by 15 June launch?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Operational costs — one-off + ongoing</h2>
+  <p class="section-lead">Beyond ad spend: the launch costs to bring each new market live, and the monthly opex (CC, customer service, social media agency) to keep them running. CC + CS rates: €30/hr × 10 hr/wk for CC agents (only on CC markets) and €30/hr × 5 hr/wk for customer service (every market).</p>
+
+  <div class="info-block">
+    <h2>One-off launch cost per country</h2>
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th style="width:280px;">Item</th>
+          <th>Cost per launch</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Shopify site setup</td><td>€5,000</td><td>Theme, content, configuration, payment integrations</td></tr>
+        <tr><td>Translation (initial)</td><td>€1,500</td><td>Site copy, ad copy, key email flows. <strong>Translation is the binding capacity constraint</strong> — wave staging is set by translation throughput.</td></tr>
+        <tr><td>Social media setup</td><td>€1,000</td><td>Channel setup + initial creative</td></tr>
+        <tr><td><strong>Subtotal — true cash burn</strong></td><td><strong>€7,500</strong></td><td>Per launch, non-recoverable</td></tr>
+        <tr><td>Initial stock</td><td>€25,000</td><td><strong>Working capital</strong> — recoverable as units sell. Tied up but not burned.</td></tr>
+        <tr><td><strong>Total per launch (cash + WC)</strong></td><td><strong>€32,500</strong></td><td></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:var(--sp-2);font-size:13px;color:#6b7280;line-height:1.6;">
+      <strong>Across 9 expansion markets:</strong> €67,500 cash burn + €225,000 working capital = <strong>€292,500 total</strong> required to launch all four waves. Cash burn alone is modest; the bigger ask is parking €225K in inventory that pays back as subscriptions ship over the next 6-9 months.
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h2>Monthly operational costs — at full peak (Feb 2027)</h2>
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th style="width:280px;">Category</th>
+          <th>Per market / month</th>
+          <th>At peak (9 markets)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Customer service (5 hrs/wk × €30/hr × 4 wks)</td><td>€600</td><td>€5,400 (all 9 markets)</td></tr>
+        <tr><td>Call centre agent (10 hrs/wk × €30/hr × 4 wks)</td><td>€1,200</td><td>€6,000 (5 CC markets: FR, BE, AT, IE, ES)</td></tr>
+        <tr><td>Social media agency</td><td>€1,200</td><td>€10,800 (all 9 markets)</td></tr>
+        <tr><td><strong>Subtotal — fixed opex</strong></td><td></td><td><strong>€22,200/mo</strong></td></tr>
+        <tr><td>Ad spend (variable, see chart above)</td><td>varies</td><td>€124,000/mo</td></tr>
+        <tr><td><strong>Total monthly at peak</strong></td><td></td><td><strong>€146,200/mo</strong></td></tr>
+        <tr><td><strong>Annual at peak</strong></td><td></td><td><strong>€1.75M</strong></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:var(--sp-2);font-size:13px;color:#6b7280;line-height:1.6;">
+      Fixed opex (CC + CS + agency) is just <strong>€22.2K/mo</strong> at full peak — small relative to €124K/mo ad spend. But it's there from launch, regardless of how fast subs come in. Annual fixed opex: ~<strong>€273K</strong> on top of ad budget.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Review framework — when to scale, hold, or kill</h2>
+  <p class="section-lead">Two review gates: a per-market 3-month checkpoint at each market's own M3, plus a portfolio-wide decision point at the end of July (or early August once Wave 4 has at least one full month of data).</p>
+
+  <div class="info-block">
+    <h2>Per-market 3-month checkpoint</h2>
+    <p class="block-lead">For each market, at M3 post-launch we evaluate against the trajectory and decide: scale, hold, or kill.</p>
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th style="width:160px;">Outcome at M3</th>
+          <th style="width:30%;">Threshold</th>
+          <th>Decision</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#166534;">Working</strong></td>
+          <td>&gt;75% of M3 forecast subs hit · CPA inside band</td>
+          <td><strong>Add CC agent</strong> if currently digital-only — CC pays for itself at ~10 incremental subs/mo. Scale ad spend per plan. Queue for Wave 5+ expansion conversation.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#854d0e;">Mixed</strong></td>
+          <td>40-75% of M3 forecast · CPA somewhat above target</td>
+          <td><strong>Hold and adjust</strong> — creative iteration, new keywords, partnership outreach. Re-evaluate at M6. No new spend commitment until M6 read.</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#991b1b;">Failing</strong></td>
+          <td>&lt;40% of M3 forecast · OR CPA stays above €450</td>
+          <td><strong>Pause campaigns + 30-day fix window.</strong> If still failing at end of fix window, full pull-out — reclaim budget and rotate to higher-performing markets.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-block">
+    <h2>Portfolio review — end of July / early August 2026</h2>
+    <p class="block-lead">By 31 July: Wave 1 hits M3, Wave 2 hits M2, Wave 3 hits M2, Wave 4 hits M1. End of July is the right moment for the first portfolio-wide review. Early August gives Wave 4 a fuller month of data if 31 July feels too early.</p>
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th style="width:280px;">Question</th>
+          <th>How we answer it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Which countries are working?</strong></td><td>Apply per-market 3-month checkpoint to Wave 1; early-read indicators for Waves 2-4. Identify CC retrofit candidates.</td></tr>
+        <tr><td><strong>Which need more localisation?</strong></td><td>Look at search query data, conversion-rate gaps vs. forecast, and CC call notes. Translation gaps surface here.</td></tr>
+        <tr><td><strong>Stop candidates?</strong></td><td>Markets failing the M3 threshold get killed. Reclaim budget for top performers and Wave 5 prep.</td></tr>
+        <tr><td><strong>Further expansion?</strong></td><td>If 5+ markets are tracking ahead of forecast, queue Wave 5 from the future-markets list (Switzerland and Italy first — they're easiest).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-block">
+    <h2>If digital-first fails portfolio-wide</h2>
+    <p class="block-lead">Defined as: portfolio July totals below 60% of forecast (i.e. below ~88 subs from expansion in July).</p>
+    <ul class="triggers-list">
+      <li><strong>→ Pause Wave 4</strong> if not yet live (decision point: 25 June, four days before scheduled launch)</li>
+      <li><strong>→ Concentrate budget</strong> on top-2 performing markets — kill or cut budget on the rest</li>
+      <li><strong>→ Reactivate CC</strong> for markets where digital is structurally underperforming (CC retrofit ~€1,200/mo per market)</li>
+      <li><strong>→ Slow to a 6-week wave cadence</strong> instead of 2-week, to give translation + ops more breathing room</li>
+      <li><strong>→ Re-baseline forecast</strong> with the new model before any further expansion conversation</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="info-block">
+    <h2>Monthly ramp logic — why M1 is at the cap and M2/M3 accelerate</h2>
+    <p class="block-lead">Each market follows this curve from its own launch date. M1 is deliberately spent at the €400 CPO cap to fill the lead pipeline; the blended M2/M3 CPOs then drop because (a) the ad platform exits learning phase, (b) M1-generated leads convert through email and remarketing, (c) CC agents (where applicable) exit training and start closing.</p>
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th style="width:100px;">Month</th>
+          <th>What's happening</th>
+          <th style="width:180px;">Subs vs peak</th>
+          <th style="width:140px;">CPO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Month 1</td><td>Max-spend at the €400 cap to fill pipeline. Ad platforms in learning phase, tracking/pixel debugging, creative iteration, CC training where applicable. Leads generated here convert later.</td><td>~20-27% of peak</td><td>€400 (cap)</td></tr>
+        <tr><td>Month 2</td><td>Learning phase exits, creative dialled in, M1 leads converting via email + remarketing, first customer reviews building</td><td>~28-45% of peak</td><td>~€355-395</td></tr>
+        <tr><td>Month 3</td><td>Acceleration — steady state hit, social proof accumulating, full budget deployable</td><td>~36-55% of peak</td><td>~€320-370</td></tr>
+        <tr><td>Months 4-5</td><td>Word-of-mouth begins, affiliate programs activate, organic + brand search rising</td><td>~55-80% of peak</td><td>~€295-360</td></tr>
+        <tr><td>Months 6-7</td><td>Nearing peak efficiency, stable CAC-LTV</td><td>~88-99% of peak</td><td>~€265-340</td></tr>
+        <tr><td>Month 8+</td><td>Peak — fully optimized funnel (year 1 target; efficiency improves in year 2)</td><td>100% peak</td><td>€240-330 per market</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-block">
+    <h2>Per-market risks and mitigations</h2>
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th style="width:150px;">Market</th>
+          <th style="width:40%;">Primary risk</th>
+          <th>Mitigation / kill trigger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>🇫🇷 France</td><td>CPO stays at €400 cap beyond M2 despite entity</td><td>Hold budget at €25K until CPO drops below €300; budget expansion to €48K only unlocks from M5 onward</td></tr>
+        <tr><td>🇸🇪 Sweden</td><td>Digital-only model underperforms without CC phone rescue</td><td>Monitor M2 CPO closely; if &gt;€300, activate email-only remarketing sequence + chat widget before adding CC</td></tr>
+        <tr><td>🇧🇪 Belgium</td><td>Flanders/Wallonia split dilutes campaign efficiency</td><td>Run fully separate FR/NL campaigns from day one; hard split on creative + landing pages</td></tr>
+        <tr><td>🇦🇹 Austria</td><td>Over-reliance on DE playbook misses Austrian buyer signals</td><td>Austrian-specific creative pass in M2; monitor share-of-voice vs WERO weekly</td></tr>
+        <tr><td>🇮🇪 Ireland</td><td>defibshop.ie price-matches Pulse4all at €30/mo</td><td>Lead with flexibility (3-month min vs competitor lock-ins); pursue IHF partnership in M3</td></tr>
+        <tr><td>🇳🇴 Norway</td><td>Digital-only + Norwegian language + non-EU complexity (NOK, MVA)</td><td>Bridge with Danish content initially; pursue LHL partnership (52K members) in M3</td></tr>
+        <tr><td>🇩🇰 Denmark</td><td>Brand perceived as foreign without entity + digital-only</td><td>Pursue TrygFonden / Hjerteforeningen partnership in M2-M3 to establish trust signal</td></tr>
+        <tr><td>🇪🇸 Spain</td><td>Price sensitivity + full Spanish localization + regional regulatory variation</td><td>Lead with longer-commitment discount; lean on Spanish CC agent for price-sensitive rescue; phase regional compliance Madrid → Cataluña → rest</td></tr>
+        <tr><td>🇫🇮 Finland</td><td>Tiny market caps absolute volume + Finnish localization is hard</td><td>Bridge with Swedish content for ~6% native speakers; accept low absolute peak (20 subs/mo) as the structural ceiling</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-block">
+    <h2>Key assumptions</h2>
+    <p class="block-lead">These are the inputs that drive the forecast. If any assumption shifts, the numbers shift with it.</p>
+    <div class="assumptions-grid">
+      <div class="assumption-card">
+        <strong>M1 at €400 CPO cap — deliberate pipeline fill</strong>
+        Front-loaded ad spend in M1 to capture leads that convert in M2-M3. Observed M1 CPO is high by design; effective CPO across the M1→M3 cohort is much lower once leads finish converting.
+      </div>
+      <div class="assumption-card">
+        <strong>Net CC cost: minus €15K/mo</strong>
+        Four markets digital-only (SE, NO, DK, FI) avoid €5K/mo agent cost each = €20K/mo saved. Spain adds €5K/mo for a Spanish CC agent (price-sensitive market needs phone rescue). Net vs an "all markets get CC" baseline: -€15K/mo.
+      </div>
+      <div class="assumption-card">
+        <strong>Shopify site uplift: ~20%</strong>
+        New Shopify sites are ~25% better suited per market than the old WordPress sites — translating to ~20% CPO improvement (conservative ratio).
+      </div>
+      <div class="assumption-card">
+        <strong>Entity trust boost: +15%</strong>
+        Local entity in France, Belgium, and Sweden at launch removes the single biggest historical drag. Adds ~15% CPO improvement on top of Shopify boost.
+      </div>
+      <div class="assumption-card">
+        <strong>CC languages — Spanish is the only new hire</strong>
+        Shared with existing markets: DE (→AT), EN (→IE), FR+NL (→BE), FR (→FR). Spanish (→ES) is a new agent at ~€5K/mo — only incremental CC cost in the rollout. Finland skips CC entirely (digital-only).
+      </div>
+      <div class="assumption-card">
+        <strong>Conservative peak — significant headroom</strong>
+        Portfolio peak of 450 subs/mo = 7.8% of the 5,787/mo combined AED market across these 9 countries. Roughly half the 15% benchmark UK/NL/DE reached — leaves meaningful upside if the playbook proves out and budgets can expand.
+      </div>
+      <div class="assumption-card">
+        <strong>Staggered waves protect focus</strong>
+        2-week gap between waves means the team can concentrate on one launch at a time, debug tracking/creative/CC training before moving to the next. No simultaneous 7-market launch chaos.
+      </div>
+      <div class="assumption-card">
+        <strong>Translation is the binding capacity constraint</strong>
+        Wave timing (3w · 2w · 2w intervals) is paced by translation throughput, not by ad readiness or CC training. Going faster requires additional translation capacity from an external agency — a one-off ~€2-4K bump per accelerated market.
+      </div>
+      <div class="assumption-card">
+        <strong>Digital-first by default — CC retrofit if proven</strong>
+        Default is digital-only (ads + email + automation) for new markets. If a market hits &gt;75% of M3 forecast, we add a CC agent (€1,200/mo) to capture the next 25% of demand. If digital is structurally failing portfolio-wide, we slow the cadence and add CC earlier.
+      </div>
+      <div class="assumption-card">
+        <strong>No partnerships in base case</strong>
+        Forecast assumes no BHF-equivalent partnerships yet. Adding LHL (Norway), TrygFonden (Denmark), or IHF (Ireland) would accelerate beyond these numbers — especially valuable for digital-only markets where trust signals matter more.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Future markets — conservative full-digital potential <span class="future-badge">Planning · not committed</span></h2>
+  <p class="section-lead">Sizing exercise for what a Wave 5+ could add once Waves 1-4 prove out. All six modelled as digital-only (no call centre), no entity, no partnerships — a deliberately conservative floor. None of these are scheduled or committed; this is for capacity planning only. Adding all six at peak would lift the portfolio by ~80 subs/mo (600 → 680/mo) and ad spend by ~€28K/mo, taking annual ad budget to ~€1.82M.</p>
+
+  <div class="future-wrapper">
+    <table class="forecast-table">
+      <thead>
+        <tr>
+          <th style="width:40px;">#</th>
+          <th>Market</th>
+          <th>Currency</th>
+          <th>Localization</th>
+          <th class="group-m8 center">Peak subs/mo</th>
+          <th class="group-m8 center">Peak CPO</th>
+          <th class="group-m8 center">Peak spend</th>
+          <th>Key consideration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank-num">1</td>
+          <td><div class="country-cell"><span class="flag">🇨🇭</span>Switzerland</div></td>
+          <td>CHF</td>
+          <td>DE + FR + IT bridge from existing assets</td>
+          <td class="center peak-value">25</td>
+          <td class="center">€320</td>
+          <td class="center">€8.0K</td>
+          <td>Premium market, highest purchasing power in EU — easiest fit of the six</td>
+        </tr>
+        <tr>
+          <td class="rank-num">2</td>
+          <td><div class="country-cell"><span class="flag">🇮🇹</span>Italy</div></td>
+          <td>EUR</td>
+          <td>Italian (full new content)</td>
+          <td class="center peak-value">20</td>
+          <td class="center">€350</td>
+          <td class="center">€7.0K</td>
+          <td>Big AED market (~750/mo) but full localization + price sensitivity = slow lift</td>
+        </tr>
+        <tr>
+          <td class="rank-num">3</td>
+          <td><div class="country-cell"><span class="flag">🇵🇱</span>Poland</div></td>
+          <td>PLN</td>
+          <td>Polish (full new content)</td>
+          <td class="center peak-value">12</td>
+          <td class="center">€370</td>
+          <td class="center">€4.4K</td>
+          <td>FX risk + lowest disposable income of the six = stiff price resistance</td>
+        </tr>
+        <tr>
+          <td class="rank-num">4</td>
+          <td><div class="country-cell"><span class="flag">🇵🇹</span>Portugal</div></td>
+          <td>EUR</td>
+          <td>PT-PT (full new content, distinct from PT-BR)</td>
+          <td class="center peak-value">10</td>
+          <td class="center">€360</td>
+          <td class="center">€3.6K</td>
+          <td>Small market, high price sensitivity</td>
+        </tr>
+        <tr>
+          <td class="rank-num">5</td>
+          <td><div class="country-cell"><span class="flag">🇬🇷</span>Greece</div></td>
+          <td>EUR</td>
+          <td>Greek (alphabet = full UI + content + ads net-new)</td>
+          <td class="center peak-value">8</td>
+          <td class="center">€380</td>
+          <td class="center">€3.0K</td>
+          <td>Hardest localization (Greek alphabet), low subscription culture</td>
+        </tr>
+        <tr>
+          <td class="rank-num">6</td>
+          <td><div class="country-cell"><span class="flag">🇱🇺</span>Luxembourg</div></td>
+          <td>EUR</td>
+          <td>FR + DE bridge from existing assets</td>
+          <td class="center peak-value">5</td>
+          <td class="center">€330</td>
+          <td class="center">€1.7K</td>
+          <td>Tiny market caps absolute volume; near-zero localization cost</td>
+        </tr>
+        <tr class="total-row">
+          <td></td>
+          <td><strong>TOTAL (6 markets)</strong></td>
+          <td></td>
+          <td></td>
+          <td class="center peak-value">80</td>
+          <td class="center">€346</td>
+          <td class="center">€27.7K</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Risks &amp; threats register</h2>
+  <p class="section-lead">Live list of risks that could derail or slow the plan. Reviewed at the same cadence as the per-market 3-month checkpoint and the end-of-July portfolio review.</p>
+
+  <div class="info-block">
+    <table class="ramp-table">
+      <thead>
+        <tr>
+          <th style="width:130px;">Category</th>
+          <th style="width:38%;">Risk</th>
+          <th>Mitigation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#9f1239;">Tax / VAT</strong></td>
+          <td>Tax advisors haven't yet locked the answer on subscription VAT treatment per country (rate, place of supply, OSS coverage). Wrong answer means we either over-charge customers (lose conversions) or under-charge (back-tax exposure)</td>
+          <td>Lock per-market VAT position with Bas before each wave goes live; budget for advisor hours; assume worst-case rates in pricing models until cleared</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#9f1239;">Tax / VAT</strong></td>
+          <td>VAT registration delays in non-EU markets (NO via VOEC; CH later if added) — late registration triggers penalties + retroactive VAT</td>
+          <td>Start VOEC registration 6 weeks before NO launch; treat VAT registration as a launch dependency, not a side task</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#d35f2d;">Logistics</strong></td>
+          <td>Norway customs handling unresolved — current 3PL may not handle VOEC properly</td>
+          <td>Resolve Scenario A vs B before 15 June launch (see Norway section). If neither works in time, defer NO launch by one wave</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#d35f2d;">Logistics</strong></td>
+          <td>Stock positioning — currently NL only; regional warehouses (SE, NO) may be needed as Nordic volume grows</td>
+          <td>Tied to Norway scenario decision; review again after Wave 3 has 60+ days of order data</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#d35f2d;">Operational</strong></td>
+          <td>Translation bottleneck slows wave launches — current pace assumes 1 market every 2 weeks</td>
+          <td>Engage translation agency as backup; queue translations 4 weeks ahead of each launch; flag if any market's translation slips beyond T-2 weeks</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#d35f2d;">Operational</strong></td>
+          <td>Single CC agent per CC market = single point of failure (illness, attrition)</td>
+          <td>Backup contractor identified for each language; documented call scripts so a relief agent can step in within 48 hours</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#d35f2d;">Operational</strong></td>
+          <td>3-month review window may be too short for slow-burn markets (e.g. NO with non-EU friction)</td>
+          <td>Allow case-by-case extension at M3 if leading indicators (lead volume, qualified contacts, CC bookings) are healthy even when subs are tracking low</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#854d0e;">Market</strong></td>
+          <td>Competitor response in core markets (BE, FR especially) — incumbents may match price or run brand-defence campaigns</td>
+          <td>Monitor competitor ads weekly via SEMrush / SimilarWeb; have creative + bidding adjustments pre-built so we can respond within 7 days</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#854d0e;">Market</strong></td>
+          <td>Currency volatility (NOK in NO, future PLN if Poland added) — moves of 5%+ erode CPO discipline</td>
+          <td>Quote prices in local currency with a quarterly FX review; consider FX hedge if cumulative non-EUR exposure exceeds €100K/quarter</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#0b5394;">Strategic</strong></td>
+          <td>Rapid digital-first model fails — more markets than expected need a CC retrofit, blowing the opex budget</td>
+          <td>If digital is failing portfolio-wide (M3 totals &lt;60% of forecast), slow rollout cadence + add CC in 2-3 markets first before continuing. Budget pad: ~€6K/mo for CC retrofits across affected markets</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#0b5394;">Strategic</strong></td>
+          <td>End-of-July review reveals fewer winners than expected — Wave 5 expansion conversation gets shelved</td>
+          <td>Acceptable outcome; the future-markets table is explicitly "planning, not committed". Refocus on optimising the 9 launched markets through year 2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="container">
+    Pulse4all EU Rollout · Extended Plan · Grounded in UK/NL/DE historical performance, AED market size data, and field research<br>
+    <a href="EU-Rollout-Pulse4all.html">← Back to basic plan</a> · <a href="index.html">View full market analysis dashboard →</a>
+  </div>
+</footer>
+
+<script>
+const FLAGS = {AT:"\u{1F1E6}\u{1F1F9}",FR:"\u{1F1EB}\u{1F1F7}",SE:"\u{1F1F8}\u{1F1EA}",BE:"\u{1F1E7}\u{1F1EA}",DK:"\u{1F1E9}\u{1F1F0}",IE:"\u{1F1EE}\u{1F1EA}",NO:"\u{1F1F3}\u{1F1F4}",ES:"\u{1F1EA}\u{1F1F8}",FI:"\u{1F1EB}\u{1F1EE}"};
+const NAMES = {AT:"Austria",FR:"France",SE:"Sweden",BE:"Belgium",DK:"Denmark",IE:"Ireland",NO:"Norway",ES:"Spain",FI:"Finland"};
+
+const FORECAST = [
+  {code:"FR", rank:1, entity:true, confidence:"HIGH", wave:1, launchDate:"11 May 2026", cc:true,
+    m1:{subs:30, cpo:400, spend:12000},
+    m2:{subs:32, cpo:370, spend:11840},
+    m3:{subs:42, cpo:340, spend:14280},
+    m8:{subs:100, cpo:260, spend:26000, share:3.7},
+    headline:"Biggest absolute opportunity — entity + CC + mass market",
+    marketSize:"2,685 AEDs/month (32,222/year) — 3rd largest market in Europe",
+    rationale:[
+      "Local entity at launch removes the SINGLE biggest historical drag on France performance",
+      "M1 frontloaded at €12K / €400 CPO to maximize lead capture — keep spend high in M2/M3 rather than chasing a lower CPO",
+      "Peak CPO of €260 reflects year-1 reality in a new market — efficiency optimization is a year-2 problem, not a year-1 one",
+      "Peak of 100 subs/mo is only 3.7% of France's 2,685/mo AED market — significant upside headroom once we prove the playbook",
+      "Cracking France unlocks Wallonia, French-speaking Switzerland, and Luxembourg (1.15x satellite multiplier)",
+      "Budget at peak is €26K/mo — essentially at the standard €25K ceiling, no major exception needed at this conservative trajectory"
+    ]
+  },
+  {code:"AT", rank:2, entity:false, confidence:"HIGH", wave:2, launchDate:"1 Jun 2026", cc:true,
+    m1:{subs:16, cpo:400, spend:6400},
+    m2:{subs:22, cpo:360, spend:7920},
+    m3:{subs:34, cpo:330, spend:11220},
+    m8:{subs:75, cpo:250, spend:18750, share:14.7},
+    headline:"German satellite — DE assets transfer directly",
+    marketSize:"509 AEDs/month (6,111/year)",
+    rationale:[
+      "German language, content, legal framework, and call centre all transfer directly from Germany",
+      "Germany launched Dec 2024 at €80 CPO, hit €151 in Month 2 — Austria should mirror this trajectory with Shopify uplift on top",
+      "M1 frontloaded at €400 CPO to capture maximum leads in the first 4 weeks, then the DE playbook kicks in hard from M2",
+      "No Austrian-native subscription leader exists — WERO is the only long-term player and it's German-based",
+      "16-hour first aid mandatory for driver's license creates a strong B2C demand signal",
+      "Peak of 75 subs/mo = 14.7% of Austrian AED market — strong share from a low-cost satellite launch"
+    ]
+  },
+  {code:"SE", rank:3, entity:true, confidence:"HIGH", wave:1, launchDate:"11 May 2026", cc:false,
+    m1:{subs:16, cpo:400, spend:6400},
+    m2:{subs:14, cpo:370, spend:5180},
+    m3:{subs:18, cpo:340, spend:6120},
+    m8:{subs:55, cpo:270, spend:14850, share:11.9},
+    headline:"Entity + digital-only — best long-term efficiency",
+    marketSize:"463 AEDs/month (5,556/year)",
+    rationale:[
+      "Entity at launch combined with best historical CPO (€261) of any live P4A market",
+      "Digital-only model — no CC agent means €5K/mo saved; automation + email drive conversion (DESI #4 digital maturity supports this)",
+      "Peak CPO held at €270 in year 1 to prioritize volume; Sweden's digital maturity means efficiency can be pushed lower in year 2",
+      "Klarna home market + 75-80% CPR rate — subscription culture is deeply embedded, buyers self-serve",
+      "11.9% share at peak — room to push higher once digital-only playbook is proven",
+      "Digital-only penalty already priced in (vs CC markets at €240-250 peak) — holds the door open to drop CPO later once email flows are tuned"
+    ]
+  },
+  {code:"BE", rank:4, entity:true, confidence:"HIGH", wave:1, launchDate:"11 May 2026", cc:true,
+    m1:{subs:14, cpo:400, spend:5600},
+    m2:{subs:14, cpo:355, spend:4970},
+    m3:{subs:18, cpo:320, spend:5760},
+    m8:{subs:50, cpo:240, spend:12000, share:9.0},
+    headline:"Entity + dual-language CC already operational",
+    marketSize:"556 AEDs/month (6,667/year)",
+    rationale:[
+      "Entity at launch combined with Dutch + French CC both already operational — zero incremental agent cost",
+      "Historical peak was 21 subs in Jan 2025 at €340 CPO with limited budget — scaling with more budget, entity, and new site",
+      "M1 frontloaded at €400 to fill the pipeline; M2 holds steady at lower CPO as entity trust + CC closing rates kick in",
+      "Flanders leverages NL content and ads directly; Wallonia benefits from FR entity and French content",
+      "Bancontact is the dominant domestic payment method and already supported",
+      "9% share at peak — conservative for a dual-language market with entity, leaves headroom to push harder"
+    ]
+  },
+  {code:"DK", rank:5, entity:false, confidence:"MEDIUM", wave:3, launchDate:"15 Jun 2026", cc:false,
+    m1:{subs:10, cpo:400, spend:4000},
+    m2:{subs:14, cpo:380, spend:5320},
+    m3:{subs:19, cpo:360, spend:6840},
+    m8:{subs:45, cpo:310, spend:13950, share:11.4},
+    headline:"Highest AED per-capita market in Europe — digital-only launch",
+    marketSize:"394 AEDs/month (4,722/year) — highest AED density per capita in Europe (800 per million)",
+    rationale:[
+      "Denmark has the highest per-capita AED market in all of Europe at 800 units per million population",
+      "Digital-only — no Danish CC agent (saves €5K/mo). Automation + email carry conversion; Scandinavian digital maturity supports this",
+      "No P4A-style subscription competitor exists — Falck is at €49-74/mo with 3-year lock-in (expensive and rigid)",
+      "DKK is pegged to the EUR, so FX risk is minimal",
+      "M2 CPO runs ~€320 (vs ~€250 if CC were active) — digital-only penalty, more than offset by the €5K/mo agent savings",
+      "TrygFonden partnership would significantly accelerate the trajectory — worth pursuing in M2-M3 for trust signal"
+    ]
+  },
+  {code:"IE", rank:6, entity:false, confidence:"MEDIUM", wave:2, launchDate:"1 Jun 2026", cc:true,
+    m1:{subs:8, cpo:400, spend:3200},
+    m2:{subs:11, cpo:370, spend:4070},
+    m3:{subs:17, cpo:340, spend:5780},
+    m8:{subs:40, cpo:280, spend:11200, share:15.7},
+    headline:"English + EUR + UK assets — lowest localization cost",
+    marketSize:"255 AEDs/month (3,056/year) — smallest of the 7 markets",
+    rationale:[
+      "English language + EUR currency means near-zero localization cost",
+      "UK assets, content, and call centre operations all transfer directly — no new agent cost",
+      "M1 frontloaded at €400 to maximize lead capture against defibshop.ie's price-match risk",
+      "defibshop.ie at €30/mo is a near-identical direct competitor — need clear differentiation from day one",
+      "Small market (255/mo) naturally caps absolute scale even at high market share",
+      "15.7% share at peak is the highest % of any market — Ireland punches above its weight in relative terms"
+    ]
+  },
+  {code:"NO", rank:7, entity:false, confidence:"MEDIUM", wave:3, launchDate:"15 Jun 2026", cc:false,
+    m1:{subs:6, cpo:400, spend:2400},
+    m2:{subs:8, cpo:390, spend:3120},
+    m3:{subs:12, cpo:370, spend:4440},
+    m8:{subs:35, cpo:330, spend:11550, share:10.5},
+    headline:"Strongest demand signal in Europe — digital-only Nordic launch",
+    marketSize:"333 AEDs/month (~4,000/year estimate)",
+    rationale:[
+      "90% CPR training penetration (mandatory in schools since 1961) — the strongest demand signal in Europe",
+      "Digital-only — no Norwegian CC agent (saves €5K/mo). Norwegian is close to Danish so some content bridges",
+      "Projected as the fastest-growing AED market globally through 2030",
+      "Non-EU complexity adds friction: NOK currency, separate MVA system, customs handling",
+      "M1/M2 are the slowest ramp of the 7 markets — reflects digital-only + language + non-EU stacking together",
+      "LHL partnership (52,000 members, already sells AEDs via LHL Forstehjelp) would significantly accelerate — highest priority partnership of the 7"
+    ]
+  },
+  {code:"ES", rank:8, entity:false, confidence:"MEDIUM", wave:4, launchDate:"29 Jun 2026", cc:true,
+    m1:{subs:8, cpo:400, spend:3200},
+    m2:{subs:11, cpo:380, spend:4180},
+    m3:{subs:16, cpo:360, spend:5760},
+    m8:{subs:30, cpo:310, spend:9300, share:7.2},
+    headline:"Big market, big lift — full Spanish localization needed",
+    marketSize:"~417 AEDs/month (~5,000/year estimate) — large market, lower per-capita than Northern Europe",
+    rationale:[
+      "No existing Spanish-language asset across content, ads, email, or CC — full localization required (~€5-8K one-time)",
+      "No entity at launch — full trust drag like the IE/DK launches",
+      "Spanish CC is a deliberate exception — price-sensitive buyers benefit more from phone rescue than digital-only would deliver. Adds €5K/mo agent cost",
+      "€33/mo positioning will face friction in a price-sensitive market — may need long-term-commitment discount or trial offer to land",
+      "Regional regulatory variation across autonomous communities (Cataluña ≠ Andalucía ≠ Madrid) adds compliance overhead",
+      "Latin America satellite play later — cracking Spain proves the model for the much larger Spanish-speaking opportunity"
+    ]
+  },
+  {code:"FI", rank:9, entity:false, confidence:"MEDIUM", wave:4, launchDate:"29 Jun 2026", cc:false,
+    m1:{subs:5, cpo:400, spend:2000},
+    m2:{subs:7, cpo:390, spend:2730},
+    m3:{subs:11, cpo:370, spend:4070},
+    m8:{subs:20, cpo:320, spend:6400, share:11.4},
+    headline:"Small but high-fit — digital-native, Nordic adjacent",
+    marketSize:"~175 AEDs/month (~2,100/year estimate) — smallest of the 9 markets",
+    rationale:[
+      "DESI top 5 + Klarna home market — subscription-native culture, ideal for digital-only operation",
+      "Strong cardiac safety awareness similar to Norway (high CPR training penetration)",
+      "Almost no competition in the subscription model — clean field to build brand into",
+      "Finnish language is hard (non-Indo-European, fewer translators) — but ~6% native Swedish-speakers can be served by our SE Swedish content",
+      "Nordic adjacency lets us reuse SE/DK creative + email flows — low incremental localization once the Swedish bridge is set up",
+      "Tiny market (~175/mo) caps absolute volume — even at 11.4% peak share, the ceiling is structurally small"
+    ]
+  }
+];
+
+// Ramp interpolation — fills in M4-M7 from M3 and M8
+function interpSubs(m3subs, m8subs, mIdx){
+  const r = {4:0.25, 5:0.55, 6:0.80, 7:0.95};
+  return Math.round(m3subs + (m8subs - m3subs) * r[mIdx]);
+}
+function interpCpo(m3cpo, m8cpo, mIdx){
+  const r = {4:0.25, 5:0.55, 6:0.80, 7:0.95};
+  return Math.round(m3cpo + (m8cpo - m3cpo) * r[mIdx]);
+}
+function monthData(f, mNum){
+  if(mNum === 1) return f.m1;
+  if(mNum === 2) return f.m2;
+  if(mNum === 3) return f.m3;
+  if(mNum === 8) return f.m8;
+  const subs = interpSubs(f.m3.subs, f.m8.subs, mNum);
+  const cpo = interpCpo(f.m3.cpo, f.m8.cpo, mNum);
+  return {subs, cpo, spend: subs * cpo};
+}
+
+// Calendar schedule: maps calendar month to wave → monthNum
+const CALENDAR = [
+  {label:"May 2026", sub:"Wave 1 live",         waves:{1:1, 2:null, 3:null, 4:null}},
+  {label:"Jun 2026", sub:"Waves 2 + 3 launch",  waves:{1:2, 2:1,    3:1,    4:null}},
+  {label:"Jul 2026", sub:"Wave 4 launches",     waves:{1:3, 2:2,    3:2,    4:1}},
+  {label:"Aug 2026", sub:"All waves ramping",   waves:{1:4, 2:3,    3:3,    4:2}},
+  {label:"Sep 2026", sub:"",                    waves:{1:5, 2:4,    3:4,    4:3}},
+  {label:"Oct 2026", sub:"",                    waves:{1:6, 2:5,    3:5,    4:4}},
+  {label:"Nov 2026", sub:"",                    waves:{1:7, 2:6,    3:6,    4:5}},
+  {label:"Dec 2026", sub:"Wave 1 at peak",      waves:{1:8, 2:7,    3:7,    4:6}},
+  {label:"Jan 2027", sub:"Waves 2 + 3 at peak", waves:{1:8, 2:8,    3:8,    4:7}},
+  {label:"Feb 2027", sub:"Full run rate",       waves:{1:8, 2:8,    3:8,    4:8}, peak:true}
+];
+
+function waveMarkets(waveId){
+  return FORECAST.filter(f => f.wave === waveId).map(f => f.code);
+}
+
+function renderCalendar(){
+  const tbody = document.getElementById('calendarTableBody');
+  tbody.innerHTML = CALENDAR.map(row => {
+    let portfolioSubs = 0, portfolioSpend = 0;
+    const waveCells = [1,2,3,4].map(waveId => {
+      const mNum = row.waves[waveId];
+      if(mNum === null){
+        return `<td class="wave-cell"><span class="stage stage-pre">Pre-launch</span></td>`;
+      }
+      const markets = waveMarkets(waveId);
+      let waveSubs = 0, waveSpend = 0;
+      markets.forEach(code => {
+        const f = FORECAST.find(x => x.code === code);
+        const d = monthData(f, mNum);
+        waveSubs += d.subs;
+        waveSpend += d.spend;
+      });
+      const waveCpo = Math.round(waveSpend / waveSubs);
+      portfolioSubs += waveSubs;
+      portfolioSpend += waveSpend;
+      const stageClass = `stage-m${mNum}`;
+      const stageLabel = mNum === 8 ? "M8 PEAK" : `M${mNum}`;
+      return `<td class="wave-cell">
+        <span class="stage ${stageClass}">${stageLabel}</span>
+        <div class="figures"><strong>${waveSubs}</strong> subs · €${(waveSpend/1000).toFixed(0)}K · €${waveCpo} CPO</div>
+      </td>`;
+    }).join('');
+
+    const blendedCpo = Math.round(portfolioSpend / portfolioSubs);
+    const peakClass = row.peak ? ' peak-row' : '';
+    const subsClass = row.peak ? 'peak-subs' : '';
+
+    return `<tr>
+      <td class="month-cell">${row.label}${row.sub ? `<span class="sub">${row.sub}</span>` : ''}</td>
+      ${waveCells}
+      <td class="total-col${peakClass}"><span class="${subsClass}">${portfolioSubs}</span></td>
+      <td class="total-col${peakClass}">€${(portfolioSpend/1000).toFixed(0)}K</td>
+      <td class="total-col${peakClass}">€${blendedCpo}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderTable(){
+  const tbody = document.getElementById('forecastTableBody');
+  tbody.innerHTML = FORECAST.map(f => {
+    const entityBadge = f.entity
+      ? '<span class="entity-badge yes">Yes</span>'
+      : '<span class="entity-badge no">No</span>';
+    const waveBadge = `<span class="wave-badge w${f.wave}">W${f.wave}</span>`;
+    const opsBadge = f.cc
+      ? '<span class="ops-badge cc">CC</span>'
+      : '<span class="ops-badge digital">Digital</span>';
+    const confClass = f.confidence === 'HIGH' ? 'conf-high' : 'conf-medium';
+    return `<tr>
+      <td class="rank-num">${f.rank}</td>
+      <td><div class="country-cell"><span class="flag">${FLAGS[f.code]}</span>${NAMES[f.code]}</div></td>
+      <td>${waveBadge}</td>
+      <td>${entityBadge}</td>
+      <td>${opsBadge}</td>
+      <td class="center"><strong>${f.m1.subs}</strong></td>
+      <td class="center">€${f.m1.cpo}</td>
+      <td class="center" style="color:#6b7280;">€${(f.m1.spend/1000).toFixed(0)}K</td>
+      <td class="center"><strong>${f.m2.subs}</strong></td>
+      <td class="center">€${f.m2.cpo}</td>
+      <td class="center"><strong>${f.m3.subs}</strong></td>
+      <td class="center">€${f.m3.cpo}</td>
+      <td class="center peak-value">${f.m8.subs}</td>
+      <td class="center">€${f.m8.cpo}</td>
+      <td class="center"><span class="share-badge">${f.m8.share}%</span></td>
+      <td class="center"><span class="conf-badge ${confClass}">${f.confidence}</span></td>
+    </tr>`;
+  }).join('');
+
+  // Totals row
+  const tot = (key, field) => FORECAST.reduce((s,f) => s + f[key][field], 0);
+  const totM1s = tot('m1','subs'), totM1sp = tot('m1','spend');
+  const totM2s = tot('m2','subs'), totM2sp = tot('m2','spend');
+  const totM3s = tot('m3','subs'), totM3sp = tot('m3','spend');
+  const totM8s = tot('m8','subs'), totM8sp = tot('m8','spend');
+  const blendM1 = Math.round(totM1sp/totM1s);
+  const blendM2 = Math.round(totM2sp/totM2s);
+  const blendM3 = Math.round(totM3sp/totM3s);
+  const blendM8 = Math.round(totM8sp/totM8s);
+
+  tbody.innerHTML += `<tr class="total-row">
+    <td></td>
+    <td><strong>TOTAL (7 markets)</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class="center"><strong>${totM1s}</strong></td>
+    <td class="center">€${blendM1}</td>
+    <td class="center">€${(totM1sp/1000).toFixed(0)}K</td>
+    <td class="center"><strong>${totM2s}</strong></td>
+    <td class="center">€${blendM2}</td>
+    <td class="center"><strong>${totM3s}</strong></td>
+    <td class="center">€${blendM3}</td>
+    <td class="center peak-value">${totM8s}</td>
+    <td class="center">€${blendM8}</td>
+    <td class="center"><span class="share-badge" style="background:#dcfce7;color:#166534;">7.8%</span></td>
+    <td class="center"></td>
+  </tr>`;
+}
+
+function renderCards(){
+  const container = document.getElementById('marketCards');
+  container.innerHTML = FORECAST.map(f => {
+    const entityBadge = f.entity
+      ? '<span class="entity-badge yes">Entity ✓</span>'
+      : '<span class="entity-badge no">No entity</span>';
+    const waveBadge = `<span class="wave-badge w${f.wave}">Wave ${f.wave}</span>`;
+    const opsBadge = f.cc
+      ? '<span class="ops-badge cc">Call centre</span>'
+      : '<span class="ops-badge digital">Digital-only</span>';
+    const confClass = f.confidence === 'HIGH' ? 'conf-high' : 'conf-medium';
+    const cardClass = f.confidence === 'HIGH' ? '' : 'conf-med';
+
+    return `<div class="market-card ${cardClass}">
+      <div class="market-card-grid">
+        <div>
+          <div class="market-header">
+            <span class="flag">${FLAGS[f.code]}</span>
+            <h3>${NAMES[f.code]}</h3>
+            <span class="market-rank">#${f.rank}</span>
+          </div>
+          <div class="market-badges">
+            <span class="conf-badge ${confClass}">${f.confidence}</span>
+            ${waveBadge}
+            ${entityBadge}
+            ${opsBadge}
+          </div>
+          <div class="market-headline">${f.headline}</div>
+          <div class="market-launch"><strong>Launch:</strong> ${f.launchDate}</div>
+          <div class="market-size"><strong>Market size:</strong> ${f.marketSize}</div>
+          <div class="metrics-grid">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th style="text-align:center;">M1</th>
+                  <th style="text-align:center;">M2</th>
+                  <th style="text-align:center;">M3</th>
+                  <th class="m8" style="text-align:center;">M8 peak</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="color:#6b7280;font-weight:500;">Subs/mo</td>
+                  <td style="text-align:center;">${f.m1.subs}</td>
+                  <td style="text-align:center;">${f.m2.subs}</td>
+                  <td style="text-align:center;">${f.m3.subs}</td>
+                  <td class="m8" style="text-align:center;">${f.m8.subs}</td>
+                </tr>
+                <tr>
+                  <td style="color:#6b7280;font-weight:500;">CPO</td>
+                  <td style="text-align:center;">€${f.m1.cpo}</td>
+                  <td style="text-align:center;">€${f.m2.cpo}</td>
+                  <td style="text-align:center;">€${f.m3.cpo}</td>
+                  <td class="m8" style="text-align:center;">€${f.m8.cpo}</td>
+                </tr>
+                <tr>
+                  <td style="color:#6b7280;font-weight:500;">Spend</td>
+                  <td style="text-align:center;">€${(f.m1.spend/1000).toFixed(0)}K</td>
+                  <td style="text-align:center;">€${(f.m2.spend/1000).toFixed(0)}K</td>
+                  <td style="text-align:center;">€${(f.m3.spend/1000).toFixed(0)}K</td>
+                  <td class="m8" style="text-align:center;">€${(f.m8.spend/1000).toFixed(0)}K</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="share-line">M8 market share: <strong>${f.m8.share}%</strong></div>
+          </div>
+        </div>
+        <div class="rationale">
+          <h4>Why these numbers</h4>
+          <ul>
+            ${f.rationale.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+renderCalendar();
+renderTable();
+renderCards();
+
+// Stacked-area chart: monthly subs from existing base + each rollout wave
+function renderChart(){
+  const ctx = document.getElementById('rolloutChart').getContext('2d');
+  const labels = ['Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26','Dec 26','Jan 27','Feb 27'];
+  const datasets = [
+    {
+      label: 'UK + DE + NL base (310)',
+      data: [310,310,310,310,310,310,310,310,310,310,310],
+      backgroundColor: 'rgba(11, 19, 61, 0.85)',
+      borderColor: '#0B133D',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
+    },
+    {
+      label: 'Wave 1 — FR + BE + SE',
+      data: [0,60,60,78,109,140,168,189,205,205,205],
+      backgroundColor: 'rgba(38, 91, 164, 0.85)',
+      borderColor: '#265BA4',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
+    },
+    {
+      label: 'Wave 2 — AT + IE',
+      data: [0,0,24,33,51,72,88,101,110,115,115],
+      backgroundColor: 'rgba(91, 141, 208, 0.85)',
+      borderColor: '#5B8DD0',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
+    },
+    {
+      label: 'Wave 3 — NO + DK',
+      data: [0,0,16,22,31,45,60,70,76,80,80],
+      backgroundColor: 'rgba(158, 207, 245, 0.85)',
+      borderColor: '#7CB6E8',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
+    },
+    {
+      label: 'Wave 4 — ES + FI',
+      data: [0,0,0,13,18,27,33,40,45,49,50],
+      backgroundColor: 'rgba(39, 174, 111, 0.85)',
+      borderColor: '#27AE6F',
+      borderWidth: 1.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 3.5,
+      pointHoverRadius: 6,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1.5
+    }
+  ];
+
+  new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    plugins: [ChartDataLabels],
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      layout: { padding: { top: 28 } },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { family: 'Montserrat', size: 12 }, padding: 14, boxWidth: 14, usePointStyle: true, pointStyle: 'rectRounded' }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(11, 19, 61, 0.95)',
+          titleFont: { family: 'Montserrat', size: 13, weight: '600' },
+          bodyFont: { family: 'Montserrat', size: 12 },
+          footerFont: { family: 'Montserrat', size: 12, weight: '700' },
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: {
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y} subs`,
+            footer: (items) => 'Total: ' + items.reduce((a, b) => a + b.parsed.y, 0) + ' subs/mo'
+          }
+        },
+        datalabels: {
+          display: (ctx) => ctx.datasetIndex === ctx.chart.data.datasets.length - 1,
+          align: 'top',
+          anchor: 'end',
+          offset: 6,
+          color: '#0B133D',
+          font: { family: 'Montserrat', size: 11, weight: '700' },
+          backgroundColor: 'rgba(255, 255, 255, 0.92)',
+          borderColor: '#265BA4',
+          borderWidth: 1,
+          borderRadius: 6,
+          padding: { top: 3, bottom: 3, left: 7, right: 7 },
+          formatter: (value, ctx) => {
+            const i = ctx.dataIndex;
+            return ctx.chart.data.datasets.reduce((sum, ds) => sum + ds.data[i], 0);
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { family: 'Montserrat', size: 11 }, color: '#6b7280' }
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true,
+          grid: { color: 'rgba(0,0,0,0.05)' },
+          ticks: { font: { family: 'Montserrat', size: 11 }, color: '#6b7280', stepSize: 100 },
+          title: { display: true, text: 'Subscriptions per month', font: { family: 'Montserrat', size: 12, weight: '600' }, color: '#2E61A6' }
+        }
+      }
+    }
+  });
+}
+
+renderChart();
+</script>
+</body>
+</html>
