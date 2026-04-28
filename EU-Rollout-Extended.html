@@ -70,6 +70,51 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .chart-wrapper{background:var(--white);border-radius:15px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.06);height:460px;position:relative;}
 @media(max-width:768px){.chart-wrapper{height:380px;padding:var(--sp-2);}}
 
+/* Founders snapshot */
+.founders-snapshot{background:linear-gradient(135deg,var(--bg-blue) 0%,#dbeafe 100%);border-radius:16px;padding:var(--sp-3);border-left:6px solid var(--deep-blue);}
+.founders-snapshot .snap-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--deep-blue);text-transform:uppercase;margin-bottom:6px;}
+.founders-snapshot .snap-title{font-size:18px;font-weight:700;color:var(--inkt);margin-bottom:var(--sp-2);}
+.founders-snapshot .snap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-2);}
+.founders-snapshot .snap-cell{background:var(--white);border-radius:10px;padding:14px 16px;}
+.founders-snapshot .snap-cell .label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.7px;color:#6b7280;margin-bottom:6px;}
+.founders-snapshot .snap-cell .val{font-size:22px;font-weight:700;color:var(--deep-blue);line-height:1.1;}
+.founders-snapshot .snap-cell .val .unit{font-size:13px;color:#6b7280;font-weight:500;margin-left:3px;}
+.founders-snapshot .snap-cell .sub{font-size:11px;color:#6b7280;margin-top:4px;line-height:1.4;}
+
+/* Decision dates timeline */
+.decision-strip{display:flex;align-items:stretch;gap:0;background:var(--white);border-radius:14px;padding:var(--sp-2);box-shadow:0 1px 3px rgba(0,0,0,0.05);overflow-x:auto;}
+.decision-pill{flex:1;min-width:130px;padding:12px 14px;border-radius:10px;text-align:center;display:flex;flex-direction:column;justify-content:center;}
+.decision-pill.launch{background:#e0e7ff;border:1px solid #c7d2fe;}
+.decision-pill.launch.w2{background:#cffafe;border-color:#a5f3fc;}
+.decision-pill.launch.w3{background:#e0f2fe;border-color:#bae6fd;}
+.decision-pill.launch.w4{background:#dcfce7;border-color:#bbf7d0;}
+.decision-pill.launch.w5{background:#fce7f3;border-color:#fbcfe8;}
+.decision-pill.review{background:#fef3c7;border:2px dashed #f59e0b;}
+.decision-pill .d-date{font-size:13px;font-weight:700;color:var(--inkt);}
+.decision-pill .d-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#6b7280;margin-top:3px;}
+.decision-pill.review .d-label{color:#92400e;}
+.decision-arrow{display:flex;align-items:center;color:#cbd5e1;font-size:14px;padding:0 6px;}
+@media(max-width:900px){.decision-strip{flex-wrap:wrap;}.decision-arrow{display:none;}}
+
+/* Heatmap table */
+.heatmap-wrapper{background:var(--white);border-radius:15px;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow-x:auto;}
+.heatmap-table{width:100%;border-collapse:collapse;font-size:12px;}
+.heatmap-table thead th{background:var(--inkt);color:var(--white);padding:10px 8px;text-align:center;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
+.heatmap-table thead th:first-child{text-align:left;padding-left:14px;background:var(--inkt);position:sticky;left:0;z-index:1;}
+.heatmap-table thead th.peak-col{background:var(--leaf-green);}
+.heatmap-table tbody td{padding:8px 6px;text-align:center;font-weight:600;border-bottom:1px solid #f0f0f0;}
+.heatmap-table tbody td:first-child{text-align:left;padding-left:14px;font-weight:600;color:var(--inkt);background:var(--white);position:sticky;left:0;z-index:1;border-right:2px solid #e5e7eb;white-space:nowrap;}
+.heatmap-table tbody tr.group-base td:first-child{background:#fef9c3;}
+.heatmap-table tbody tr.group-base td{background:#fffbeb;}
+.heatmap-table tbody tr.group-divider td{padding:4px 0;background:transparent;border-bottom:none;}
+.heatmap-table tbody td.cell-empty{background:#f9fafb;color:#d1d5db;}
+.heatmap-table tbody td.peak-col{font-weight:700;}
+.heatmap-table tfoot td{padding:12px 6px;text-align:center;font-weight:700;background:var(--bg-blue);border-top:2px solid var(--deep-blue);color:var(--inkt);}
+.heatmap-table tfoot td:first-child{text-align:left;padding-left:14px;background:var(--bg-blue);position:sticky;left:0;z-index:1;}
+.heatmap-table .country-flag{font-size:16px;margin-right:6px;}
+.heatmap-legend{display:flex;align-items:center;gap:8px;margin-top:var(--sp-1);font-size:11px;color:#6b7280;}
+.heatmap-legend .grad{display:inline-block;width:120px;height:14px;border-radius:3px;background:linear-gradient(90deg, rgba(38,91,164,0.05), rgba(38,91,164,0.85));}
+
 /* Launch schedule */
 .wave-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-2);}
 @media(max-width:600px){.wave-grid{grid-template-columns:1fr;}}
@@ -260,7 +305,7 @@ footer a{color:var(--light-blue);}
 <section class="hero">
   <div class="container">
     <h2>Extended plan — 310 base + 495 expansion = 805 subs/mo at peak</h2>
-    <p class="lead">UK + NL + DE deliver 310 subs/mo today (UK 160 · DE 80 · NL 70). A five-wave expansion adds 495 more across 11 new markets by March 2027 — a 2.60× lift on today's run rate. This extended plan layers on the operational view: launch costs, ongoing opex, the 3-month per-market review gate, the end-July and 15 September portfolio decision points, and the risks &amp; threats register.</p>
+    <p class="lead">UK + NL + DE deliver 310 subs/mo today (UK 160 · DE 80 · NL 70). Adding 11 markets to the existing UK/NL/DE base = 14 total. The five-wave expansion adds 495 more subs/mo by March 2027 — a 2.60× lift on today's run rate. This extended plan layers on the operational view: launch costs, ongoing opex, the 3-month per-market review gate, the end-July and 15 September portfolio decision points, and the risks &amp; threats register.</p>
     <div class="summary-grid">
       <div class="summary-card">
         <div class="label">April 2026 — today</div>
@@ -290,6 +335,75 @@ footer a{color:var(--light-blue);}
 </section>
 
 <div class="container">
+
+<section class="section">
+  <div class="founders-snapshot">
+    <div class="snap-tag">Founders snapshot · expansion-only metrics</div>
+    <div class="snap-title">11 new markets in 13 weeks · €293K to launch · €1.67M peak annual ad spend · 2.60× growth by March 2027</div>
+    <div class="snap-grid">
+      <div class="snap-cell">
+        <div class="label">Capital required</div>
+        <div class="val">€293K</div>
+        <div class="sub">€68K cash burn + €225K working capital (stock, recoverable as units sell)</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Net new subs/mo at peak</div>
+        <div class="val">+495<span class="unit">/mo</span></div>
+        <div class="sub">Across 11 new markets (Mar 2027). Existing UK/NL/DE base of 310 stays separate.</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Net new MRR at peak</div>
+        <div class="val">+€16.3K<span class="unit">/mo</span></div>
+        <div class="sub">495 new subs × €33 — additional MRR added every month at full run rate</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Peak annual ad spend</div>
+        <div class="val">€1.67M</div>
+        <div class="sub">Expansion only. €139K/month at peak. Year-2 plan: hold subs flat, drop CPO 15-20%.</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Peak annual fixed opex</div>
+        <div class="val">€266K</div>
+        <div class="sub">CC (5 markets) + CS (all 11) + social agency. €22.2K/month at peak.</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Acquisition cost per sub</div>
+        <div class="val">€281<span class="unit">CPA</span></div>
+        <div class="sub">Peak blended CPO. Payback at €33/mo MRR ≈ 8.5 months per subscriber.</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Launch cadence</div>
+        <div class="val">5<span class="unit">waves</span></div>
+        <div class="sub">11 May → 10 Aug 2026, staggered to protect translation throughput</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Review gates</div>
+        <div class="val">2<span class="unit">portfolio reviews</span></div>
+        <div class="sub">31 July (W5 go/no-go) + 15 September (W6 decision). Plus per-market 3-month checkpoints.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Decision dates — when we launch and when we review</h2>
+  <p class="section-lead">Five launches and two portfolio reviews across the rollout. The two amber dates are the review gates where we decide to scale, hold, kill, or pull the next wave.</p>
+  <div class="decision-strip">
+    <div class="decision-pill launch w1"><div class="d-date">11 May</div><div class="d-label">Wave 1 — FR · BE · SE</div></div>
+    <div class="decision-arrow">→</div>
+    <div class="decision-pill launch w2"><div class="d-date">1 Jun</div><div class="d-label">Wave 2 — AT · IE</div></div>
+    <div class="decision-arrow">→</div>
+    <div class="decision-pill launch w3"><div class="d-date">15 Jun</div><div class="d-label">Wave 3 — NO · DK</div></div>
+    <div class="decision-arrow">→</div>
+    <div class="decision-pill launch w4"><div class="d-date">29 Jun</div><div class="d-label">Wave 4 — ES · FI</div></div>
+    <div class="decision-arrow">→</div>
+    <div class="decision-pill review"><div class="d-date">31 Jul</div><div class="d-label">⚑ Review · W5 go/no-go</div></div>
+    <div class="decision-arrow">→</div>
+    <div class="decision-pill launch w5"><div class="d-date">10 Aug</div><div class="d-label">Wave 5 — CH · IT</div></div>
+    <div class="decision-arrow">→</div>
+    <div class="decision-pill review"><div class="d-date">15 Sep</div><div class="d-label">⚑ Review · W6 decision</div></div>
+  </div>
+</section>
 
 <section class="section">
   <h2>Total monthly subscriptions — base + rollout</h2>
@@ -361,6 +475,19 @@ footer a{color:var(--light-blue);}
 </section>
 
 <section class="section">
+  <h2>Per-country monthly subs — heat map</h2>
+  <p class="section-lead">Same data as the chart, broken out per country and per month. Read across to see how each market ramps; read down to see what each calendar month delivers. Cell shading scales with sub volume — darker = higher. Top three rows (UK · DE · NL) are the existing entities at steady state.</p>
+  <div class="heatmap-wrapper">
+    <table class="heatmap-table" id="heatmapTable"></table>
+  </div>
+  <div class="heatmap-legend">
+    <span>Cell shading:</span>
+    <span class="grad"></span>
+    <span>0 subs &nbsp;→&nbsp; 160+ subs</span>
+  </div>
+</section>
+
+<section class="section">
   <h2>Per-market subscription forecast</h2>
   <p class="section-lead">The same forecast viewed per-market, with each country's own M1 / M2 / M3 / M8-peak trajectory from its launch date. M1 is intentionally at the €400 cap everywhere to maximize lead capture; M2 and M3 show the payoff as those leads convert. Entity + CC / digital-only status is called out per market. Peak share reflects share of that country's monthly AED market (units/mo).</p>
 
@@ -413,7 +540,7 @@ footer a{color:var(--light-blue);}
       </thead>
       <tbody>
         <tr><td>Shopify site setup</td><td>€5,000</td><td>Theme, content, configuration, payment integrations</td></tr>
-        <tr><td>Translation (initial)</td><td>€1,500</td><td>Site copy, ad copy, key email flows. <strong>Translation is the binding capacity constraint</strong> — wave staging is set by translation throughput.</td></tr>
+        <tr><td>Translation (initial)</td><td>€1,500</td><td>Site copy, ad copy, key email flows.</td></tr>
         <tr><td>Social media setup</td><td>€1,000</td><td>Channel setup + initial creative</td></tr>
         <tr><td><strong>Subtotal — true cash burn</strong></td><td><strong>€7,500</strong></td><td>Per launch, non-recoverable</td></tr>
         <tr><td>Initial stock</td><td>€25,000</td><td><strong>Working capital</strong> — recoverable as units sell. Tied up but not burned.</td></tr>
@@ -1198,6 +1325,74 @@ function renderCards(){
 renderCalendar();
 renderTable();
 renderCards();
+
+// Per-country heat-table — chart values broken down per market per month
+function renderHeatmap(){
+  const months = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'];
+  const monthLabels = ['Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26','Dec 26','Jan 27','Feb 27','Mar 27'];
+
+  // Hardcoded to match chart values exactly (chart was built from these)
+  const baseRows = [
+    {flag:'\u{1F1EC}\u{1F1E7}', name:'United Kingdom', monthly:[160,160,160,160,160,160,160,160,160,160,160,160]},
+    {flag:'\u{1F1E9}\u{1F1EA}', name:'Germany',         monthly:[80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80]},
+    {flag:'\u{1F1F3}\u{1F1F1}', name:'Netherlands',     monthly:[70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70]},
+  ];
+  const expRows = [
+    {flag:FLAGS.FR, name:'France',      wave:1, monthly:[null,30,32,42,55,70,82,92,100,100,100,100]},
+    {flag:FLAGS.BE, name:'Belgium',     wave:1, monthly:[null,14,14,18,27,35,42,47,50,50,50,50]},
+    {flag:FLAGS.SE, name:'Sweden',      wave:1, monthly:[null,16,14,18,27,35,44,50,55,55,55,55]},
+    {flag:FLAGS.AT, name:'Austria',     wave:2, monthly:[null,null,16,22,34,48,58,66,72,75,75,75]},
+    {flag:FLAGS.IE, name:'Ireland',     wave:2, monthly:[null,null,8,11,17,24,30,35,38,40,40,40]},
+    {flag:FLAGS.NO, name:'Norway',      wave:3, monthly:[null,null,6,8,12,18,25,30,33,35,35,35]},
+    {flag:FLAGS.DK, name:'Denmark',     wave:3, monthly:[null,null,10,14,19,27,35,40,43,45,45,45]},
+    {flag:FLAGS.ES, name:'Spain',       wave:4, monthly:[null,null,null,8,11,16,20,24,27,29,30,30]},
+    {flag:FLAGS.FI, name:'Finland',     wave:4, monthly:[null,null,null,5,7,11,13,16,18,20,20,20]},
+    {flag:FLAGS.CH, name:'Switzerland', wave:5, monthly:[null,null,null,null,6,8,11,15,19,22,24,25]},
+    {flag:FLAGS.IT, name:'Italy',       wave:5, monthly:[null,null,null,null,5,7,10,13,16,18,20,20]},
+  ];
+
+  const cellStyle = (val) => {
+    if (val === null) return 'class="cell-empty"';
+    const opacity = Math.min(0.85, (val/160) * 0.85);
+    const textColor = val >= 70 ? '#ffffff' : '#0B133D';
+    return `style="background:rgba(38,91,164,${opacity.toFixed(3)});color:${textColor};"`;
+  };
+  const peakStyle = (val) => {
+    if (val === null) return 'class="cell-empty peak-col"';
+    const opacity = Math.min(0.95, (val/160) * 0.95);
+    const textColor = val >= 70 ? '#ffffff' : '#065f46';
+    return `class="peak-col" style="background:rgba(39,174,111,${opacity.toFixed(3)});color:${textColor};"`;
+  };
+
+  const renderRow = (row, groupClass='') => {
+    const peak = row.monthly[row.monthly.length - 1];
+    const cells = row.monthly.map(v => `<td ${cellStyle(v)}>${v === null ? '—' : v}</td>`).join('');
+    return `<tr class="${groupClass}">
+      <td><span class="country-flag">${row.flag}</span>${row.name}</td>
+      ${cells}
+      <td ${peakStyle(peak)}>${peak === null ? '—' : peak}</td>
+    </tr>`;
+  };
+
+  // Column totals
+  const totals = months.map((_, i) => {
+    let s = 0;
+    [...baseRows, ...expRows].forEach(r => { if (r.monthly[i] !== null) s += r.monthly[i]; });
+    return s;
+  });
+  const totalsRow = `<tr><td><strong>Total subs/mo</strong></td>${totals.map(t => `<td><strong>${t}</strong></td>`).join('')}<td><strong>${totals[totals.length-1]}</strong></td></tr>`;
+
+  const headerCols = monthLabels.map(m => `<th>${m}</th>`).join('');
+  const html = `<thead><tr><th>Market</th>${headerCols}<th class="peak-col">Peak (Mar 27)</th></tr></thead>
+    <tbody>
+      ${baseRows.map(r => renderRow(r, 'group-base')).join('')}
+      <tr class="group-divider"><td colspan="14"></td></tr>
+      ${expRows.map(r => renderRow(r, 'group-exp')).join('')}
+    </tbody>
+    <tfoot>${totalsRow}</tfoot>`;
+  document.getElementById('heatmapTable').innerHTML = html;
+}
+renderHeatmap();
 
 // Stacked-area chart: monthly subs from existing base + each rollout wave
 function renderChart(){
