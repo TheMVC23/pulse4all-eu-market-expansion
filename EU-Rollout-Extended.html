@@ -67,8 +67,8 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .section .section-lead{font-size:13px;color:#6b7280;margin-bottom:var(--sp-3);max-width:900px;line-height:1.6;}
 
 /* Chart */
-.chart-wrapper{background:var(--white);border-radius:15px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.06);height:460px;position:relative;}
-@media(max-width:768px){.chart-wrapper{height:380px;padding:var(--sp-2);}}
+.chart-wrapper{background:var(--white);border-radius:15px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.06);height:540px;position:relative;}
+@media(max-width:768px){.chart-wrapper{height:460px;padding:var(--sp-2);}}
 
 /* Founders snapshot */
 .founders-snapshot{background:linear-gradient(135deg,var(--bg-blue) 0%,#dbeafe 100%);border-radius:16px;padding:var(--sp-3);border-left:6px solid var(--deep-blue);}
@@ -257,6 +257,35 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 
 /* Future markets — exploratory section */
 .future-badge{display:inline-block;font-size:10px;font-weight:700;padding:4px 10px;border-radius:12px;background:var(--soft-rose);color:#9f1239;margin-left:12px;vertical-align:middle;letter-spacing:0.5px;text-transform:uppercase;}
+
+/* Pricing strategy section */
+.pricing-context{background:var(--bg-blue);border-radius:10px;padding:12px 16px;margin-bottom:var(--sp-2);font-size:13px;color:var(--inkt-body);}
+.pricing-context strong{color:var(--deep-blue);margin-right:6px;}
+.de-callout{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:var(--sp-2);font-size:13px;line-height:1.5;color:var(--inkt-body);}
+.de-callout strong{color:#92400e;display:inline;margin-right:6px;font-weight:700;}
+.pricing-table-wrapper{background:var(--white);border-radius:15px;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow-x:auto;margin-bottom:var(--sp-2);}
+.pricing-table{width:100%;border-collapse:collapse;font-size:13px;}
+.pricing-table thead th{background:var(--inkt);color:var(--white);padding:12px 10px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
+.pricing-table thead th.center{text-align:center;}
+.pricing-table tbody td{padding:11px 10px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
+.pricing-table tbody tr:hover{background:var(--bg-blue);}
+.pricing-table tbody td.center{text-align:center;}
+.pricing-table .market-cell{display:flex;align-items:center;gap:8px;font-weight:600;white-space:nowrap;}
+.pricing-table .market-cell .flag{font-size:18px;}
+.pricing-table .price-launch{font-weight:700;color:var(--leaf-green);}
+.pricing-table .price-floor{color:#6b7280;font-style:italic;}
+.pricing-table .delta-cut{display:inline-block;background:#dcfce7;color:#166534;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;}
+.pricing-table .delta-none{color:#9ca3af;font-size:13px;}
+.pricing-table .delta-tbd{display:inline-block;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;}
+.pricing-review-note{margin-top:var(--sp-1);padding:12px 16px;background:#ecfdf5;border-left:3px solid var(--leaf-green);border-radius:0 8px 8px 0;font-size:12px;color:#065f46;line-height:1.5;}
+
+/* Wave-swap disclaimer */
+.wave-swap-note{margin-top:var(--sp-2);padding:10px 14px;background:#fef9c3;border-radius:8px;font-size:12px;color:#854d0e;font-style:italic;line-height:1.5;border-left:3px solid #d4a017;}
+.wave-swap-note strong{font-style:normal;color:#92400e;}
+
+/* Spend + CPA chart */
+.spend-chart-wrapper{background:var(--white);border-radius:15px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.06);height:380px;position:relative;margin-top:var(--sp-3);}
+@media(max-width:768px){.spend-chart-wrapper{height:320px;padding:var(--sp-2);}}
 .future-wrapper{background:var(--warm-white);border-radius:15px;box-shadow:0 1px 3px rgba(0,0,0,0.05);overflow-x:auto;border:1.5px dashed #c5d3e3;}
 .future-wrapper .forecast-table tbody tr:hover{background:rgba(244,217,208,0.25);}
 
@@ -406,10 +435,59 @@ footer a{color:var(--light-blue);}
 </section>
 
 <section class="section">
+  <h2>Pricing strategy — launch low, review at 3 months</h2>
+  <p class="section-lead">Position below P4A's standard pricing in launch markets to grab share fast, then revisit at each market's 3-month checkpoint. Markets already at the €29.95 floor (FR · ES · IE · IT) get no further cut. Where we have headroom (BE · SE · AT · NO · DK), we drop below standard for the first 3 months. Goal is speed-to-share, not margin optimisation — that comes after the 3-month review.</p>
+
+  <div class="de-callout">
+    <strong>⚑ DE pricing flag:</strong> current DE price (€34.95 / €39.95) sits €5 above the new-market launch floor and is out of line with the launch positioning. Recommend reviewing at the next subs reporting meeting — flagged here for visibility but not part of this rollout decision.
+  </div>
+
+  <div class="pricing-context">
+    <strong>Existing market prices today —</strong>
+    🇬🇧 UK £34.95 / £39.95 · 🇳🇱 NL €32.95 / €37.95 · 🇩🇪 DE €34.95 / €39.95 (HS1 / FRx)
+  </div>
+
+  <div class="pricing-table-wrapper">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Market</th>
+          <th class="center">Wave</th>
+          <th>Standard (steady-state)</th>
+          <th>Launch — first 3 mo</th>
+          <th class="center">Δ HS1</th>
+          <th>Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="market-cell"><span class="flag">🇫🇷</span>France</span></td><td class="center"><span class="wave-badge w1">W1</span></td><td>€29.95 / €34.95</td><td class="price-floor">€29.95 / €34.95</td><td class="center"><span class="delta-none">— at floor</span></td><td>Already at the €29.95 floor — no further cut</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇧🇪</span>Belgium</span></td><td class="center"><span class="wave-badge w1">W1</span></td><td>€32.95 / €37.95</td><td class="price-launch">€29.95 / €34.95</td><td class="center"><span class="delta-cut">-€3</span></td><td>Match FR (shared content + dual-language CC)</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇸🇪</span>Sweden</span></td><td class="center"><span class="wave-badge w1">W1</span></td><td>349 / 399 KR</td><td class="price-launch">329 / 379 KR</td><td class="center"><span class="delta-cut">-20 KR</span></td><td>Modest undercut — best historical CPO of any P4A market</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇦🇹</span>Austria</span></td><td class="center"><span class="wave-badge w2">W2</span></td><td>€34.95 / €39.95</td><td class="price-launch">€29.95 / €34.95</td><td class="center"><span class="delta-cut">-€5</span></td><td>DE satellite — same floor logic, biggest absolute cut</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇮🇪</span>Ireland</span></td><td class="center"><span class="wave-badge w2">W2</span></td><td>€29.95 / €34.95</td><td class="price-floor">€29.95 / €34.95</td><td class="center"><span class="delta-none">— at floor</span></td><td>defibshop.ie at €30/mo forces this — already at the floor</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇳🇴</span>Norway</span></td><td class="center"><span class="wave-badge w3">W3</span></td><td>325 / 380 KR</td><td class="price-launch">299 / 359 KR</td><td class="center"><span class="delta-cut">-26 KR</span></td><td>Use the room — no real local subscription rival</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇩🇰</span>Denmark</span></td><td class="center"><span class="wave-badge w3">W3</span></td><td>225 / 260 KR</td><td class="price-launch">219 / 255 KR</td><td class="center"><span class="delta-cut">-6 KR</span></td><td>Modest cut — Falck (€49-74/mo) is the price anchor, easy to beat</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇪🇸</span>Spain</span></td><td class="center"><span class="wave-badge w4">W4</span></td><td>€29.95 / €34.95</td><td class="price-floor">€29.95 / €34.95</td><td class="center"><span class="delta-none">— at floor</span></td><td>At floor — Spanish CC offer carries the share play, not price</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇫🇮</span>Finland</span></td><td class="center"><span class="wave-badge w4">W4</span></td><td>TBD with Peter</td><td>TBD</td><td class="center"><span class="delta-tbd">TBD</span></td><td>Pricing to be set with Peter ahead of launch</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇨🇭</span>Switzerland</span></td><td class="center"><span class="wave-badge w5">W5</span></td><td>TBD with Peter</td><td>TBD</td><td class="center"><span class="delta-tbd">TBD</span></td><td>Pricing to be set with Peter ahead of launch — premium market, can support higher</td></tr>
+        <tr><td><span class="market-cell"><span class="flag">🇮🇹</span>Italy</span></td><td class="center"><span class="wave-badge w5">W5</span></td><td>€29.95 / €34.95</td><td class="price-floor">€29.95 / €34.95</td><td class="center"><span class="delta-none">— at floor</span></td><td>At floor — price-sensitive market, full localisation already a heavy lift</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="pricing-review-note"><strong>Review trigger —</strong> at each market's 3-month checkpoint, decide whether to (a) hold launch price, (b) step up to standard, or (c) hold + run a long-term-commitment offer for retention. Decision is local, not portfolio-wide — markets that hit forecast can hold low; markets behind forecast move up to test elasticity.</p>
+</section>
+
+<section class="section">
   <h2>Total monthly subscriptions — base + rollout</h2>
-  <p class="section-lead">UK + DE + NL provide a steady 310 subs/mo base today (UK 160, DE 80, NL 70). Each wave layers on top from its launch month, ramping to its M8 peak. By February 2027, the four-wave rollout adds 450 subs/mo on top of the base — taking the portfolio from 310 to 760 subs/mo, a 2.45× lift on today's run rate.</p>
+  <p class="section-lead">Each of the 14 markets is its own colour band. The bottom three (UK · DE · NL) are the steady 310 subs/mo base today; the 11 stacked above are the expansion waves layering on top from each market's launch month. By March 2027 the rollout adds 495 subs/mo on top of the base — taking the portfolio from 310 to 805 subs/mo, a 2.60× lift on today's run rate.</p>
   <div class="chart-wrapper">
     <canvas id="rolloutChart"></canvas>
+  </div>
+
+  <p class="section-lead" style="margin-top:var(--sp-3);margin-bottom:var(--sp-1);"><strong style="color:var(--deep-blue);">Spend &amp; CPA over time — expansion only.</strong> Bars show monthly ad spend across the 11 expansion markets; line shows blended CPA. Spend ramps from €24K in May 2026 (Wave 1 only, M1 at the €400 cap) to €139K at peak in Mar 2027 — and CPA falls from €400 at M1 to €281 at peak as each market exits learning phase.</p>
+  <div class="spend-chart-wrapper">
+    <canvas id="spendChart"></canvas>
   </div>
 </section>
 
@@ -447,6 +525,9 @@ footer a{color:var(--light-blue);}
       <div class="wave-markets"><span class="flag">🇨🇭</span>Switzerland <span class="flag" style="margin-left:8px;">🇮🇹</span>Italy</div>
       <div class="wave-note"><strong>Digital-only pair, post-July review.</strong> Six weeks after Wave 4 — gives us the end-of-July portfolio data before committing. Switzerland is the easiest fit (DE/FR/IT bridge content, premium market). Italy needs full Italian localization — biggest lift of the wave.</div>
     </div>
+  </div>
+  <div class="wave-swap-note">
+    <strong>Wave order may shift —</strong> the sequence above is the working plan, but wave membership and dates may swap pending unresolved rulings on (a) <strong>NO VOEC / MVA</strong> with Bas, (b) <strong>IT MDR shipping &amp; medical-device handling</strong>, and (c) <strong>ES customs &amp; regional VAT compliance</strong>. If any of these blocks a launch, we promote the next-cleanest market into that wave rather than pushing the whole rollout out.
   </div>
 </section>
 
@@ -1135,6 +1216,25 @@ const CALENDAR = [
   {label:"Mar 2027", sub:"Full run rate",       waves:{1:8, 2:8,    3:8,    4:8,    5:8}, peak:true}
 ];
 
+// Per-market monthly subs — single source of truth for chart, heat-table, spend chart.
+// Apr May Jun Jul Aug Sep Oct Nov Dec Jan Feb Mar
+const MONTHLY = {
+  UK: [160,160,160,160,160,160,160,160,160,160,160,160],
+  DE: [ 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80],
+  NL: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70],
+  FR: [null, 30, 32, 42, 55, 70, 82, 92,100,100,100,100],
+  BE: [null, 14, 14, 18, 27, 35, 42, 47, 50, 50, 50, 50],
+  SE: [null, 16, 14, 18, 27, 35, 44, 50, 55, 55, 55, 55],
+  AT: [null,null, 16, 22, 34, 48, 58, 66, 72, 75, 75, 75],
+  IE: [null,null,  8, 11, 17, 24, 30, 35, 38, 40, 40, 40],
+  NO: [null,null,  6,  8, 12, 18, 25, 30, 33, 35, 35, 35],
+  DK: [null,null, 10, 14, 19, 27, 35, 40, 43, 45, 45, 45],
+  ES: [null,null,null,  8, 11, 16, 20, 24, 27, 29, 30, 30],
+  FI: [null,null,null,  5,  7, 11, 13, 16, 18, 20, 20, 20],
+  CH: [null,null,null,null, 6,  8, 11, 15, 19, 22, 24, 25],
+  IT: [null,null,null,null, 5,  7, 10, 13, 16, 18, 20, 20],
+};
+
 function waveMarkets(waveId){
   return FORECAST.filter(f => f.wave === waveId).map(f => f.code);
 }
@@ -1331,24 +1431,24 @@ function renderHeatmap(){
   const months = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'];
   const monthLabels = ['Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26','Dec 26','Jan 27','Feb 27','Mar 27'];
 
-  // Hardcoded to match chart values exactly (chart was built from these)
+  // All monthly arrays sourced from MONTHLY (single source of truth shared with chart + spend chart)
   const baseRows = [
-    {flag:'\u{1F1EC}\u{1F1E7}', name:'United Kingdom', monthly:[160,160,160,160,160,160,160,160,160,160,160,160]},
-    {flag:'\u{1F1E9}\u{1F1EA}', name:'Germany',         monthly:[80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80]},
-    {flag:'\u{1F1F3}\u{1F1F1}', name:'Netherlands',     monthly:[70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70]},
+    {flag:'\u{1F1EC}\u{1F1E7}', name:'United Kingdom', monthly:MONTHLY.UK},
+    {flag:'\u{1F1E9}\u{1F1EA}', name:'Germany',         monthly:MONTHLY.DE},
+    {flag:'\u{1F1F3}\u{1F1F1}', name:'Netherlands',     monthly:MONTHLY.NL},
   ];
   const expRows = [
-    {flag:FLAGS.FR, name:'France',      wave:1, monthly:[null,30,32,42,55,70,82,92,100,100,100,100]},
-    {flag:FLAGS.BE, name:'Belgium',     wave:1, monthly:[null,14,14,18,27,35,42,47,50,50,50,50]},
-    {flag:FLAGS.SE, name:'Sweden',      wave:1, monthly:[null,16,14,18,27,35,44,50,55,55,55,55]},
-    {flag:FLAGS.AT, name:'Austria',     wave:2, monthly:[null,null,16,22,34,48,58,66,72,75,75,75]},
-    {flag:FLAGS.IE, name:'Ireland',     wave:2, monthly:[null,null,8,11,17,24,30,35,38,40,40,40]},
-    {flag:FLAGS.NO, name:'Norway',      wave:3, monthly:[null,null,6,8,12,18,25,30,33,35,35,35]},
-    {flag:FLAGS.DK, name:'Denmark',     wave:3, monthly:[null,null,10,14,19,27,35,40,43,45,45,45]},
-    {flag:FLAGS.ES, name:'Spain',       wave:4, monthly:[null,null,null,8,11,16,20,24,27,29,30,30]},
-    {flag:FLAGS.FI, name:'Finland',     wave:4, monthly:[null,null,null,5,7,11,13,16,18,20,20,20]},
-    {flag:FLAGS.CH, name:'Switzerland', wave:5, monthly:[null,null,null,null,6,8,11,15,19,22,24,25]},
-    {flag:FLAGS.IT, name:'Italy',       wave:5, monthly:[null,null,null,null,5,7,10,13,16,18,20,20]},
+    {flag:FLAGS.FR, name:'France',      wave:1, monthly:MONTHLY.FR},
+    {flag:FLAGS.BE, name:'Belgium',     wave:1, monthly:MONTHLY.BE},
+    {flag:FLAGS.SE, name:'Sweden',      wave:1, monthly:MONTHLY.SE},
+    {flag:FLAGS.AT, name:'Austria',     wave:2, monthly:MONTHLY.AT},
+    {flag:FLAGS.IE, name:'Ireland',     wave:2, monthly:MONTHLY.IE},
+    {flag:FLAGS.NO, name:'Norway',      wave:3, monthly:MONTHLY.NO},
+    {flag:FLAGS.DK, name:'Denmark',     wave:3, monthly:MONTHLY.DK},
+    {flag:FLAGS.ES, name:'Spain',       wave:4, monthly:MONTHLY.ES},
+    {flag:FLAGS.FI, name:'Finland',     wave:4, monthly:MONTHLY.FI},
+    {flag:FLAGS.CH, name:'Switzerland', wave:5, monthly:MONTHLY.CH},
+    {flag:FLAGS.IT, name:'Italy',       wave:5, monthly:MONTHLY.IT},
   ];
 
   const cellStyle = (val) => {
@@ -1394,90 +1494,41 @@ function renderHeatmap(){
 }
 renderHeatmap();
 
-// Stacked-area chart: monthly subs from existing base + each rollout wave
+// Stacked-area chart: 14 individual market series — UK/DE/NL base + 11 expansion
 function renderChart(){
   const ctx = document.getElementById('rolloutChart').getContext('2d');
   const labels = ['Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26','Dec 26','Jan 27','Feb 27','Mar 27'];
-  const datasets = [
-    {
-      label: 'UK + DE + NL base (310)',
-      data: [310,310,310,310,310,310,310,310,310,310,310,310],
-      backgroundColor: 'rgba(11, 19, 61, 0.85)',
-      borderColor: '#0B133D',
-      borderWidth: 1.5,
-      fill: true,
-      tension: 0.3,
-      pointRadius: 3.5,
-      pointHoverRadius: 6,
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 1.5
-    },
-    {
-      label: 'Wave 1 — FR + BE + SE',
-      data: [0,60,60,78,109,140,168,189,205,205,205,205],
-      backgroundColor: 'rgba(38, 91, 164, 0.85)',
-      borderColor: '#265BA4',
-      borderWidth: 1.5,
-      fill: true,
-      tension: 0.3,
-      pointRadius: 3.5,
-      pointHoverRadius: 6,
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 1.5
-    },
-    {
-      label: 'Wave 2 — AT + IE',
-      data: [0,0,24,33,51,72,88,101,110,115,115,115],
-      backgroundColor: 'rgba(91, 141, 208, 0.85)',
-      borderColor: '#5B8DD0',
-      borderWidth: 1.5,
-      fill: true,
-      tension: 0.3,
-      pointRadius: 3.5,
-      pointHoverRadius: 6,
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 1.5
-    },
-    {
-      label: 'Wave 3 — NO + DK',
-      data: [0,0,16,22,31,45,60,70,76,80,80,80],
-      backgroundColor: 'rgba(158, 207, 245, 0.85)',
-      borderColor: '#7CB6E8',
-      borderWidth: 1.5,
-      fill: true,
-      tension: 0.3,
-      pointRadius: 3.5,
-      pointHoverRadius: 6,
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 1.5
-    },
-    {
-      label: 'Wave 4 — ES + FI',
-      data: [0,0,0,13,18,27,33,40,45,49,50,50],
-      backgroundColor: 'rgba(39, 174, 111, 0.85)',
-      borderColor: '#27AE6F',
-      borderWidth: 1.5,
-      fill: true,
-      tension: 0.3,
-      pointRadius: 3.5,
-      pointHoverRadius: 6,
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 1.5
-    },
-    {
-      label: 'Wave 5 — CH + IT',
-      data: [0,0,0,0,11,15,21,28,35,40,44,45],
-      backgroundColor: 'rgba(194, 24, 91, 0.85)',
-      borderColor: '#c2185b',
-      borderWidth: 1.5,
-      fill: true,
-      tension: 0.3,
-      pointRadius: 3.5,
-      pointHoverRadius: 6,
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 1.5
-    }
+  const z = (arr) => arr.map(v => v === null ? 0 : v);
+  // All series pull from MONTHLY (shared with heat-table + spend chart)
+  const seriesDef = [
+    {label:'🇬🇧 UK (base)', data:MONTHLY.UK,    color:'#0B133D'},
+    {label:'🇩🇪 DE (base)', data:MONTHLY.DE,    color:'#2E61A6'},
+    {label:'🇳🇱 NL (base)', data:MONTHLY.NL,    color:'#F4A261'},
+    {label:'🇫🇷 FR (W1)',   data:z(MONTHLY.FR), color:'#3B6FB3'},
+    {label:'🇧🇪 BE (W1)',   data:z(MONTHLY.BE), color:'#6366F1'},
+    {label:'🇸🇪 SE (W1)',   data:z(MONTHLY.SE), color:'#A78BFA'},
+    {label:'🇦🇹 AT (W2)',   data:z(MONTHLY.AT), color:'#06B6D4'},
+    {label:'🇮🇪 IE (W2)',   data:z(MONTHLY.IE), color:'#14B8A6'},
+    {label:'🇳🇴 NO (W3)',   data:z(MONTHLY.NO), color:'#84CC16'},
+    {label:'🇩🇰 DK (W3)',   data:z(MONTHLY.DK), color:'#22C55E'},
+    {label:'🇪🇸 ES (W4)',   data:z(MONTHLY.ES), color:'#F59E0B'},
+    {label:'🇫🇮 FI (W4)',   data:z(MONTHLY.FI), color:'#FDE047'},
+    {label:'🇨🇭 CH (W5)',   data:z(MONTHLY.CH), color:'#EC4899'},
+    {label:'🇮🇹 IT (W5)',   data:z(MONTHLY.IT), color:'#F4D9D0'},
   ];
+  const datasets = seriesDef.map(s => ({
+    label: s.label,
+    data: s.data,
+    backgroundColor: s.color + 'D9',
+    borderColor: s.color,
+    borderWidth: 1,
+    fill: true,
+    tension: 0.3,
+    pointRadius: 2.5,
+    pointHoverRadius: 5,
+    pointBorderColor: '#ffffff',
+    pointBorderWidth: 1
+  }));
 
   new Chart(ctx, {
     type: 'line',
@@ -1491,7 +1542,7 @@ function renderChart(){
       plugins: {
         legend: {
           position: 'bottom',
-          labels: { font: { family: 'Montserrat', size: 12 }, padding: 14, boxWidth: 14, usePointStyle: true, pointStyle: 'rectRounded' }
+          labels: { font: { family: 'Montserrat', size: 11 }, padding: 9, boxWidth: 11, boxHeight: 11, usePointStyle: true, pointStyle: 'rectRounded' }
         },
         tooltip: {
           backgroundColor: 'rgba(11, 19, 61, 0.95)',
@@ -1541,6 +1592,129 @@ function renderChart(){
 }
 
 renderChart();
+
+// Spend & CPA over time — expansion only.
+// Subs pulled from MONTHLY (matches the stacked chart and heat-table exactly);
+// CPO comes from FORECAST.monthData. Spend = subs × CPO.
+function renderSpendChart(){
+  const ctx = document.getElementById('spendChart').getContext('2d');
+  const labels = ['Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26','Dec 26','Jan 27','Feb 27','Mar 27'];
+  const launchIdx = {1:1, 2:2, 3:2, 4:3, 5:4};  // Wave → calendar launch idx (0=Apr26)
+  const monthlySpend = [];
+  const monthlyCPA  = [];
+  for (let i = 0; i < 12; i++){
+    let subs = 0, spend = 0;
+    FORECAST.forEach(f => {
+      const subsThisMonth = MONTHLY[f.code][i];
+      if (subsThisMonth === null || subsThisMonth === 0) return;
+      const mStage = Math.min(Math.max(i - launchIdx[f.wave] + 1, 1), 8);
+      const cpo = monthData(f, mStage).cpo;
+      subs  += subsThisMonth;
+      spend += subsThisMonth * cpo;
+    });
+    monthlySpend.push(Math.round(spend));
+    monthlyCPA.push(subs > 0 ? Math.round(spend / subs) : null);
+  }
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          type: 'bar',
+          label: 'Monthly ad spend (€)',
+          data: monthlySpend,
+          backgroundColor: 'rgba(38, 91, 164, 0.55)',
+          borderColor: '#265BA4',
+          borderWidth: 1,
+          yAxisID: 'ySpend',
+          order: 2
+        },
+        {
+          type: 'line',
+          label: 'Blended CPA (€/sub)',
+          data: monthlyCPA,
+          backgroundColor: 'rgba(244, 162, 97, 0.0)',
+          borderColor: '#F4A261',
+          borderWidth: 2.5,
+          tension: 0.3,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointBackgroundColor: '#F4A261',
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 1.5,
+          fill: false,
+          yAxisID: 'yCpa',
+          order: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      layout: { padding: { top: 16 } },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { family: 'Montserrat', size: 12 }, padding: 12, boxWidth: 14, usePointStyle: true, pointStyle: 'rectRounded' }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(11, 19, 61, 0.95)',
+          titleFont: { family: 'Montserrat', size: 13, weight: '600' },
+          bodyFont: { family: 'Montserrat', size: 12 },
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: {
+            label: (ctx) => {
+              const v = ctx.parsed.y;
+              if (ctx.dataset.label.startsWith('Monthly ad spend')){
+                return `Spend: €${v.toLocaleString()}`;
+              }
+              return `CPA: €${v}`;
+            }
+          }
+        },
+        datalabels: { display: false }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { font: { family: 'Montserrat', size: 11 }, color: '#6b7280' }
+        },
+        ySpend: {
+          type: 'linear',
+          position: 'left',
+          beginAtZero: true,
+          grid: { color: 'rgba(0,0,0,0.05)' },
+          ticks: {
+            font: { family: 'Montserrat', size: 11 },
+            color: '#265BA4',
+            callback: (v) => '€' + (v/1000) + 'K'
+          },
+          title: { display: true, text: 'Monthly ad spend (€)', font: { family: 'Montserrat', size: 12, weight: '600' }, color: '#265BA4' }
+        },
+        yCpa: {
+          type: 'linear',
+          position: 'right',
+          beginAtZero: false,
+          min: 250,
+          max: 420,
+          grid: { display: false },
+          ticks: {
+            font: { family: 'Montserrat', size: 11 },
+            color: '#F4A261',
+            callback: (v) => '€' + v
+          },
+          title: { display: true, text: 'Blended CPA (€/sub)', font: { family: 'Montserrat', size: 12, weight: '600' }, color: '#F4A261' }
+        }
+      }
+    }
+  });
+}
+
+renderSpendChart();
 </script>
 </body>
 </html>
