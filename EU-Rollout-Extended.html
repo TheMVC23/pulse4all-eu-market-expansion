@@ -129,36 +129,6 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .wave-card .wave-markets .flag{font-size:20px;margin-right:4px;vertical-align:middle;}
 .wave-card .wave-note{font-size:12px;color:#6b7280;line-height:1.5;margin-top:var(--sp-1);}
 
-/* Calendar view */
-.calendar-wrapper{background:var(--white);border-radius:15px;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow-x:auto;}
-.calendar-table{width:100%;border-collapse:collapse;font-size:13px;}
-.calendar-table thead th{background:var(--inkt);color:var(--white);padding:14px 10px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
-.calendar-table thead th.center{text-align:center;}
-.calendar-table thead th.total{background:var(--leaf-green);}
-.calendar-table thead th.wave1{background:#2a334a;}
-.calendar-table thead th.wave2{background:#1f2a44;}
-.calendar-table thead th.wave3{background:#151d35;}
-.calendar-table thead th.wave4{background:#0d1530;}
-.calendar-table thead th.wave5{background:#3d0f1f;}
-.calendar-table tbody td{padding:12px 10px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
-.calendar-table tbody tr:last-child td{border-bottom:none;}
-.calendar-table tbody tr:hover{background:var(--bg-blue);}
-.calendar-table .month-cell{font-weight:700;color:var(--deep-blue);white-space:nowrap;}
-.calendar-table .month-cell .sub{display:block;font-size:10px;color:#6b7280;font-weight:500;margin-top:2px;text-transform:uppercase;letter-spacing:0.5px;}
-.calendar-table .wave-cell{text-align:left;font-size:12px;line-height:1.5;}
-.calendar-table .wave-cell .stage{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-bottom:4px;letter-spacing:0.3px;}
-.calendar-table .wave-cell .stage-m1{background:#fef3c7;color:#92400e;}
-.calendar-table .wave-cell .stage-m2{background:#dbeafe;color:#1e40af;}
-.calendar-table .wave-cell .stage-m3{background:#c7d2fe;color:#3730a3;}
-.calendar-table .wave-cell .stage-m4, .calendar-table .wave-cell .stage-m5,
-.calendar-table .wave-cell .stage-m6, .calendar-table .wave-cell .stage-m7{background:#d1fae5;color:#065f46;}
-.calendar-table .wave-cell .stage-m8{background:var(--leaf-green);color:var(--white);}
-.calendar-table .wave-cell .stage-pre{background:#f3f4f6;color:#6b7280;}
-.calendar-table .wave-cell .figures{color:var(--inkt-body);font-weight:500;}
-.calendar-table .total-col{text-align:center;font-weight:600;background:#f8faf9;}
-.calendar-table .total-col.peak-row{background:#dcfce7;color:#065f46;font-weight:700;}
-.calendar-table .peak-subs{color:var(--leaf-green);font-weight:700;font-size:14px;}
-
 /* Per-market forecast table */
 .forecast-table-wrapper{background:var(--white);border-radius:15px;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow-x:auto;}
 .forecast-table{width:100%;border-collapse:collapse;font-size:13px;}
@@ -435,6 +405,72 @@ footer a{color:var(--light-blue);}
 </section>
 
 <section class="section">
+  <h2>Launch schedule — 5 waves over 13 weeks</h2>
+  <p class="section-lead">Wave 1 (FR/BE/SE) reopens on 11 May. Wave 2 (AT/IE) goes live 1 June; Wave 3 (NO/DK) on 15 June; Wave 4 (ES/FI) on 29 June; Wave 5 (Switzerland + Italy) on 10 August — six weeks after Wave 4, giving us time to digest the end-of-July portfolio review before committing the next launch. Digital-only markets — SE, NO, DK, FI, CH, IT — run without a call centre agent (automation + email carry conversion); Spain has a CC agent because of the price-sensitive buyer profile. Net CC cost vs an "all markets get CC" baseline: minus €25K/mo (six markets digital-only saves €30K, Spain CC adds €5K).</p>
+  <div class="wave-grid">
+    <div class="wave-card">
+      <div class="wave-label">Wave 1</div>
+      <div class="wave-date">11 May 2026</div>
+      <div class="wave-markets"><span class="flag">🇧🇪</span>Belgium <span class="flag" style="margin-left:8px;">🇸🇪</span>Sweden <span class="flag" style="margin-left:8px;">🇫🇷</span>France</div>
+      <div class="wave-note"><strong>Entity at launch</strong> in all three. Belgium + France have CC support; Sweden is digital-only. These are the reopening markets with existing brand footprint, so the ramp is fastest.</div>
+    </div>
+    <div class="wave-card w2">
+      <div class="wave-label">Wave 2</div>
+      <div class="wave-date">1 June 2026</div>
+      <div class="wave-markets"><span class="flag">🇦🇹</span>Austria <span class="flag" style="margin-left:8px;">🇮🇪</span>Ireland</div>
+      <div class="wave-note"><strong>Satellite launches.</strong> Austria rides the German content, ads, legal and CC stack. Ireland rides the UK stack on English + EUR. Minimal net-new localization needed.</div>
+    </div>
+    <div class="wave-card w3">
+      <div class="wave-label">Wave 3</div>
+      <div class="wave-date">15 June 2026</div>
+      <div class="wave-markets"><span class="flag">🇳🇴</span>Norway <span class="flag" style="margin-left:8px;">🇩🇰</span>Denmark</div>
+      <div class="wave-note"><strong>Digital-only pair.</strong> Nordic launches run without a call centre — automation + email drive conversion. Highest demand signals in Europe (90% CPR training NO, highest AED density DK), but highest launch friction too.</div>
+    </div>
+    <div class="wave-card w4">
+      <div class="wave-label">Wave 4</div>
+      <div class="wave-date">29 June 2026</div>
+      <div class="wave-markets"><span class="flag">🇪🇸</span>Spain <span class="flag" style="margin-left:8px;">🇫🇮</span>Finland</div>
+      <div class="wave-note"><strong>Mixed model.</strong> Spain launches with a Spanish CC agent — price-sensitive buyers benefit from phone rescue. Finland is digital-only, riding DESI top-5 + Klarna home market. Conservative volumes — Spanish localization is fully net-new, Finnish market is small.</div>
+    </div>
+    <div class="wave-card w5">
+      <div class="wave-label">Wave 5</div>
+      <div class="wave-date">10 August 2026</div>
+      <div class="wave-markets"><span class="flag">🇨🇭</span>Switzerland <span class="flag" style="margin-left:8px;">🇮🇹</span>Italy</div>
+      <div class="wave-note"><strong>Digital-only pair, post-July review.</strong> Six weeks after Wave 4 — gives us the end-of-July portfolio data before committing. Switzerland is the easiest fit (DE/FR/IT bridge content, premium market). Italy needs full Italian localization — biggest lift of the wave.</div>
+    </div>
+  </div>
+  <div class="wave-swap-note">
+    <strong>Wave order may shift —</strong> the sequence above is the working plan, but wave membership and dates may swap pending unresolved rulings on (a) <strong>NO VOEC / MVA</strong> with Bas, (b) <strong>IT MDR shipping &amp; medical-device handling</strong>, and (c) <strong>ES customs &amp; regional VAT compliance</strong>. If any of these blocks a launch, we promote the next-cleanest market into that wave rather than pushing the whole rollout out.
+  </div>
+</section>
+
+<section class="section">
+  <h2>Total monthly subscriptions — base + rollout</h2>
+  <p class="section-lead">Each of the 14 markets is its own colour band. The bottom three (UK · DE · NL) are the steady 310 subs/mo base today; the 11 stacked above are the expansion waves layering on top from each market's launch month. By March 2027 the rollout adds 495 subs/mo on top of the base — taking the portfolio from 310 to 805 subs/mo, a 2.60× lift on today's run rate.</p>
+  <div class="chart-wrapper">
+    <canvas id="rolloutChart"></canvas>
+  </div>
+
+  <p class="section-lead" style="margin-top:var(--sp-3);margin-bottom:var(--sp-1);"><strong style="color:var(--deep-blue);">Spend &amp; CPA over time — expansion only.</strong> Bars show monthly ad spend across the 11 expansion markets; line shows blended CPA. Spend ramps from €24K in May 2026 (Wave 1 only, M1 at the €400 cap) to €139K at peak in Mar 2027 — and CPA falls from €400 at M1 to €281 at peak as each market exits learning phase.</p>
+  <div class="spend-chart-wrapper">
+    <canvas id="spendChart"></canvas>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Per-country monthly subs — heat map</h2>
+  <p class="section-lead">Same data as the chart, broken out per country and per month. Read across to see how each market ramps; read down to see what each calendar month delivers. Cell shading scales with sub volume — darker = higher. Top three rows (UK · DE · NL) are the existing entities at steady state.</p>
+  <div class="heatmap-wrapper">
+    <table class="heatmap-table" id="heatmapTable"></table>
+  </div>
+  <div class="heatmap-legend">
+    <span>Cell shading:</span>
+    <span class="grad"></span>
+    <span>0 subs &nbsp;→&nbsp; 160+ subs</span>
+  </div>
+</section>
+
+<section class="section">
   <h2>Pricing strategy — launch low, review at 3 months</h2>
   <p class="section-lead">Two parallel moves: (1) <strong>reopening markets</strong> (FR · BE · SE) drop from historic prices that were too high — biggest cut is FR, down €10/mo. (2) <strong>New markets</strong> (AT · IE · NO · DK · ES · IT) launch at low entry prices to grab share fast. FI + CH still TBD with subs team. Goal is speed-to-share, not margin optimisation — review each market's price at its 3-month checkpoint.</p>
 
@@ -476,96 +512,6 @@ footer a{color:var(--light-blue);}
   </div>
 
   <p class="pricing-review-note"><strong>Review trigger —</strong> at each market's 3-month checkpoint, decide whether to (a) hold launch price, (b) step up toward the existing-market band (€32-34/mo), or (c) hold + run a long-term-commitment offer for retention. Decision is local, not portfolio-wide — markets that hit forecast can hold low; markets behind forecast move up to test elasticity.</p>
-</section>
-
-<section class="section">
-  <h2>Total monthly subscriptions — base + rollout</h2>
-  <p class="section-lead">Each of the 14 markets is its own colour band. The bottom three (UK · DE · NL) are the steady 310 subs/mo base today; the 11 stacked above are the expansion waves layering on top from each market's launch month. By March 2027 the rollout adds 495 subs/mo on top of the base — taking the portfolio from 310 to 805 subs/mo, a 2.60× lift on today's run rate.</p>
-  <div class="chart-wrapper">
-    <canvas id="rolloutChart"></canvas>
-  </div>
-
-  <p class="section-lead" style="margin-top:var(--sp-3);margin-bottom:var(--sp-1);"><strong style="color:var(--deep-blue);">Spend &amp; CPA over time — expansion only.</strong> Bars show monthly ad spend across the 11 expansion markets; line shows blended CPA. Spend ramps from €24K in May 2026 (Wave 1 only, M1 at the €400 cap) to €139K at peak in Mar 2027 — and CPA falls from €400 at M1 to €281 at peak as each market exits learning phase.</p>
-  <div class="spend-chart-wrapper">
-    <canvas id="spendChart"></canvas>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Launch schedule — 5 waves over 13 weeks</h2>
-  <p class="section-lead">Wave 1 (FR/BE/SE) reopens on 11 May. Wave 2 (AT/IE) goes live 1 June; Wave 3 (NO/DK) on 15 June; Wave 4 (ES/FI) on 29 June; Wave 5 (Switzerland + Italy) on 10 August — six weeks after Wave 4, giving us time to digest the end-of-July portfolio review before committing the next launch. Digital-only markets — SE, NO, DK, FI, CH, IT — run without a call centre agent (automation + email carry conversion); Spain has a CC agent because of the price-sensitive buyer profile. Net CC cost vs an "all markets get CC" baseline: minus €25K/mo (six markets digital-only saves €30K, Spain CC adds €5K).</p>
-  <div class="wave-grid">
-    <div class="wave-card">
-      <div class="wave-label">Wave 1</div>
-      <div class="wave-date">11 May 2026</div>
-      <div class="wave-markets"><span class="flag">🇧🇪</span>Belgium <span class="flag" style="margin-left:8px;">🇸🇪</span>Sweden <span class="flag" style="margin-left:8px;">🇫🇷</span>France</div>
-      <div class="wave-note"><strong>Entity at launch</strong> in all three. Belgium + France have CC support; Sweden is digital-only. These are the reopening markets with existing brand footprint, so the ramp is fastest.</div>
-    </div>
-    <div class="wave-card w2">
-      <div class="wave-label">Wave 2</div>
-      <div class="wave-date">1 June 2026</div>
-      <div class="wave-markets"><span class="flag">🇦🇹</span>Austria <span class="flag" style="margin-left:8px;">🇮🇪</span>Ireland</div>
-      <div class="wave-note"><strong>Satellite launches.</strong> Austria rides the German content, ads, legal and CC stack. Ireland rides the UK stack on English + EUR. Minimal net-new localization needed.</div>
-    </div>
-    <div class="wave-card w3">
-      <div class="wave-label">Wave 3</div>
-      <div class="wave-date">15 June 2026</div>
-      <div class="wave-markets"><span class="flag">🇳🇴</span>Norway <span class="flag" style="margin-left:8px;">🇩🇰</span>Denmark</div>
-      <div class="wave-note"><strong>Digital-only pair.</strong> Nordic launches run without a call centre — automation + email drive conversion. Highest demand signals in Europe (90% CPR training NO, highest AED density DK), but highest launch friction too.</div>
-    </div>
-    <div class="wave-card w4">
-      <div class="wave-label">Wave 4</div>
-      <div class="wave-date">29 June 2026</div>
-      <div class="wave-markets"><span class="flag">🇪🇸</span>Spain <span class="flag" style="margin-left:8px;">🇫🇮</span>Finland</div>
-      <div class="wave-note"><strong>Mixed model.</strong> Spain launches with a Spanish CC agent — price-sensitive buyers benefit from phone rescue. Finland is digital-only, riding DESI top-5 + Klarna home market. Conservative volumes — Spanish localization is fully net-new, Finnish market is small.</div>
-    </div>
-    <div class="wave-card w5">
-      <div class="wave-label">Wave 5</div>
-      <div class="wave-date">10 August 2026</div>
-      <div class="wave-markets"><span class="flag">🇨🇭</span>Switzerland <span class="flag" style="margin-left:8px;">🇮🇹</span>Italy</div>
-      <div class="wave-note"><strong>Digital-only pair, post-July review.</strong> Six weeks after Wave 4 — gives us the end-of-July portfolio data before committing. Switzerland is the easiest fit (DE/FR/IT bridge content, premium market). Italy needs full Italian localization — biggest lift of the wave.</div>
-    </div>
-  </div>
-  <div class="wave-swap-note">
-    <strong>Wave order may shift —</strong> the sequence above is the working plan, but wave membership and dates may swap pending unresolved rulings on (a) <strong>NO VOEC / MVA</strong> with Bas, (b) <strong>IT MDR shipping &amp; medical-device handling</strong>, and (c) <strong>ES customs &amp; regional VAT compliance</strong>. If any of these blocks a launch, we promote the next-cleanest market into that wave rather than pushing the whole rollout out.
-  </div>
-</section>
-
-<section class="section">
-  <h2>Calendar-month portfolio forecast</h2>
-  <p class="section-lead">Subscriptions per calendar month as waves overlay each other. Each wave follows its own M1 → M8 trajectory from its launch date. Portfolio hits its peak run rate once all five waves have reached M8 — approximately March 2027. CPO stays high by design (€400 cap at M1, €281 blended at peak) — year 1 is about proving volume and building brand, not optimizing efficiency. The M1→M2 CPO dip is modest because we keep spend high rather than pulling back.</p>
-
-  <div class="calendar-wrapper">
-    <table class="calendar-table">
-      <thead>
-        <tr>
-          <th>Month</th>
-          <th class="wave1">Wave 1 — FR · BE · SE</th>
-          <th class="wave2">Wave 2 — AT · IE</th>
-          <th class="wave3">Wave 3 — NO · DK</th>
-          <th class="wave4">Wave 4 — ES · FI</th>
-          <th class="wave5">Wave 5 — CH · IT</th>
-          <th class="total center">Monthly subs</th>
-          <th class="total center">Ad spend</th>
-          <th class="total center">Blended CPO</th>
-        </tr>
-      </thead>
-      <tbody id="calendarTableBody"></tbody>
-    </table>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Per-country monthly subs — heat map</h2>
-  <p class="section-lead">Same data as the chart, broken out per country and per month. Read across to see how each market ramps; read down to see what each calendar month delivers. Cell shading scales with sub volume — darker = higher. Top three rows (UK · DE · NL) are the existing entities at steady state.</p>
-  <div class="heatmap-wrapper">
-    <table class="heatmap-table" id="heatmapTable"></table>
-  </div>
-  <div class="heatmap-legend">
-    <span>Cell shading:</span>
-    <span class="grad"></span>
-    <span>0 subs &nbsp;→&nbsp; 160+ subs</span>
-  </div>
 </section>
 
 <section class="section">
@@ -1201,20 +1147,6 @@ function monthData(f, mNum){
   return {subs, cpo, spend: subs * cpo};
 }
 
-// Calendar schedule: maps calendar month to wave → monthNum
-const CALENDAR = [
-  {label:"May 2026", sub:"Wave 1 live",         waves:{1:1, 2:null, 3:null, 4:null, 5:null}},
-  {label:"Jun 2026", sub:"Waves 2 + 3 launch",  waves:{1:2, 2:1,    3:1,    4:null, 5:null}},
-  {label:"Jul 2026", sub:"Wave 4 launches",     waves:{1:3, 2:2,    3:2,    4:1,    5:null}},
-  {label:"Aug 2026", sub:"Wave 5 launches",     waves:{1:4, 2:3,    3:3,    4:2,    5:1}},
-  {label:"Sep 2026", sub:"15 Sep portfolio review", waves:{1:5, 2:4, 3:4, 4:3, 5:2}},
-  {label:"Oct 2026", sub:"",                    waves:{1:6, 2:5,    3:5,    4:4,    5:3}},
-  {label:"Nov 2026", sub:"",                    waves:{1:7, 2:6,    3:6,    4:5,    5:4}},
-  {label:"Dec 2026", sub:"Wave 1 at peak",      waves:{1:8, 2:7,    3:7,    4:6,    5:5}},
-  {label:"Jan 2027", sub:"Waves 2 + 3 at peak", waves:{1:8, 2:8,    3:8,    4:7,    5:6}},
-  {label:"Feb 2027", sub:"Wave 4 at peak",      waves:{1:8, 2:8,    3:8,    4:8,    5:7}},
-  {label:"Mar 2027", sub:"Full run rate",       waves:{1:8, 2:8,    3:8,    4:8,    5:8}, peak:true}
-];
 
 // Per-market monthly subs — single source of truth for chart, heat-table, spend chart.
 // Apr May Jun Jul Aug Sep Oct Nov Dec Jan Feb Mar
@@ -1234,52 +1166,6 @@ const MONTHLY = {
   CH: [null,null,null,null, 6,  8, 11, 15, 19, 22, 24, 25],
   IT: [null,null,null,null, 5,  7, 10, 13, 16, 18, 20, 20],
 };
-
-function waveMarkets(waveId){
-  return FORECAST.filter(f => f.wave === waveId).map(f => f.code);
-}
-
-function renderCalendar(){
-  const tbody = document.getElementById('calendarTableBody');
-  tbody.innerHTML = CALENDAR.map(row => {
-    let portfolioSubs = 0, portfolioSpend = 0;
-    const waveCells = [1,2,3,4,5].map(waveId => {
-      const mNum = row.waves[waveId];
-      if(mNum === null){
-        return `<td class="wave-cell"><span class="stage stage-pre">Pre-launch</span></td>`;
-      }
-      const markets = waveMarkets(waveId);
-      let waveSubs = 0, waveSpend = 0;
-      markets.forEach(code => {
-        const f = FORECAST.find(x => x.code === code);
-        const d = monthData(f, mNum);
-        waveSubs += d.subs;
-        waveSpend += d.spend;
-      });
-      const waveCpo = Math.round(waveSpend / waveSubs);
-      portfolioSubs += waveSubs;
-      portfolioSpend += waveSpend;
-      const stageClass = `stage-m${mNum}`;
-      const stageLabel = mNum === 8 ? "M8 PEAK" : `M${mNum}`;
-      return `<td class="wave-cell">
-        <span class="stage ${stageClass}">${stageLabel}</span>
-        <div class="figures"><strong>${waveSubs}</strong> subs · €${(waveSpend/1000).toFixed(0)}K · €${waveCpo} CPO</div>
-      </td>`;
-    }).join('');
-
-    const blendedCpo = Math.round(portfolioSpend / portfolioSubs);
-    const peakClass = row.peak ? ' peak-row' : '';
-    const subsClass = row.peak ? 'peak-subs' : '';
-
-    return `<tr>
-      <td class="month-cell">${row.label}${row.sub ? `<span class="sub">${row.sub}</span>` : ''}</td>
-      ${waveCells}
-      <td class="total-col${peakClass}"><span class="${subsClass}">${portfolioSubs}</span></td>
-      <td class="total-col${peakClass}">€${(portfolioSpend/1000).toFixed(0)}K</td>
-      <td class="total-col${peakClass}">€${blendedCpo}</td>
-    </tr>`;
-  }).join('');
-}
 
 function renderTable(){
   const tbody = document.getElementById('forecastTableBody');
@@ -1422,7 +1308,6 @@ function renderCards(){
   }).join('');
 }
 
-renderCalendar();
 renderTable();
 renderCards();
 
