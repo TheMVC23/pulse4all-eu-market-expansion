@@ -191,6 +191,8 @@ footer a{color:var(--light-blue);}
 .country-index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-2);}
 .country-tile{background:var(--white);border-radius:14px;padding:var(--sp-3);box-shadow:0 2px 6px rgba(0,0,0,0.06);border-top:5px solid var(--deep-blue);transition:transform .15s,box-shadow .15s;display:block;color:var(--inkt-body);}
 .country-tile:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,0.1);}
+.country-tile.live{border-top-color:var(--inkt);background:linear-gradient(180deg,#fdfbf1 0%,var(--white) 60%);}
+.country-tile.live .country-wave{color:var(--leaf-green);}
 .country-tile.w1{border-top-color:var(--deep-blue);}
 .country-tile.w2{border-top-color:var(--denim-blue);}
 .country-tile.w3{border-top-color:var(--light-blue);}
